@@ -48,7 +48,7 @@ With its holistic approach to driving license exam preparation, user convenience
         </ul>
       </li>
       <li>
-        Front-end (go to back-end directory)
+        Back-end (go to back-end directory)
         <ul>
           <li>npm install</li>
           <li>nodemon server.js</li>
