@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Dashboard() {
+function CourseView() {
   return (
-    <div>Dashboard</div>
+    <div>CourseView</div>
   )
 }
 
-export default Dashboard
+export default CourseView
