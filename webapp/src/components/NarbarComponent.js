@@ -1,10 +1,24 @@
 import React from 'react'
-import '../assets/styles/NavbarStyle'
+
 
 function NarbarComponent() {
 
+  const navStyle = {
+    position: 'sticky',
+    top: 0,
+    width: '100%',
+    boxSizing: 'border-box',
+    display: 'flex',
+    padding: '0.6em',
+    margin: '0',
+    backgroundColor: 'green',
+    alignFtems: 'center',
+    justifyFontent: 'space-between',
+    fontFamily: 'Arial, sans-serif',
+    userSelect: 'none',
+  }
   return (
-    <div className='NavStyle'  >NarbarComponent</div>
+    <div style={navStyle} >NarbarComponent</div>
   )
 }
 
