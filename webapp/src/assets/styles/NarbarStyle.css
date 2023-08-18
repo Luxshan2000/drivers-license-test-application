@@ -1,0 +1,14 @@
+.navStyle{
+    position: 'sticky';
+    top: 0;
+    width: '100%';
+    box-sizing: 'border-box';
+    display: 'flex';
+    padding: '0.6em';
+    margin: '0';
+    background-color: '#6528F7';
+    align-items: 'center';
+    justify-content: 'space-between';
+    font-family: 'Arial, sans-serif';
+    user-select: 'none';
+  }
