@@ -1,10 +1,10 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom';
-import HomeView from '../components/HomeView'
-import ContentView from '../components/ContentView';
-import CourseView from '../components/CourseView'
-import DashboardView from '../components/DashboardView'
-import QuizView from '../components/QuizView';
+import HomeView from '../views/HomeView'
+import ContentView from '../views/ContentView';
+import CourseView from '../views/CourseView'
+import DashboardView from '../views/DashboardView'
+import QuizView from '../views/QuizView';
 import PrivateRoutes from './PrivateRoutes';
 
 function AllRoutes() {
