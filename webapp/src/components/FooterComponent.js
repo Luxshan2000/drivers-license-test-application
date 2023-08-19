@@ -1,12 +1,12 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/footerStyle.css'
+import '../assets/CSS/footerStyle.css'
 import { faFacebook, faLinkedinIn, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function FooterComponent() {
   return (
-<div className="myFooter" >
+<div  style={{backgroundColor:'blue'}} className="myFooter" >
     <div className='footer-top' >
         <div className='footer-contact' >
             <h3>Contact Details</h3>
