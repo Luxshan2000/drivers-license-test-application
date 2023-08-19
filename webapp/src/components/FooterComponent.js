@@ -1,12 +1,12 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/CSS/footerStyle.css'
-import { faFacebook, faLinkedinIn, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { faFacebook, faLinkedinIn, faTwitter, faWhatsapp, faAppStoreIos, faGooglePlay } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function FooterComponent() {
   return (
-<div  style={{backgroundColor:'blue'}} className="myFooter" >
+<div  className="myFooter" >
     <div className='footer-top' >
         <div className='footer-contact' >
             <h3>Contact Details</h3>
@@ -28,8 +28,12 @@ function FooterComponent() {
         <div className='footer-download'>
             <h3>Download Links</h3>
             <ul>
-                <li>AppStore</li>
-                <li>PlayStore</li>
+                <li>
+                    <FontAwesomeIcon size='2x' icon={faGooglePlay}/>
+                </li>
+                <li>
+                    <FontAwesomeIcon size='2x' icon={faAppStoreIos}/>
+                </li>
             </ul>
         </div>
         <div className='footer-safe'>
