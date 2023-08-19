@@ -1,7 +1,8 @@
-.myfooter{
+.myFooter{
     position: relative;
     width: 100%;
     display: flex;
+    bottom: 0;
     padding: 0.6em;
     margin: 0;
     background-color: rgb(33, 64, 33);
@@ -9,3 +10,4 @@
     justify-content: space-between;
     font-family: Arial, sans-serif;
   }
+
