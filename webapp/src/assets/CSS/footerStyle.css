@@ -12,35 +12,14 @@
     font-family: Arial, sans-serif;
   }
 
-  .footer-top h3{
-    font-size: 17px;
-    padding: 0;
-    font-weight: bold;
-    text-align: left;
-  }
-
-  .footer-top ul{
-    list-style-type: circle;
-    margin: 0;
-    padding: 0 0 0 15px;
-    text-align: left;
-  }
-
   .footer-bottom ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
 
-  .footer-top {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
 
-.footer-contact{
-  text-align: left;
-}
+
 
 .footer-hl{
   border-bottom: 2px solid aliceblue;
@@ -54,4 +33,5 @@
 .footer-social ul li{
   padding: 1em;
 }
+
 

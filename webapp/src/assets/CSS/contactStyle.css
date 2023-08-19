@@ -1,0 +1,13 @@
+.my-contact{
+    position: relative;
+    color: #dcdace;
+    width: 100%;
+    bottom: 0;
+    padding: 0.6em;
+    box-sizing: border-box;
+    margin: 0;
+    background-color: #361f10;
+    align-items:center;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+  }
