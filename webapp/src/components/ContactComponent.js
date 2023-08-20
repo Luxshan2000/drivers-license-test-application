@@ -1,29 +1,40 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/CSS/contactStyle.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLocationDot,faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 
-import AppStore from '../assets/images/appstore.svg'
-import PlayStore from '../assets/images/googleplaystore.svg'
+
+
 
 function ContactComponent() {
   return (
-    <div className='my-contact container-fluid' >
-        <div className='row'>
-            <div className='col-8 text-center'>
-                <h6 className=' text-center'>Contact Us</h6>
-                <div className=' row'>
-                </div>
+    <div style={{backgroundColor:'#361f10', color:'#dcdace'}} className=' container-fluid'>
+        <h3 className=' text-center'>Contact Info</h3>
+        <p className=' text-center col-md-9 col-sm-10 col-lg-6 col m-auto' >Reach out to us for all your needs. Whether 
+            you're a driving school looking to join us or a 
+            customer with questions, we're here to support you every 
+            step of the way.
+        </p>
+        <div className=' justify-content-center row '>
+            <div className='card  shadow col-auto m-3 p-2'>  
+                <FontAwesomeIcon size='3x' icon={faLocationDot} />
+                <h6 style={{margin:0, padding:0, textAlign:'left'}}>Bandaranayake Mawatha,<br/> Moratuwa 10400</h6>
             </div>
-            <div className='col-4 '>
-                <h6 className='text-center'>Download App</h6>
-                <div className='row flex-row  justify-content-around'>
-                    <img className=' flex-grow-1 col-2'  src={AppStore} height={40} alt='AppStore' />
-                    <img  className=' flex-grow-1 col-2' height={40}  src={PlayStore}  alt='GooglePlayStore' />
-                </div>
+            <div className='card  shadow col-auto m-3 p-2'>  
+                <FontAwesomeIcon size='3x' icon={faEnvelope} />
+                <h6 style={{margin:0, padding:0, textAlign:'left'}}>sldriver@gmail.com</h6>
             </div>
+            <div className='card  shadow col-auto m-3 p-2'>  
+                <FontAwesomeIcon size='3x' icon={faPhone} />
+                <h6 style={{margin:0, padding:0, textAlign:'left'}}>Mobile: 077-1234567<br/> Telephone: 011-1234567 </h6>
+            </div>
+
+           
+
+            
         </div>
     </div>
-    
   )
 }
 
