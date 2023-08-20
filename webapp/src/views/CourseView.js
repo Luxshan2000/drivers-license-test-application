@@ -1,8 +1,11 @@
 import React from 'react'
+import HeadingComponent from '../components/HeadingComponent'
 
 function CourseView() {
   return (
-    <div>CourseView</div>
+    <div className=' container-fluid bg-secondary-subtle  p-5'>
+      <HeadingComponent />
+    </div>
   )
 }
 
