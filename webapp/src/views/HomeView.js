@@ -1,5 +1,6 @@
 import React from 'react'
-import ContactComponent from '../components/ContactComponent'
+
+import DownloadComponent from '../components/DownloadComponent'
 
 function HomeView() {
   return (
@@ -7,7 +8,7 @@ function HomeView() {
       <div style={{minHeight:'100vh', backgroundColor:'blue', marginBottom:'0', paddingBottom:'0', border:'2px, black, sloid'}}>
         <h1>Home view</h1>
       </div>
-      <ContactComponent />
+      <DownloadComponent />
     </>
     
   )
