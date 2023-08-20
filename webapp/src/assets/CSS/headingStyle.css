@@ -1,0 +1,13 @@
+a{
+    color: inherit; 
+    text-decoration: none; 
+    cursor: pointer;
+}
+
+.hover-effect {
+    transition: background-color 0.5s ease; 
+    background-color: white;
+  }
+.hover-effect:hover {
+    background-color: rgb(232, 229, 229); 
+  }
