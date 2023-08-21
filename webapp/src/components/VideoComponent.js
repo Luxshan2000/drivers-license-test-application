@@ -10,15 +10,44 @@ import { faFlagCheckered,
   faVolumeHigh,
   faGauge
 } from '@fortawesome/free-solid-svg-icons'
+import {  useState, useEffect } from 'react'
 
 
 function VideoComponent() {
+  const [showControls, setShowControls] = useState(true);
+
+  const handleTouch = ()=>{
+    setShowControls((prv)=> prv ? prv : !prv) 
+  }
+
+  useEffect(() => {
+    let hideControlsTimeout;
+
+    if (showControls) {
+      hideControlsTimeout = setTimeout(() => {
+        setShowControls(false);
+      }, 5000); // Hide controls after 3 seconds of inactivity
+    }
+
+    return () => {
+      clearTimeout(hideControlsTimeout);
+    };
+  }, [showControls]);
+
+ 
+
+
   return (
-    <div className=' container  user-select-none'>
-      <div className=' row '>
-        <video  width={500} src={SampleVideo}  autoPlay />
-      </div>
-      <div className='align-items-center pt-0 pb-0 rounded-bottom-3 d-flex flex-row bg-dark text-white'>
+    <div
+      onTouchStart={handleTouch}
+      onTouchEnd={handleTouch}
+      onMouseEnter ={handleTouch}
+      onClick={handleTouch}
+     style={{position:'relative'}} className=' p-0 container col-9  user-select-none'>
+      <div style={{borderRadius:"10px"}}  className=' row  '>
+        <video style={{borderRadius:"10px"}}  muted  width={500} src={SampleVideo}  autoPlay />
+      </div> 
+      {showControls && <div style={{position:"absolute", bottom:'0',left:'0',width:'100%'}}  className='align-items-center pt-0 pb-0  rounded-bottom-3 d-flex flex-row bg-transparent text-white'>
         <div className="p-lg-3 p-2  text-start flex-shrink-1">
           <FontAwesomeIcon icon={faPlay} />
         </div>
@@ -55,7 +84,7 @@ function VideoComponent() {
         <div className="p-lg-3 p-2  flex-shrink-1"> 
           <FontAwesomeIcon icon={faExpand} />
         </div>
-      </div>
+      </div>}
     </div>
   )
 }

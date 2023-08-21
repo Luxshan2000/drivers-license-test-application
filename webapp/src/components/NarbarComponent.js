@@ -3,7 +3,7 @@ import '../assets/CSS/navbarStyle.css'
 
 function NarbarComponent() {
   return (
-    <div  className='navStyle' >Narbar Component</div>
+    <div style={{zIndex:'2'}}  className='navStyle' >Narbar Component</div>
   )
 }
 
