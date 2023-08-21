@@ -4,6 +4,7 @@ import OffCanvasNavComponent from '../components/OffCanvasNavComponent'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import '../assets/CSS/headingStyle.css'
+import '../assets/CSS/courseviewStyle.css'
 function CourseView() {
   const heading = [
     {
@@ -90,13 +91,13 @@ function CourseView() {
   return (
     <div className=' p-0 container-fluid'>
       <div className='d-flex m-0 flex-row justify-content-center'>
-        <div className=' m-0 bg-white shadow  flex-shrink-1' >
-          <div className=' p-lg-5 p-md-3  p-2'>
+        <div className=' hide-section m-0 bg-white shadow col-sm-12 col-md-6 col-lg-3  flex-shrink-1' >
+          <div >
             <OffCanvasNavComponent/>
           </div>
         </div>
-        <div className=' p-lg-5 p-md-3  p-sm-2  w-100' >
-          <div className=' bg-secondary-subtle m-3  shadow-sm  p-3  container rounded-3   justify-content-center'>
+        <div className=' p-lg-5 p-md-3  p-sm-2 flex-shrink-1 flex-grow-1  ' >
+          <div className=' bg-secondary-subtle mt-3 mb-3  shadow-sm  p-3  container rounded-3   justify-content-center'>
               <div >
                 <div className=' text-center row'>
                   <h5 >DriveSmart Sri Lanka: Road Rules, Signals, and License Exam Preparation</h5>

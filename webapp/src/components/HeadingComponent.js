@@ -8,7 +8,7 @@ import '../assets/CSS/headingStyle.css'
 function HeadingComponent({heading}) {
 
   return (
-    <div className='hover-effect m-3  shadow-sm  p-3  container rounded-3   justify-content-center'>
+    <div className='hover-effect mt-3 mb-3  shadow-sm  p-3  container rounded-3   justify-content-center'>
         <div 
           style={{cursor:'pointer'}}
           data-bs-toggle="collapse" 
