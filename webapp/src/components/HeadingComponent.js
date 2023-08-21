@@ -16,7 +16,7 @@ function HeadingComponent({heading}) {
           aria-expanded="false" 
           aria-controls={`${heading.id}`}>
           <div className=' text-start row'>
-            <h5>{heading.name}</h5>
+            <h5 className=' col-12'>{heading.name}</h5>
           </div>
         </div>
         <div class="collapse" id={`${heading.id}`}>
