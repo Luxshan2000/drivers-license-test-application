@@ -1,0 +1,41 @@
+.image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    filter: contrast(1.35) brightness(0.65);
+}
+
+.headerBox {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: fit-content;
+    margin: auto;
+}
+
+.header {
+    font-size: 4rem;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: fit-content;
+    margin: auto;
+}
+.smallHeader{
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    /* position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: fit-content;
+    margin: auto; */
+}
