@@ -3,8 +3,6 @@ import React from 'react'
 import HeroSection from '../assets/HeroSection.jpeg'
 import '../assets/CSS/homePageStyle.css'
 
-import DownloadComponent from '../components/DownloadComponent'
-import ContactComponent from '../components/ContactComponent'
 function HomeView() {
   return (
     <div>

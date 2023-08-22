@@ -9,11 +9,11 @@ function NarbarComponent() {
     <div  className='navStyle' >
        <Navbar scrolling dark collapseOnSelect expand="md" className="bg-body-tertiary" fixed='top'>
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="#about us">About us</Nav.Link>
             <Nav.Link href="#contact us">Contact us</Nav.Link>
             <Nav.Link href="#signup">Sign up</Nav.Link>
