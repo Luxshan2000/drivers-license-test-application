@@ -43,7 +43,7 @@ function VideoComponent() {
       onTouchEnd={handleTouch}
       onMouseEnter ={handleTouch}
       onClick={handleTouch}
-     style={{position:'relative'}} className=' p-0 container col-9  user-select-none'>
+     style={{position:'relative'}} className=' p-0 container col-12 col-lg-10  user-select-none'>
       <div style={{borderRadius:"10px"}}  className=' row  '>
         <video style={{borderRadius:"10px"}}  muted  width={500} src={SampleVideo}  autoPlay />
       </div> 
