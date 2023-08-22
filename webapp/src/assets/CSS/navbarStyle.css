@@ -1,8 +1,10 @@
 .navStyle{
-  /* position: sticky; */
+  position: sticky; 
+  left: 0;
   top: 0;
   width: 100%;
   box-sizing: border-box;
+  z-index: 2;
   /* display: flex; */
   /* padding: 0.6em; */
   margin: 0;
