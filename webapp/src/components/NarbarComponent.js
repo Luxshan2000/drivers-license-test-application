@@ -15,7 +15,7 @@ function NarbarComponent() {
           <Nav className="ms-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="#about us">About us</Nav.Link>
-            <Nav.Link href="/content">Contact us</Nav.Link>
+            <Nav.Link href="/#contact us">Contact us</Nav.Link>
             <Nav.Link href="#signup">Sign up</Nav.Link>
             <Nav.Link href="#login">Login</Nav.Link>
           </Nav>
