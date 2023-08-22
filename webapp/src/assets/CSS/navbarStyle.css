@@ -1,12 +1,11 @@
 .navStyle{
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   width: 100%;
   box-sizing: border-box;
-  display: flex;
-  padding: 0.6em;
+  /* display: flex; */
+  /* padding: 0.6em; */
   margin: 0;
-  background-color: green;
   align-items:center;
   justify-content: space-between;
   font-family: Arial, sans-serif;
