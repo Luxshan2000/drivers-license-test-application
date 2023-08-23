@@ -8,7 +8,8 @@ import ContactComponent from '../components/ContactComponent'
 function HomeView() {
   return (
     <div>
-        <img className='image' src={HeroSection} alt='background' />
+        <img className='image img-fluid' src={HeroSection} alt='background' />
+        <DownloadComponent/>
     </div>
   )
 }
