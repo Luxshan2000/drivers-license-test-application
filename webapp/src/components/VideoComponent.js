@@ -1,15 +1,7 @@
 import SampleVideo from '../assets/video/sample.mp4'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFlagCheckered, 
-  faPlay , 
-  faPause, 
-  faClockRotateLeft,
-  faExpand, 
-  faVolumeHigh,
-  faGauge
-} from '@fortawesome/free-solid-svg-icons'
+
 import {  useState, useEffect } from 'react'
 
 
@@ -49,13 +41,13 @@ function VideoComponent() {
       </div> 
       {showControls && <div style={{position:"absolute", bottom:'0',left:'0',width:'100%'}}  className='align-items-center pt-0 pb-0  rounded-bottom-3 d-flex flex-row bg-transparent text-white'>
         <div className="p-lg-3 p-2  text-start flex-shrink-1">
-          <FontAwesomeIcon icon={faPlay} />
+          Play
         </div>
         <div style={{display:"none"}} className="p-3  text-start flex-shrink-1">
-          <FontAwesomeIcon icon={faPause} />
+          Pause
         </div>
         <div className="p-lg-3 p-2  text-start flex-shrink-1">
-          <FontAwesomeIcon icon={faClockRotateLeft} />
+          ClockRotateLeft
         </div>
         <div className="p-lg-3 p-2 flex-grow-1  flex-shrink-1">
           <div style={{height:'6px'}} className="progress-stacked ">
@@ -73,16 +65,16 @@ function VideoComponent() {
           </div>
         </div>
         <div className='p-lg-3 p-2 text-start  flex-shrink-1'>
-            <FontAwesomeIcon icon={faFlagCheckered} />
+            Flag
         </div>
         <div className="p-lg-3 p-2  flex-shrink-1">
-          <FontAwesomeIcon icon={faGauge} />
+          Speed
         </div>
         <div className="p-lg-3 p-2  flex-shrink-1">
-          <FontAwesomeIcon icon={faVolumeHigh} />
+          Volume
         </div>
         <div className="p-lg-3 p-2  flex-shrink-1"> 
-          <FontAwesomeIcon icon={faExpand} />
+          Expand
         </div>
       </div>}
     </div>

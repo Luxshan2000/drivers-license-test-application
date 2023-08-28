@@ -1,28 +1,55 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/CSS/footerStyle.css'
-import { faFacebook, faLinkedinIn, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 
 function FooterComponent() {
   return (
 <div  className="myFooter" >
+    <div className='myFooter-top' >
+        <div className='myFooter-contact'>
+            <ul className='myFooter-element'>
+                <li><h6 className='myFooter-heading'>Contact details</h6></li>
+                <li>Phone: 0771234567</li>
+                <li>Email: abc@gmail.com</li>
+                <li>Address: No 10, Moratuwa,UOM, SL</li>
+            </ul>
+        </div>
+        <div className='myFooter-download '>
+            <ul className='myFooter-element'>
+                <li><h6 className='myFooter-heading'>Download App</h6></li>
+                <li>
+                    <h6><i class="bi bi-apple"></i> AppStore</h6>
+                </li>
+                <li>
+                    <h6><i class="bi bi-google-play"></i> GooglePlay</h6>
+                </li>
+                
+            </ul>
+        </div>
+        <div className='myFooter-privacy'>
+            <ul className='myFooter-element'>
+                <li><h6 className='myFooter-heading'>Safeguarding and Assuarance</h6></li>
+                <li>Terms</li>
+                <li>Privacy</li>
+                <li>Security & Trust</li>
+            </ul>
+        </div>
+    </div>
     <div className='footer-hl'><span></span></div>
     <div className='footer-bottom' >
         <div className='footer-social'>
-            <ul>
-                <li><FontAwesomeIcon size='2x' icon={faFacebook}/></li>
-                <li><FontAwesomeIcon size='2x' icon={faTwitter}/></li>
-                <li><FontAwesomeIcon size='2x' icon={faWhatsapp}/></li>
-                <li><FontAwesomeIcon size='2x' icon={faLinkedinIn}/></li>
+            <ul className=' myFooter-element'>
+                <li><i style={{fontSize:"1.5em"}} class="bi bi-facebook"></i></li>
+                <li><i style={{fontSize:"1.5em"}} class="bi bi-twitter"></i></li>
+                <li><i style={{fontSize:"1.5em"}} class="bi bi-whatsapp"></i></li>
+                <li><i style={{fontSize:"1.5em"}} class="bi bi-linkedin"></i></li>
             </ul>
         </div>
         <div className='footer-end'>
             <ul>
-                <li><span style={{fontSize:'12px'}} >Privacy Policy</span></li>
-                <li>Drivers License Test Application</li>
-                <li>©2023 All rights reserved</li>
+                <li className=' myFooter-element'>DriveSmart</li>
+                <li className=' myFooter-element'>©2023 All rights reserved</li>
             </ul>
         </div>
     </div>
