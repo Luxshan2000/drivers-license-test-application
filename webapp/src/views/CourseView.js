@@ -92,12 +92,12 @@ function CourseView() {
             <OffCanvasNavComponent/>
           </div>
         </div>*/}
-        <div className=' w-75 container'>
+        <div className='col-lg-9 col-12  col-md-11 container'>
           <div  className='flex-shrink-1 flex-grow-1' >
             <div style={{backgroundColor:"#166E89"}} className=' mt-3 mb-3  shadow-sm  p-3  container rounded-3   justify-content-center'>
                 <div >
                   <div className=' text-center row'>
-                    <h5 >DriveSmart Sri Lanka: Road Rules, Signals, and License Exam Preparation</h5>
+                    <h5 className=' PageHeading' >DriveSmart Sri Lanka: Road Rules, Signals, and License Exam Preparation</h5>
                     <div className=' ps-5 pe-5 p-2' >
                       <div style={{height:'12px'}} className="progress " role="progressbar" ariaLabel="Example with label" ariaValuenow="25" ariaValuemin="0" ariaValuemax="100">
                         <div  className="progress-bar bg-success" style={{width: "25%"}}>25%</div>
@@ -106,7 +106,7 @@ function CourseView() {
                   </div>
                 </div>
             </div>
-            {heading.map((item) =><HeadingComponent heading={item} /> )}
+            {heading.map((item) =><HeadingComponent key={item.name} heading={item} /> )}
           </div>
         </div>
       </div>

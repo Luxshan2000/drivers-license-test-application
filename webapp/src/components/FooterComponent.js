@@ -6,7 +6,7 @@ import '../assets/CSS/footerStyle.css'
 function FooterComponent() {
   return (
 <div  className="myFooter" >
-    <div className='myFooter-top' >
+    <div className='myFooter-top FooterTextTop' >
         <div className='myFooter-contact'>
             <ul className='myFooter-element'>
                 <li><h6 className='myFooter-heading'>Contact details</h6></li>
@@ -19,10 +19,10 @@ function FooterComponent() {
             <ul className='myFooter-element'>
                 <li><h6 className='myFooter-heading'>Download App</h6></li>
                 <li>
-                    <h6><i class="bi bi-apple"></i> AppStore</h6>
+                    <i class="bi bi-apple"></i> AppStore
                 </li>
                 <li>
-                    <h6><i class="bi bi-google-play"></i> GooglePlay</h6>
+                    <i class="bi bi-google-play"></i> GooglePlay
                 </li>
                 
             </ul>
@@ -37,7 +37,7 @@ function FooterComponent() {
         </div>
     </div>
     <div className='footer-hl'><span></span></div>
-    <div className='footer-bottom' >
+    <div className='footer-bottom FooterTextBottom' >
         <div className='footer-social'>
             <ul className=' myFooter-element'>
                 <li><i style={{fontSize:"1.5em"}} class="bi bi-facebook"></i></li>
