@@ -5,6 +5,10 @@ a{
 }
 
 
+.not-completed{
+  color: rgb(99, 99, 99);
+}
+
 
 .hover-effect {
     transition: background-color, box-shadow 0.5s ease; 
@@ -13,3 +17,6 @@ a{
 .hover-effect:hover {
     background-color: rgb(233, 242, 255); 
   }
+.hrFirst{
+  color: rgb(148, 193, 255);
+}

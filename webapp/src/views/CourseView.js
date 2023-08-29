@@ -92,15 +92,15 @@ function CourseView() {
             <OffCanvasNavComponent/>
           </div>
         </div>*/}
-        <div className='col-lg-9 col-12  col-md-11 container'>
+        <div className='col-lg-9 col-md-11 col-12 container'>
           <div  className='flex-shrink-1 flex-grow-1' >
-            <div style={{backgroundColor:"#166E89"}} className=' mt-3 mb-3  shadow-sm  p-3  container rounded-3   justify-content-center'>
+            <div  className='courseHeading mt-3 mb-3  shadow-sm  p-3  container rounded-3   justify-content-center'>
                 <div >
                   <div className=' text-center row'>
                     <h5 className=' PageHeading' >DriveSmart Sri Lanka: Road Rules, Signals, and License Exam Preparation</h5>
                     <div className=' ps-5 pe-5 p-2' >
-                      <div style={{height:'12px'}} className="progress " role="progressbar" ariaLabel="Example with label" ariaValuenow="25" ariaValuemin="0" ariaValuemax="100">
-                        <div  className="progress-bar bg-success" style={{width: "25%"}}>25%</div>
+                      <div style={{height:'13px'}} className="progress " role="progressbar" ariaLabel="Example with label" ariaValuenow="25" ariaValuemin="0" ariaValuemax="100">
+                        <div  className="progress-bar progress-bg" style={{width: "25%", fontSize:"10px"}}>25%</div>
                       </div>
                     </div>
                   </div>

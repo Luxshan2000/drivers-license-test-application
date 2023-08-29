@@ -1,3 +1,10 @@
 .courseview{
     background-color: rgb(237, 247, 253);
 }
+
+.courseHeading{
+    background-color:#004053bc;
+}
+.progress-bg{
+    background-color: #004d088b;
+}
