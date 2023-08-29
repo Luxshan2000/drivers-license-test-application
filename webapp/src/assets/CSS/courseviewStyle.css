@@ -1,5 +1,3 @@
-@media (max-width: 576px) { 
-    .hide-section{
-        display: none;
-    }
+.courseview{
+    background-color: rgb(237, 247, 253);
 }

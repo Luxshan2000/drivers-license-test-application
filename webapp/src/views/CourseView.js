@@ -1,9 +1,5 @@
 import React from 'react'
 import HeadingComponent from '../components/HeadingComponent'
-import OffCanvasNavComponent from '../components/OffCanvasNavComponent'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
-import '../assets/CSS/headingStyle.css'
 import '../assets/CSS/courseviewStyle.css'
 function CourseView() {
   const heading = [
@@ -89,30 +85,31 @@ function CourseView() {
     }]
 
   return (
-    <div className=' p-0 container-fluid'>
+    <div className=' courseview p-0 container-fluid'>
       <div className='d-flex m-0 flex-row justify-content-center'>
-        <div className=' hide-section m-0 bg-white shadow col-sm-12 col-md-6 col-lg-3  flex-shrink-1' >
+        {/*<div className=' hide-section m-0 bg-white shadow col-sm-12 col-md-6 col-lg-3  flex-shrink-1' >
           <div >
             <OffCanvasNavComponent/>
           </div>
-        </div>
-        <div className=' p-lg-5 p-md-3  p-sm-2 flex-shrink-1 flex-grow-1  ' >
-          <div className=' bg-secondary-subtle mt-3 mb-3  shadow-sm  p-3  container rounded-3   justify-content-center'>
-              <div >
-                <div className=' text-center row'>
-                  <h5 >DriveSmart Sri Lanka: Road Rules, Signals, and License Exam Preparation</h5>
-                  <div className=' p-2' >
-                    <div className="progress" role="progressbar" ariaLabel="Example with label" ariaValuenow="25" ariaValuemin="0" ariaValuemax="100">
-                      <div className="progress-bar bg-success" style={{width: "25%"}}>25%</div>
+        </div>*/}
+        <div className=' w-75 container'>
+          <div  className='flex-shrink-1 flex-grow-1' >
+            <div style={{backgroundColor:"#166E89"}} className=' mt-3 mb-3  shadow-sm  p-3  container rounded-3   justify-content-center'>
+                <div >
+                  <div className=' text-center row'>
+                    <h5 >DriveSmart Sri Lanka: Road Rules, Signals, and License Exam Preparation</h5>
+                    <div className=' ps-5 pe-5 p-2' >
+                      <div style={{height:'12px'}} className="progress " role="progressbar" ariaLabel="Example with label" ariaValuenow="25" ariaValuemin="0" ariaValuemax="100">
+                        <div  className="progress-bar bg-success" style={{width: "25%"}}>25%</div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+            </div>
+            {heading.map((item) =><HeadingComponent heading={item} /> )}
           </div>
-          {heading.map((item) =><HeadingComponent heading={item} /> )}
         </div>
       </div>
-      
     </div>
   )
 }

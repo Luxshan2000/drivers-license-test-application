@@ -51,9 +51,9 @@
 .myFooter-top{
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
   padding-bottom: 0;
   margin-bottom: 0;
+  justify-content: flex-start;
 }
 
 .myFooter-top ul{
@@ -75,7 +75,8 @@
   text-align: left;
 }
 .myFooter-privacy{
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   text-align: left;
+  margin-right: 2em;
 }
 
