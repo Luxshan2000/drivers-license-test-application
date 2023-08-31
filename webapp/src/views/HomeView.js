@@ -3,7 +3,6 @@ import React from 'react'
 
 import  Carousal  from '../components/Carousal'
 import DownloadComponent from '../components/DownloadComponent'
-import ContactComponent from '../components/ContactComponent'
 import About from '../components/AboutUsComponent'
 import HeroSection from '../components/HeroSectionComponent'
 
