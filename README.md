@@ -68,7 +68,7 @@ With its holistic approach to driving license exam preparation, user convenience
 </div>
 <hr/>
 <div align="center">
-  <p>Drivers License Test Application</p>
+  <p>DriveSmart</p>
   <p>©2023 All rights reserved</p>
 </div>
 
