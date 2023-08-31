@@ -20,7 +20,7 @@ function HeadingComponent({heading}) {
             <h5 className=' col-11 CourseHeading'>
               {heading.name}
             </h5>
-            {!toggle? <i  class=" col-1 bi bi-chevron-up"></i>:<i  class=" col-1 bi bi-chevron-down"></i>}
+            {!toggle? <i  class=" col-1 bi bi-chevron-down"></i>:<i  class=" col-1 bi bi-chevron-up"></i>}
             
           </div>
         </div>
