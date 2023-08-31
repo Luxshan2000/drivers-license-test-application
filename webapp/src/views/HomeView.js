@@ -1,12 +1,20 @@
 import React from 'react'
 // import HomePageCArpic from '../assets/HomePageCarpic.svg'
-import HeroSection from '../assets/HeroSection.jpeg'
-import '../assets/CSS/homePageStyle.css'
+
+import  Carousal  from '../components/Carousal'
+import DownloadComponent from '../components/DownloadComponent'
+import ContactComponent from '../components/ContactComponent'
+import About from '../components/AboutUsComponent'
+import HeroSection from '../components/HeroSectionComponent'
 
 function HomeView() {
   return (
     <div>
-        <img className='image' src={HeroSection} alt='background' />
+        <HeroSection/>
+        <Carousal/>
+        <About/>
+        <DownloadComponent/>
+        
     </div>
   )
 }
