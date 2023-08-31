@@ -1,11 +1,11 @@
 <div>
   <div align="center">
-    <h1>Driver License Test Application</h1>
+    <h1>DriveSmart</h1>
     <hr/>
     <hr />
   </div>
   <div  align="justify">
-        <b>01)Overview of the Project</b> : <b>Driver's Licence Test Application </b> is innovative software designed to assist individuals in effectively preparing for their driving license exams. Available in three languages (Sinhala, Tamil, and English), this comprehensive tool offers a simulated user experience, valuable practice resources, and various interactive features. The application encompasses practice tests, structured topic-wise study materials, timed exams within a realistic testing environment, and a robust progress tracking system to evaluate and analyze individual performance.
+        <b>01)Overview of the Project</b> : <b>DriveSmart </b> is innovative software designed to assist individuals in effectively preparing for their driving license exams. Available in three languages (Sinhala, Tamil, and English), this comprehensive tool offers a simulated user experience, valuable practice resources, and various interactive features. The application encompasses practice tests, structured topic-wise study materials, timed exams within a realistic testing environment, and a robust progress tracking system to evaluate and analyze individual performance.
         <br/>
 One of the standout features of this application is its ability to provide users with an authentic driving license exam experience. Through a user-friendly web portal accessible via web browsers and a dedicated mobile application compatible with tablets and smartphones, learners can thoroughly prepare for their exams anytime, anywhere.  <br/>
 In addition to exam preparation, the application extends its utility by allowing users to search for reputable driving schools within their vicinity. Users can seamlessly register for driving courses directly through the application, streamlining the enrollment process. Furthermore, the application serves as a communication platform, enabling users to effortlessly connect with driving schools, instructors, or support representatives.
