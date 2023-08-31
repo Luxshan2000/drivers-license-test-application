@@ -2,8 +2,8 @@ import React from 'react'
 
 function ScriptComponent() {
   return (
-    <div style={{textAlign:'left'}}   >
-      <h5 style={{textAlign:'center'}}>Course Overview: Comprehensive Driving Test Exam Preparation for Sri Lanka</h5>
+    <div className=' text-start'   >
+      <h5 className=' text-center'>Course Overview: Comprehensive Driving Test Exam Preparation for Sri Lanka</h5>
       <p style={{textAlign:'justify'}}>Welcome to our all-inclusive online course designed 
         to prepare you thoroughly for the driving test in Sri 
         Lanka. Whether you're a new driver or seeking to 
