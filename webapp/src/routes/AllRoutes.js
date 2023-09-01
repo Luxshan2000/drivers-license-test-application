@@ -6,6 +6,8 @@ import CourseView from '../views/CourseView'
 import DashboardView from '../views/DashboardView'
 import QuizView from '../views/QuizView';
 import PrivateRoutes from './PrivateRoutes';
+import SignUp from '../views/SignUp';
+import Login from '../views/Login';
 
 function AllRoutes() {
   return (
@@ -16,6 +18,8 @@ function AllRoutes() {
           <Route path='/course' element={<CourseView />}/>
           <Route  path='/dashboard' element={<DashboardView/>}/>
           <Route path='/quiz' element={<QuizView/>} />
+          <Route path='/signUp' element={<SignUp/>}/>
+          <Route path='/login' element={<Login/>}/>
         </Route>
      </Routes>
   )
