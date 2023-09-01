@@ -40,10 +40,10 @@ function FooterComponent() {
     <div className='footer-bottom FooterTextBottom' >
         <div className='footer-social'>
             <ul className=' myFooter-element'>
-                <li><i style={{fontSize:"1.5em"}} class="bi bi-facebook"></i></li>
-                <li><i style={{fontSize:"1.5em"}} class="bi bi-twitter"></i></li>
-                <li><i style={{fontSize:"1.5em"}} class="bi bi-whatsapp"></i></li>
-                <li><i style={{fontSize:"1.5em"}} class="bi bi-linkedin"></i></li>
+                <li><i style={{fontSize:"2em"}} class="bi bi-facebook"></i></li>
+                <li><i style={{fontSize:"2em"}} class="bi bi-twitter"></i></li>
+                <li><i style={{fontSize:"2em"}} class="bi bi-whatsapp"></i></li>
+                <li><i style={{fontSize:"2em"}} class="bi bi-linkedin"></i></li>
             </ul>
         </div>
         <div className='footer-end'>

@@ -66,7 +66,7 @@ function VideoComponent() {
         className=' user-select-none fullscreen-div m-auto col-12 col-md-10 col-lg-10 '>
         <video 
           ref={videoRef}
-          className='w-100  rounded-bottom-3 p-0 m-0'  
+          className='w-100  rounded-3 p-0 m-0'  
           src={SampleVideo}  
           autoPlay />
         { showControls &&
