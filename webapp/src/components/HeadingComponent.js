@@ -19,8 +19,11 @@ function HeadingComponent({heading}) {
           <div className=' text-start row pe-2'>
             <h5 className=' col-11 CourseHeading'>
               {heading.name}
+              <span className='CourseSubHeading badge ms-1  p-2 text-dark bg-success-subtle'>
+                Completed!
+              </span>
             </h5>
-            {!toggle? <i  class=" col-1 bi bi-chevron-down"></i>:<i  class=" col-1 bi bi-chevron-up"></i>}
+            {!toggle? <i  class=" col-1 bi p-1 bi-chevron-down"></i>:<i  class=" col-1 bi p-1 bi-chevron-up"></i>}
             
           </div>
         </div>
