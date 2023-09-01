@@ -21,7 +21,7 @@ function ContentView() {
         <div className='m-auto col-12 col-md-10 col-lg-10 ' >
           <div class="d-flex bg-secondary-subtle p-3 rounded-2 justify-content-between flex-row mb-3">
             <button type="button" class="btn w-25  btn-primary">Previous</button>
-            <button type="button" class="btn w-25 btn-primary">Next</button>
+            <button type="button" class="btn w-25  btn-primary opacity-50">Next</button>
           </div>   
         </div>
       </div>
