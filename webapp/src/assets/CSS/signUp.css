@@ -1,0 +1,38 @@
+.form-text{
+    font-size: smaller;
+    text-align: left;
+}
+.form-label{
+    font-size: small;
+    text-align: left;
+}
+.task-button{
+    background-color: #B5E3EA;
+    border: none;
+    color: black;
+}
+.task-button:hover{
+    background-color: #3B474F;
+    color: white;
+}
+
+.hr-line {
+    width: 100%;
+    text-align: center;
+    border-bottom: 0.5px solid #6C6A6A;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+.hr-line span {
+    background: #fff;
+    padding: 0 10px;
+}
+.blurEffect{
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12.9px);
+    -webkit-backdrop-filter: blur(12.9px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+}
