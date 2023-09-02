@@ -5,7 +5,7 @@ import FooterComponent from './components/FooterComponent';
 
 function App() {
   return (
-    <div style={{minHeight:'100vh', margin:"0", padding:"0"}} >
+    <div style={{backgroundColor: "rgb(237, 247, 253)",minHeight:'100vh', margin:"0", padding:"0"}} >
       <NarbarComponent />
       <div  style={{minHeight:'100vh',margin:"0", padding:"0"}} >
         <AllRoutes />

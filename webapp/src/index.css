@@ -9,6 +9,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
 }
+::-moz-selection { /* Code for Firefox */
+  color: green;
+  background: rgb(44, 233, 217);
+}
+
+::selection {
+  color: green;
+  background: rgb(44, 233, 217);
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
