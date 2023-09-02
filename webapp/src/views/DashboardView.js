@@ -1,9 +1,9 @@
-import '../assets/CSS/dashboard.css'
+import '../assets/CSS/dashboardStyle.css'
 import BarChart from '../assets/images/bar-chart-outline.png'
 import Book from '../assets/images/Book.png'
 import Signs from '../assets/images/Signs.png'
 
-function Dashboard() {
+function DashboardView() {
   return (
     <section>
         <div className='container dashboard__container'>
@@ -69,4 +69,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard
+export default DashboardView
