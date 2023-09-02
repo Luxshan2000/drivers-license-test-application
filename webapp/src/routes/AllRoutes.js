@@ -17,7 +17,7 @@ function AllRoutes() {
           <Route path='/content'  element={<ContentView />}/>
           <Route path='/course' element={<CourseView />}/>
           <Route  path='/dashboard' element={<DashboardView/>}/>
-          <Route path='/quiz' element={<QuizView/>} />
+          <Route path='/quiz/view' element={<QuizView/>} />
           <Route path='/signUp' element={<SignUp/>}/>
         </Route>
      </Routes>

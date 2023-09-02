@@ -5,9 +5,9 @@ import FooterComponent from './components/FooterComponent';
 
 function App() {
   return (
-    <div style={{margin:"0", padding:"0"}} >
+    <div style={{minHeight:'100vh', margin:"0", padding:"0"}} >
       <NarbarComponent />
-      <div  style={{margin:"0", padding:"0"}} >
+      <div  style={{minHeight:'100vh',margin:"0", padding:"0"}} >
         <AllRoutes />
       </div>
       <FooterComponent />
