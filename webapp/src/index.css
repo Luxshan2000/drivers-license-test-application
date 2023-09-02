@@ -40,6 +40,11 @@ code {
   font-size: 17px;
 }
 
+.paragraph{
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+}
+
 .FooterTextTop{
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
