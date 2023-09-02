@@ -7,7 +7,7 @@ import DashboardView from '../views/DashboardView'
 import QuizView from '../views/QuizView';
 import PrivateRoutes from './PrivateRoutes';
 import SignUp from '../views/SignUp';
-
+import Exam from '../views/Exam';
 
 function AllRoutes() {
   return (
@@ -19,6 +19,7 @@ function AllRoutes() {
           <Route  path='/dashboard' element={<DashboardView/>}/>
           <Route path='/quiz/view' element={<QuizView/>} />
           <Route path='/signUp' element={<SignUp/>}/>
+          <Route path='/quiz/exam' element={<Exam/>}/>
         </Route>
      </Routes>
   )
