@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+
+* {
+  margin:0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
@@ -20,10 +25,7 @@ body {
 }
 
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+
 
 .PageHeading{
   font-family: 'Poppins', sans-serif;
@@ -56,29 +58,20 @@ code {
 
 /* ========= Added by Oshan ============== */
 
-* {
-  margin:0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  box-sizing: border-box;
-  list-style: none;
-  text-decoration: none;
-}
 
 :root {
-  --color-bg: #ffffff;
-  --color-bg-variant: #2c2c6c;
-  --color-primary: #B5E3EA;
-  --color-primary-variant: rgba(77,181,255,0.4);
-  --color-black: #000000;
-  --color-light: rgba(241, 237, 237, 0.993);
+  --my-color-bg: #ffffff;
+  --my-color-bg-variant: #2c2c6c;
+  --my-color-primary: #B5E3EA;
+  --my-color-primary-variant: rgba(77,181,255,0.4);
+  --my-color-black: #000000;
+  --my-color-light: rgba(241, 237, 237, 0.993);
 
-  --transition: all 400ms ease;
+  --my-transition: all 400ms ease;
 
-  --container-width-lg: 75%;
-  --container-width-md: 86%;
-  --container-width-sm: 90%;
+  --my-container-width-lg: 75%;
+  --my-container-width-md: 86%;
+  --my-container-width-sm: 90%;
 }
 
 html{

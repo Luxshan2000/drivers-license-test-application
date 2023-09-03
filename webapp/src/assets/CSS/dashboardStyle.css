@@ -16,39 +16,39 @@
 }
 
 .dashboard__card{
-    background: var(--color-bg);
-    color: var(--color-black);
+    background: var(--my-color-bg);
+    color: var(--my-color-black);
     border: 1px solid transparent;
     border-radius: 1rem;
     padding:2rem;
     text-align: center;
-    transition: var(--transition);
+    transition: var(--my-transition);
     height: 5cm;
     width: 10cm;
 }
 
 .dashboard__card:hover{
-    background: var(--color-primary);
-    color: var(--color-black);
+    background: var(--my-color-primary);
+    color: var(--my-color-black);
     border-color: transparent;
     padding-left: 2rem;
 }
 
 .dashboard__card:focus {
-    background-color: var(--color-primary);
-    color: var(--color-black);
+    background-color: var(--my-color-primary);
+    color: var(--my-color-black);
     border-color: transparent;
 }
 
 .dashboard__title{
-    background: var(--color-light);
+    background: var(--my-color-light);
     color: black;
     border: 0.5px solid transparent;
     border-radius: 1rem;
     padding:0.1rem;
     margin-bottom: 2rem;
     text-align: center;
-    transition: var(--transition);
+    transition: var(--my-transition);
 }
 
 .card__image{
@@ -67,46 +67,46 @@
 /*================== General Styles ======================*/
 
 a {
-    color: var(--color-primary);
-    transition: var(--transition);
+    color: var(--my-color-primary);
+    transition: var(--my-transition);
   }
   
   a:hover {
-    color: var(--color-white);
+    color: var(--my-color-white);
   }
   
   .btn {
     width: 22vh;
     display: inline-block;
-    color: var(--color-primary);
+    color: var(--my-color-primary);
     padding: 0.5rem 1.2rem;
     border-radius: 0.4rem;
     cursor: pointer;
-    border: 1px solid var(--color-primary);
-    transition: var(--transition);
+    border: 1px solid var(--my-color-primary);
+    transition: var(--my-transition);
   }
   
   .btn:hover {
-    background: var(--color-primary);
-    color: var(--color-black);
+    background: var(--my-color-primary);
+    color: var(--my-color-black);
     border-color: transparent;
     /* padding-left: 2rem; */
   }
   
   .btn:focus {
-    background-color: var(--color-primary);
-    color: var(--color-black);
+    background-color: var(--my-color-primary);
+    color: var(--my-color-black);
     border-color: transparent;
   }
   
   .btn-primary {
     /* background: var(--color-bg); */
     padding-left: 1rem;
-    color: var(--color-black);
+    color: var(--my-color-black);
   }
   
   .btn-menu__items {
-    background: var(--color-white);
-    color: var(--color-black);
+    background: var(--my-color-white);
+    color: var(--my-color-black);
   }
   

@@ -51,7 +51,7 @@ function HeadingComponent({heading}) {
             </div>
             <div className='text-start mb-3 p-1'>
               <h5 className='CourseSubHeading'>
-                <a href='/content' style={{cursor:'pointer'}}>
+                <a href='/quiz/view' style={{cursor:'pointer'}}>
                   <span class=" rounded-5 bg-danger-subtle p-2 m-1 ">
                     <i class="bi  bi-pencil"></i>
                   </span>
