@@ -10,13 +10,14 @@
 }
 
 .dashboard__cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; 
+  gap: 2rem;
 }
 
 .dashboard__card{
+    flex: 1 1 40%;
     background: var(--color-bg);
     color: var(--color-black);
     border: 1px solid transparent;
