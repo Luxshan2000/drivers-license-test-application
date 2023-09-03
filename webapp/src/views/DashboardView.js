@@ -15,47 +15,47 @@ function DashboardView() {
                 <div className='dashboard__cards'>
 
                     <a href='#' className='dashboard__card'>
-                        <h4>Progress Tracking</h4>
+                        <h5>Progress Tracking</h5>
                         <div className='card__image-details'>
                             <img className="card__image" src={BarChart} alt=""/>
-                            <h5>Tracks  performance on 
+                            <h6>Tracks  performance on 
                             practice tests and simulations, 
                             providing detailed feedback
-                            and scores</h5>
+                            and scores</h6>
                         </div>
                     </a>
 
                     <a href='##' className='dashboard__card'>
-                        <h4>Topic-wise study materials</h4>
+                        <h5>Topic-wise study materials</h5>
                         <div className='card__image-details'>
                             <img className="card__image" src={Book} alt=""/>
-                            <h5>Provides detailed 
+                            <h6>Provides detailed 
                             explanations, illustrations, 
                             and references to relevant 
                             sections of the driver's 
-                            handbook or manual.</h5>
+                            handbook or manual.</h6>
                         </div>
                         
                     </a>
 
                     <a href='###' className='dashboard__card'>
-                        <h4>Practice Tests</h4>
+                        <h5>Practice Tests</h5>
                         <div className='card__image-details'>
                             <img className="card__image" src={Signs} alt=""/>
-                            <h5>A collection of practice tests
+                            <h6>A collection of practice tests
                             that mimic the format and structure of the actual driver's
-                            license exam.</h5>
+                            license exam.</h6>
                         </div>
                         
                     </a>
 
                     <a href='####' className='dashboard__card'>
-                        <h4>Road Signs</h4>
+                        <h5>Road Signs</h5>
                         <div className='card__image-details'>
                             <img className="card__image" src={Signs} alt=""/>
-                            <h5>A collection of road signs
+                            <h6>A collection of road signs
                             that are containing in the driver's 
-                            handbook or manual.</h5>
+                            handbook or manual.</h6>
                         </div>
                         
                     </a>
