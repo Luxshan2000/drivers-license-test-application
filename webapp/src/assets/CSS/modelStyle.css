@@ -1,0 +1,8 @@
+.custom-model{
+    background-color:#004053;
+    opacity: 1;
+    position: static;
+    padding: 1em;
+    border: 1px solid rgb(117, 205, 235);
+    color: antiquewhite;
+}
