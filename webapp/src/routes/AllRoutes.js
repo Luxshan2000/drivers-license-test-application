@@ -8,6 +8,10 @@ import QuizView from '../views/QuizView';
 import PrivateRoutes from './PrivateRoutes';
 import SignUp from '../views/SignUp';
 import Exam from '../views/Exam';
+import Login from '../views/Login';
+import PasswordVerify from '../components/PasswordVerify';
+import ResetPassword from '../components/ResetPassword';
+import PasswordUpdated from '../components/UpdateSuccessful';
 
 function AllRoutes() {
   return (
@@ -20,6 +24,10 @@ function AllRoutes() {
           <Route path='/quiz/view' element={<QuizView/>} />
           <Route path='/signUp' element={<SignUp/>}/>
           <Route path='/quiz/exam' element={<Exam/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/passwordVerify' element={<PasswordVerify/>}/>
+          <Route path='/resetPassword' element={<ResetPassword/>}/>
+          <Route path='/passwordUpdated' element={<PasswordUpdated/>}/>
         </Route>
      </Routes>
   )
