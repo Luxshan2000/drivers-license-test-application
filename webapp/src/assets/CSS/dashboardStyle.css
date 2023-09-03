@@ -6,6 +6,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding-top: 2rem;
 }
 
 .dashboard__cards {
@@ -23,7 +24,7 @@
     padding:2rem;
     text-align: center;
     transition: var(--transition);
-    height: 5cm;
+    height: 6cm;
     width: 10cm;
 }
 
@@ -41,7 +42,7 @@
 }
 
 .dashboard__title{
-    background: var(--color-light);
+    background: rgb(237, 247, 253);
     color: black;
     border: 0.5px solid transparent;
     border-radius: 1rem;
@@ -61,13 +62,13 @@
     flex-direction: row;
     align-items: center;
     gap: 1cm;
-    padding-top: 1.5rem;
+    padding-top: 1rem;
 }
 
 /*================== General Styles ======================*/
 
 .dashboard__container a {
-    color: var(--color-primary);
+    color: var(--color-black);
     transition: var(--transition);
   }
   
