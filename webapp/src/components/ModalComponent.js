@@ -1,30 +1,39 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import "../assets/CSS/modelStyle.css"
+import { useModal } from '../context/ModalContext';
 
-function ModalComponent(props) {
-  const gotoo = props.goto 
-  const [show, setShow] = useState(true);
-  const [move,setMove] = useState(false)
-  const offClick = props.offClick || false 
-  const isCentered = props.offClick || true;
-  const heading = props.heading
-  const cancelButtonName = props.cancel 
-  const okButtonName = props.ok
-  const isClosable = props.isClosable ||true
-  const children = props.children
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+function ModalComponent() {
+  const navigate = useNavigate()
+  const {modal, closeModal}  = useModal()
+
+  
+  const heading = modal.heading
+  const cancelButtonName = modal.cancel 
+  const okButtonName = modal.ok
+  const children = modal.statement
+  const isClosable = modal.isClosable 
+  const isCentered = modal.isCentered
+  const offClick = modal.allowOffClick 
+  const show = modal.show 
+  const goto = modal.goto 
+  
+   
+  
+
+  
+  const handleClose = () => closeModal();
+  
 
   const handleSuccess =()=>{
-    setMove(true)
+    closeModal()
+    navigate('/quiz/exam') 
   }
 
   return (
     <>
-      {move && <Navigate to={gotoo}   />}
       <Modal
         show={show}
         onHide={handleClose}
