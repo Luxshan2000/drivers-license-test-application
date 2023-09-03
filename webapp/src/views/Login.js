@@ -4,12 +4,13 @@ import Form from 'react-bootstrap/Form';
 import '../assets/CSS/signUp.css'
 import Button from 'react-bootstrap/Button';
 import Col from "react-bootstrap/esm/Col";
+import PasswordVerify from "../components/PasswordVerify";
 
 export default function Login() {
     return (
         <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <div className="blurEffect" style={{ width: '500px' }}>
-                <h1 className="mb-4">LOGIN</h1>
+                <h1 className="mb-4" style={{textAlign:'center'}}>LOGIN</h1>
                 <>
 
                     <FloatingLabel
@@ -34,7 +35,7 @@ export default function Login() {
                 <div style={{textAlign:'left'}}>
                 <a href='#' style={{fontSize:12,}}>
                             Forgot your password?
-                            </a>
+                            </a>               
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column',marginTop: '50px'}}>
@@ -68,8 +69,8 @@ export default function Login() {
 
 
 
-                    <p className="mb-3" style={{ fontSize: '12', fontWeight: 'lighter' }}>
-                        If you haven't registered yet? <a href='#'><span>Register now</span></a>
+                    <p className="mb-3" style={{ fontSize: '12', fontWeight: 'lighter',textAlign:'center'}}>
+                        If you haven't registered yet? <a href='/signUp'><span>Register now</span></a>
                     </p>
                 </div>
 

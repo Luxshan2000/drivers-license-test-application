@@ -4,8 +4,15 @@ import Form from 'react-bootstrap/Form';
 import '../assets/CSS/signUp.css'
 import Button from 'react-bootstrap/Button';
 import Col from "react-bootstrap/esm/Col";
+import PasswordUpdated from "./UpdateSuccessful";
 
 export default function ResetPassword() {
+    const handlePasswordUpdate = () => {
+        return(
+            <PasswordUpdated/>
+        )
+        
+    }
     return (
         <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <div className="blurEffect" style={{ width: '500px' }}>
@@ -31,7 +38,7 @@ export default function ResetPassword() {
                     </FloatingLabel>
                 </>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <Button className="mb-3 task-button">Reset password</Button>
+                    <Button className="mb-3 task-button" onClick={() => handlePasswordUpdate()} >Reset password</Button>
                 </div>
 
 

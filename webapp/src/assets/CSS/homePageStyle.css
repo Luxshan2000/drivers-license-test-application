@@ -95,3 +95,14 @@ backdrop-filter: blur(12.9px);
 border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+.task-button{
+    background-color: #B5E3EA;
+    border: none;
+    color: black;
+    
+}
+.task-button:hover{
+    background-color: #3B474F;
+    color: white;
+}
+

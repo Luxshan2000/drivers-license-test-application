@@ -9,7 +9,7 @@ export default function SignUp() {
     return (
         <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <div className="blurEffect" style={{ width: '500px' }}>
-                <h1 className="mb-4">SIGN-UP</h1>
+                <h1 className="mb-4" style={{textAlign:'center'}}>SIGN-UP</h1>
                 <>
                     <FloatingLabel
                         controlId="floatingInput"
@@ -49,8 +49,6 @@ export default function SignUp() {
                 </>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <Button className="mb-3 task-button">Sign Up</Button>
-                    {/* <hr className="hr-lines"/>
-                    <p>OR</p> */}
                     <p className="hr-line"><span>OR</span></p>
                     
                     <Button className="mb-3 task-button" style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
@@ -77,12 +75,12 @@ export default function SignUp() {
                     
                     
                     
-                    <p className="mb-3" style={{fontSize:'12',fontWeight:'lighter'}}>
+                    <p className="mb-3" style={{fontSize:'12',fontWeight:'lighter',textAlign:'center'}}>
                         By signing up ,you are agreeing to our terms, Data
                         Policy and Cookies Policy
                     </p>
-                    <p className="mb-3" style={{fontSize:'12',fontWeight:'lighter'}}>
-                        Already have an account ? <a><span>Login Now</span></a>
+                    <p className="mb-3" style={{fontSize:'12',fontWeight:'lighter',textAlign:'center'}}>
+                        Already have an account ? <a href="/login"><span>Login Now</span></a>
                     </p>
                 </div>
 

@@ -2,9 +2,42 @@ import React from "react";
 import CarousalCard from './CarousalCard'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import Carousel from 'react-bootstrap/Carousel';
+// import Carousel from 'react-bootstrap/Carousel';
 import { useState } from 'react';
 import CarouselItem from "react-bootstrap/esm/CarouselItem";
+import '../assets/CSS/carousal.css'
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
+const responsive = {
+    superLargeDesktop: {
+        // the naming can be any, depends on you.
+        breakpoint: { max: 4000, min: 3000 },
+        items: 5
+    },
+    desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 3
+    },
+    tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 2
+    },
+    mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 1
+    }
+};
+// const CustomDot = ({ onMove, index, onClick, active }) => {
+//     return (
+//       <li
+//         className={active ? "active" : "inactive"}
+//         onClick={() => onClick()}
+//       >
+        
+//       </li>
+//     );
+//   };
 
 export default function Carousal() {
 
@@ -62,56 +95,46 @@ export default function Carousal() {
 
         ]
 
-    const [index, setIndex] = useState(1);
+    const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
 
     return (
-        // <div style={{ display: "flex", flexDirection: "row" }}>
-        //     {[0, 1, 2].map(i => {
-        //         console.log('list', i, (index + i) % cardList.length)
-        //         return (
-        //             <Carousel 
-        //                 defaultActiveIndex={i} 
-        //                 style={{flex: 1/3}} 
-        //                 wrap 
-        //                 activeIndex={(index + i) % cardList.length} 
-        //                 onSelect={(n) => { if (i == 0) { handleSelect(n) } }}
-        //             >
-        //                 {cardList.map((card) =>
-        //                     <CarouselItem key={card.id}>
-        //                         <CarousalCard icon={card.icon} description={card.description} />
-        //                     </CarouselItem>
-
-        //                 )}
-        //             </Carousel>
-        //         )
-        //     })}
-
-
-
-        // </div>
-        <div style={{ display: 'flex', justifyContent: 'center', flexDirection: "row",alignItems:'center'}}>
-            <div>
-                <h1 style={{ textAlign: "center", fontWeight: "bold" }}>Our services</h1>
-                <Carousel
-                    activeIndex={(index)}
-                    onSelect={handleSelect}
-                    
-
-                >
-                    {cardList.map((card) =>
-                        <CarouselItem key={card.id} >
-                            <CarousalCard icon={card.icon} description={card.description} />
-                        </CarouselItem>
-
-                    )}
-                </Carousel>
-            </div>
+        
+        <div>
+            <Carousel
+            swipeable={true}
+            draggable={false}
+            showDots={true}
+            responsive={responsive}
+            ssr={true} // means to render carousel on server-side.
+            infinite={true}
+            autoPlay={true}
+            renderButtonGroupOutside={true}
+            // autoPlay={this.props.deviceType !== "mobile" ? true : false}
+            autoPlaySpeed={4000}
+            keyBoardControl={true}
+            customTransition="all .5"
+            transitionDuration={4000}
+            containerClass="carousel-container"
+            // removeArrowOnDeviceType={["tablet", "mobile"]}
+            // deviceType={this.props.deviceType}
+            dotListClass="custom-dot-list-style"
+            itemClass="carousel-item-padding-40-px"
+        >
+            {cardList.map((card)=>
+                <div>
+                    <CarousalCard title={card.title} icon={card.icon} description={card.description}/>
+                </div>
+            )}
+        </Carousel>
 
         </div>
+
+        
+        
 
 
     );
