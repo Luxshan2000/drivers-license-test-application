@@ -12,6 +12,8 @@ import Login from '../views/Login';
 import PasswordVerify from '../components/PasswordVerify';
 import ResetPassword from '../components/ResetPassword';
 import PasswordUpdated from '../components/UpdateSuccessful';
+import PremiumView from '../views/PremiumView'
+
 
 function AllRoutes() {
   return (
@@ -28,6 +30,7 @@ function AllRoutes() {
           <Route path='/passwordVerify' element={<PasswordVerify/>}/>
           <Route path='/resetPassword' element={<ResetPassword/>}/>
           <Route path='/passwordUpdated' element={<PasswordUpdated/>}/>
+          <Route path='/dashboard/premium' element={<PremiumView/>} />
         </Route>
      </Routes>
   )
