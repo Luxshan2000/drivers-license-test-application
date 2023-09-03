@@ -1,4 +1,5 @@
 import React from 'react'
+import ModalComponent from '../components/ModalComponent'
 
 function QuizView() {
   return (
@@ -48,6 +49,7 @@ function QuizView() {
           </div>
         </div>
       </div>
+      <ModalComponent />
     </div>
   )
 }
