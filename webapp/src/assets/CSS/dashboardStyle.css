@@ -16,39 +16,39 @@
 }
 
 .dashboard__card{
-    background: var(--my-color-bg);
-    color: var(--my-color-black);
+    background: var(--color-bg);
+    color: var(--color-black);
     border: 1px solid transparent;
     border-radius: 1rem;
     padding:2rem;
     text-align: center;
-    transition: var(--my-transition);
+    transition: var(--transition);
     height: 5cm;
     width: 10cm;
 }
 
 .dashboard__card:hover{
-    background: var(--my-color-primary);
-    color: var(--my-color-black);
+    background: var(--color-primary);
+    color: var(--color-black);
     border-color: transparent;
     padding-left: 2rem;
 }
 
 .dashboard__card:focus {
-    background-color: var(--my-color-primary);
-    color: var(--my-color-black);
+    background-color: var(--color-primary);
+    color: var(--color-black);
     border-color: transparent;
 }
 
 .dashboard__title{
-    background: var(--my-color-light);
+    background: var(--color-light);
     color: black;
     border: 0.5px solid transparent;
     border-radius: 1rem;
     padding:0.1rem;
     margin-bottom: 2rem;
     text-align: center;
-    transition: var(--my-transition);
+    transition: var(--transition);
 }
 
 .card__image{
@@ -66,47 +66,47 @@
 
 /*================== General Styles ======================*/
 
-a {
-    color: var(--my-color-primary);
-    transition: var(--my-transition);
+.dashboard__container a {
+    color: var(--color-primary);
+    transition: var(--transition);
   }
   
-  a:hover {
-    color: var(--my-color-white);
+  .dashboard__container a:hover {
+    color: var(--color-white);
   }
   
-  .btn {
+ .btn {
     width: 22vh;
     display: inline-block;
-    color: var(--my-color-primary);
+    color: var(--color-primary);
     padding: 0.5rem 1.2rem;
     border-radius: 0.4rem;
     cursor: pointer;
-    border: 1px solid var(--my-color-primary);
-    transition: var(--my-transition);
+    border: 1px solid var(--color-primary);
+    transition: var(--transition);
   }
   
-  .btn:hover {
-    background: var(--my-color-primary);
-    color: var(--my-color-black);
+.btn:hover {
+    background: var(--color-primary);
+    color: var(--color-black);
     border-color: transparent;
     /* padding-left: 2rem; */
   }
   
   .btn:focus {
-    background-color: var(--my-color-primary);
-    color: var(--my-color-black);
+    background-color: var(--color-primary);
+    color: var(--color-black);
     border-color: transparent;
   }
   
   .btn-primary {
     /* background: var(--color-bg); */
     padding-left: 1rem;
-    color: var(--my-color-black);
+    color: var(--color-black);
   }
   
   .btn-menu__items {
-    background: var(--my-color-white);
-    color: var(--my-color-black);
+    background: var(--color-white);
+    color: var(--color-black);
   }
   
