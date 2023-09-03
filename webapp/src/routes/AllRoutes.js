@@ -13,7 +13,7 @@ import PasswordVerify from '../components/PasswordVerify';
 import ResetPassword from '../components/ResetPassword';
 import PasswordUpdated from '../components/UpdateSuccessful';
 import PremiumView from '../views/PremiumView'
-
+import Demo from '../views/Demo'
 
 function AllRoutes() {
   return (
@@ -31,6 +31,7 @@ function AllRoutes() {
           <Route path='/resetPassword' element={<ResetPassword/>}/>
           <Route path='/passwordUpdated' element={<PasswordUpdated/>}/>
           <Route path='/dashboard/premium' element={<PremiumView/>} />
+          <Route path='/demo' element={<Demo/>} />
         </Route>
      </Routes>
   )
