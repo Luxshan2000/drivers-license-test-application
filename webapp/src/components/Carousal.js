@@ -5,7 +5,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 // import Carousel from 'react-bootstrap/Carousel';
 import { useState } from 'react';
 import CarouselItem from "react-bootstrap/esm/CarouselItem";
-import '../assets/CSS/carousal.css'
+//import '../assets/CSS/carousal.css'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
