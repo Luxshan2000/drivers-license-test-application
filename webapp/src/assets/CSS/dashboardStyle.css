@@ -75,7 +75,7 @@
     color: var(--color-white);
   }
   
- .btn {
+ .dashboard__container .btn {
     width: 22vh;
     display: inline-block;
     color: var(--color-primary);
@@ -86,20 +86,20 @@
     transition: var(--transition);
   }
   
-.btn:hover {
+  .dashboard__container .btn:hover {
     background: var(--color-primary);
     color: var(--color-black);
     border-color: transparent;
     /* padding-left: 2rem; */
   }
   
-  .btn:focus {
+  .dashboard__container .btn:focus {
     background-color: var(--color-primary);
     color: var(--color-black);
     border-color: transparent;
   }
   
-  .btn-primary {
+  .dashboard__container .btn-primary {
     /* background: var(--color-bg); */
     padding-left: 1rem;
     color: var(--color-black);
