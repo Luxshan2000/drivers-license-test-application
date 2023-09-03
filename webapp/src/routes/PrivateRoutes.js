@@ -5,7 +5,7 @@ import React from 'react'
 function PrivateRoutes() {
     const auth=  {"token":true} 
   return (
-    auth.token ? <Outlet/> : <Navigate to='/'/>
+    auth.token ? <Outlet/> : <Navigate to='/' replace={true}/>
   )
 }
 

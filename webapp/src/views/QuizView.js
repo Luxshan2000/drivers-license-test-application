@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ModalComponent from '../components/ModalComponent'
 
 function QuizView() {
+  const [isVisible, setIsvisible] = useState(false)
   return (
     <div className=' container mt-2 p-1 p-md-3 p-lg-3   rounded-2   CourseHeading mb-5'>
       <div className=' m-0 col-11 col-md-10 col-lg-10 mx-auto' >
@@ -38,7 +39,7 @@ function QuizView() {
                 </table>
               </div>
             </div>
-            <button style={{backgroundColor:"#004053d1",color:'white'}}  type="button" class="btn mt-3 mb-1 w-auto m-auto">Attempt Quiz Now</button>
+            <button onClick={()=> setIsvisible(true)} style={{backgroundColor:"#004053d1",color:'white'}}  type="button" class="btn mt-3 mb-1 w-auto m-auto">Attempt Quiz Now</button>
             <h6>Your quiz will be automatically submitted once the allocated time is completed.</h6>
           </div>
           <div className='mt-1  ' >
@@ -49,7 +50,12 @@ function QuizView() {
           </div>
         </div>
       </div>
-      <ModalComponent />
+      { isVisible && <ModalComponent 
+        goto="/quiz/exam"
+        heading="Start Attempt"
+        cancel="Cancel"
+        ok="Start"
+       >Quiz will be automatically submitted once the allocated time is over.</ModalComponent>}
     </div>
   )
 }

@@ -4,19 +4,19 @@ import Modal from 'react-bootstrap/Modal';
 import { Navigate } from 'react-router-dom';
 import "../assets/CSS/modelStyle.css"
 
-function ModalComponent() {
+function ModalComponent(props) {
+  const gotoo = props.goto 
   const [show, setShow] = useState(true);
   const [move,setMove] = useState(false)
-  const offClick = false
-  const isCentered = true;
-  const heading = "Start Attempt"
-  const cancelButtonName = "Close"
-  const okButtonName = "Start"
-  const isClosable =true
-  const children = "Quiz will be automatically submitted once the allocated time is over."
+  const offClick = props.offClick || false 
+  const isCentered = props.offClick || true;
+  const heading = props.heading
+  const cancelButtonName = props.cancel 
+  const okButtonName = props.ok
+  const isClosable = props.isClosable ||true
+  const children = props.children
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
 
   const handleSuccess =()=>{
     setMove(true)
@@ -24,7 +24,7 @@ function ModalComponent() {
 
   return (
     <>
-      {move && <Navigate to='/quiz/exam' />}
+      {move && <Navigate to={gotoo}   />}
       <Modal
         show={show}
         onHide={handleClose}
@@ -32,7 +32,6 @@ function ModalComponent() {
         keyboard={false}
         centered ={isCentered}
         contentClassName='custom-model'
-      
       >
         <Modal.Header closeButton={isClosable}>
           <Modal.Title className='text-center w-100'>{heading}</Modal.Title>
