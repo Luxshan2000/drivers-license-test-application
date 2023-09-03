@@ -6,13 +6,15 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    background: rgb(237, 247, 253);
 }
+
 
 .dashboard__cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-
+    margin-bottom: 2rem;
 }
 
 .dashboard__card{
@@ -23,7 +25,7 @@
     padding:2rem;
     text-align: center;
     transition: var(--transition);
-    height: 5cm;
+    height: 6cm;
     width: 10cm;
 }
 
@@ -41,12 +43,13 @@
 }
 
 .dashboard__title{
-    background: var(--color-light);
+    background: rgb(237, 247, 253);
     color: black;
     border: 0.5px solid transparent;
     border-radius: 1rem;
     padding:0.1rem;
     margin-bottom: 2rem;
+    margin-top: 2rem;
     text-align: center;
     transition: var(--transition);
 }
@@ -61,21 +64,22 @@
     flex-direction: row;
     align-items: center;
     gap: 1cm;
-    padding-top: 1.5rem;
+    padding-top: 1.3rem;
+    
 }
 
 /*================== General Styles ======================*/
 
-a {
+/* a {
     color: var(--color-primary);
     transition: var(--transition);
   }
   
   a:hover {
     color: var(--color-white);
-  }
+  } */
   
-  .btn {
+  /* .btn {
     width: 22vh;
     display: inline-block;
     color: var(--color-primary);
@@ -90,7 +94,6 @@ a {
     background: var(--color-primary);
     color: var(--color-black);
     border-color: transparent;
-    /* padding-left: 2rem; */
   }
   
   .btn:focus {
@@ -100,7 +103,6 @@ a {
   }
   
   .btn-primary {
-    /* background: var(--color-bg); */
     padding-left: 1rem;
     color: var(--color-black);
   }
@@ -109,4 +111,4 @@ a {
     background: var(--color-white);
     color: var(--color-black);
   }
-  
+   */
