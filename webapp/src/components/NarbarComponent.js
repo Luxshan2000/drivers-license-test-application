@@ -17,7 +17,7 @@ function NarbarComponent() {
             <Nav.Link href="#about us">About us</Nav.Link>
             <Nav.Link href="/#contact us">Contact us</Nav.Link>
             <Nav.Link href="/signUp">Sign up</Nav.Link>
-            <Nav.Link href="#login">Login</Nav.Link>
+            <Nav.Link href="/login">Login</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

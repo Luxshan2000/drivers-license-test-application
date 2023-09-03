@@ -6,7 +6,15 @@
     font-size: small;
     text-align: left;
 }
+.link-button{
+    background-color:none;
+}
+.link-button:hover{
+    background-color: none;
+    color: #3B474F;
+}
 .task-button{
+    width : 100%;
     background-color: #B5E3EA;
     border: none;
     color: black;
@@ -36,3 +44,8 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 30px;
 }
+
+a{
+    color: #000;
+}
+
