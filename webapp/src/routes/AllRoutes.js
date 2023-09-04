@@ -14,6 +14,7 @@ import ResetPassword from '../components/ResetPassword';
 import PasswordUpdated from '../components/UpdateSuccessful';
 import PremiumView from '../views/PremiumView'
 import Demo from '../views/Demo'
+import TermsAndConditionsView from '../views/TermsAndConditionsView';
 
 function AllRoutes() {
   return (
@@ -32,6 +33,7 @@ function AllRoutes() {
           <Route path='/passwordUpdated' element={<PasswordUpdated/>}/>
           <Route path='/dashboard/premium' element={<PremiumView/>} />
           <Route path='/demo' element={<Demo/>} />
+          <Route path='/termsandconditions' element={<TermsAndConditionsView/>} />
         </Route>
      </Routes>
   )
