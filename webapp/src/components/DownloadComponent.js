@@ -33,8 +33,8 @@ function DownloadComponent() {
                                     <img height={50} src={GooglePlayStore} alt='Google Play Store Icon' />
                                 </div>
                                 <div className=' col-9'>
-                                    <h6 style={{ margin: 0, padding: 0, textAlign: 'left' }}>GET IT ON</h6>
-                                    <h4 style={{ margin: 0, padding: 0, textAlign: 'left' }}>Google Play</h4>
+                                    <h6 style={{ margin: 0, padding: 0, textAlign: 'left',color:'black' }}>GET IT ON</h6>
+                                    <h4 style={{ margin: 0, padding: 0, textAlign: 'left',color:'black' }}>Google Play</h4>
                                 </div>
                             </div>
                     </Button>
@@ -44,8 +44,8 @@ function DownloadComponent() {
                                     <img height={50} src={AppStore} alt='Google Play Store Icon' />
                                 </div>
                                 <div className=' col-9'>
-                                    <h6 style={{ margin: 0, padding: 0, textAlign: 'left' }} >Download on the</h6>
-                                    <h4 style={{ margin: 0, padding: 0, textAlign: 'left' }}>App Store</h4>
+                                    <h6 style={{ margin: 0, padding: 0, textAlign: 'left' ,color:'black'}} >Download on the</h6>
+                                    <h4 style={{ margin: 0, padding: 0, textAlign: 'left',color:'black' }}>App Store</h4>
                                 </div>
                             </div>
                     </Button>

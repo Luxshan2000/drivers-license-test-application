@@ -5,7 +5,6 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 // import Carousel from 'react-bootstrap/Carousel';
 import { useState } from 'react';
 import CarouselItem from "react-bootstrap/esm/CarouselItem";
-//import '../assets/CSS/carousal.css'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -65,7 +64,7 @@ export default function Carousal() {
                 icon: "bi bi-brush-fill",
                 description: `Users can take simulated exams that closely resemble the actual driver's
                 license test. These simulations create a realistic test environment, complete with time limits and
-                scoring, to help users familiarize themselves with the exam format and assess their readiness.`
+                scoring,help users familiarize themselves with the exam format.`
             },
 
             {
@@ -123,6 +122,7 @@ export default function Carousal() {
             // deviceType={this.props.deviceType}
             dotListClass="custom-dot-list-style"
             itemClass="carousel-item-padding-40-px"
+            sliderClass="carousel-card"
         >
             {cardList.map((card)=>
                 <div>
