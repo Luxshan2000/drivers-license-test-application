@@ -12,7 +12,9 @@ function OutFrame({children}) {
                 <OffCanvasNavComponent/>
             </div>}
             <div style={{height:'100vh'}} className=' p-0  col-12 col-md-9 col-lg-9 mx-auto  overflow-y-auto overflow-x-hidden'> 
-              <NavBarInner />
+              <div className=' m-0 p-0 sticky-top '>
+                <NavBarInner />
+              </div>
               <div className='p-0 m-0 col-12 col-md-12 col-lg-12 mx-auto'>
                 {children}
                 <hr/>
