@@ -15,6 +15,8 @@ import PasswordUpdated from '../components/UpdateSuccessful';
 import PremiumView from '../views/PremiumView'
 import ComplaintsForm from '../views/ComplainsView';
 import UpdateProfile from '../views/UpdateProfile';
+import Demo from '../views/Demo';
+import OutFrame from '../components/OutFrame';
 
 
 function AllRoutes() {
@@ -35,6 +37,7 @@ function AllRoutes() {
           <Route path='/dashboard/premium' element={<PremiumView/>} />
           <Route path='/complaintsForm' element={<ComplaintsForm/>} />
           <Route path='/updateProfile' element={<UpdateProfile/>}/>
+          <Route path='/frame' element={<OutFrame/>}/>
         </Route>
      </Routes>
   )

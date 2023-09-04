@@ -2,6 +2,7 @@ import React from 'react'
 import HeadingComponent from '../components/HeadingComponent'
 import '../assets/CSS/courseviewStyle.css'
 import OffCanvasNavComponent from '../components/OffCanvasNavComponent'
+import OutFrame from '../components/OutFrame'
 function CourseView() {
   const heading = [
     {
@@ -86,12 +87,11 @@ function CourseView() {
     }]
 
   return (
+    <OutFrame>
     <div className=' courseview p-0 container-fluid'>
       <div className='d-flex m-0 flex-row justify-content-center'>
-        <div className=' m-0 p-0 bg-white shadow left-sidebar ' >
-            <OffCanvasNavComponent/>
-        </div>
-        <div className='col-lg-9 col-md-11 col-12 container'>
+        
+        <div className='col-lg-11 col-md-11 col-12 container'>
           <div  className='flex-shrink-1 flex-grow-1' >
             <div  className='courseHeading mt-3 mb-3  shadow-sm  p-3  container rounded-3   justify-content-center'>
                 <div >
@@ -110,6 +110,7 @@ function CourseView() {
         </div>
       </div>
     </div>
+    </OutFrame>
   )
 }
 
