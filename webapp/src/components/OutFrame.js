@@ -11,7 +11,7 @@ function OutFrame({children}) {
             <div style={{height:'100vh', position:'relative', left:'0', top:'0',backgroundColor:'#3B474F'}} className='col-12 col-md-3 col-lg-3'>
                 <OffCanvasNavComponent/>
             </div>
-            <div style={{height:'100vh'}} className=' p-0  col-12 col-md-7 col-lg-9  overflow-y-auto overflow-x-hidden'> 
+            <div style={{height:'100vh'}} className=' p-0  col-12 col-md-9 col-lg-9  overflow-y-auto overflow-x-hidden'> 
             {children}
             <div >
             <FooterComponent/>
