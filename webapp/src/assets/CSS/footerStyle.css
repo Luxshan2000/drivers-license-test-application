@@ -2,21 +2,20 @@
     padding: 0.6em;
     box-sizing: border-box;
     margin: 0;
-    background-color: #3B474F; /*bg-color*/
+    background-color: rgb(251, 251, 251); /*bg-color*/
     align-items:center;
     justify-content: space-between;
-    
     border-top-right-radius: 10px;
   }
 
   .myFooter-heading{
-    color: white;  /*tx-heading-color*/
+    color: black;  /*tx-heading-color  white */
     padding: 0;
     margin: 0;
   }
 
   .myFooter-element{
-    color: #868E96; /*tx-color*/
+    color:#4f4f50 ; /*tx-color #868E96*/
   }
 
   .footer-bottom ul{
