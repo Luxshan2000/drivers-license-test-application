@@ -8,9 +8,9 @@ function NavBarInner({SetCollapsed}) {
     
   
   return (
-    <Navbar className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand  >
+    <Navbar className="bg-body-tertiary m-0">
+      <Container className=' ' >
+        <Navbar.Brand   >
             <span style={{cursor:'pointer'}} onClick={handleClick} className=' badge text-dark bg-dark-subtle'>
                 <i style={{fontSize:'1.5em'}} class="bi bi-list"></i>
             </span>
