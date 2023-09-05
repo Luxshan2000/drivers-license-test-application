@@ -1,12 +1,12 @@
 import React from 'react'
-import OutFrame from '../components/OutFrame'
+import FrameComponent from '../components/FrameComponent'
 import ScriptComponent from '../components/ScriptComponent'
 import VideoComponent from '../components/VideoComponent'
 
 
 function ContentView() {
   return (
-    <OutFrame>
+    <FrameComponent>
       <div  className=' container-fluid mt-2 pt-2 ' >
         <div className=' text-center row'>
           <h5 className=' PageHeading' >1.Overview</h5>
@@ -28,7 +28,7 @@ function ContentView() {
           </div>
         </div>
       </div>
-    </OutFrame>
+    </FrameComponent>
   )
 }
 

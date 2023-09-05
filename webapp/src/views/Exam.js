@@ -1,10 +1,10 @@
 import React from 'react'
-import OutFrame from '../components/OutFrame'
+import FrameComponent from '../components/FrameComponent'
 import QuestionComponent from '../components/QuestionComponent'
 
 function Exam() {
   return (
-    <OutFrame>
+    <FrameComponent>
         <div className='container min-vh-100 rounded-1 mb-1 mb-md-2 mb-lg-3 mt-1 mt-md-2 mt-lg-3 col-11 col-md-10 col-lg-10 mx-auto' >
             <div className=' row'>
                 <div className=' ps-2 pe-2 p-1 rounded-1   text-center'>
@@ -51,7 +51,7 @@ function Exam() {
                 </div>
             </div>
         </div>
-    </OutFrame>
+    </FrameComponent>
   )
 }
 

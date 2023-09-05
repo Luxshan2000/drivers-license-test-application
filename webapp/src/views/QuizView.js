@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import OutFrame from '../components/OutFrame'
+import FrameComponent from '../components/FrameComponent'
 import { useModal } from '../context/ModalContext'
 
 function QuizView() {
@@ -16,7 +16,7 @@ function QuizView() {
   }
 
   return (
-    <OutFrame>
+    <FrameComponent>
       <div className=' container mt-2 p-1 p-md-3 p-lg-3   rounded-2   CourseHeading mb-5'>
         <div className=' m-0 col-11 col-md-10 col-lg-10 mx-auto' >
           <div className='text-center' >
@@ -64,7 +64,7 @@ function QuizView() {
           </div>
         </div>
       </div>
-    </OutFrame>
+    </FrameComponent>
   )
 }
 
