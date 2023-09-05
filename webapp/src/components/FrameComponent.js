@@ -17,15 +17,15 @@ function FrameComponent({children}) {
    
 
   return (
-    <div  className={ !isSmall ? 'd-flex ': ''} >
+    <div  className={ !isSmall ? 'd-flex mt-0 ': 'mt-0'} >
         {(collapsed && isSmall) && <div className='m-0 p-0 sticky-top '>
             <NavBarInner SetCollapsed={SetCollapsed}/>
         </div>}
-        <div className={` ${ collapsed ? 'px-5' : 'px-0'}  shadow-sm border  m-0  border-1  `} style={{position:'sticky', top:'0', height:'100%'}} >
-            {collapsed && <OffCanvasNavComponent/>}
-        </div>
+        {collapsed && <div className={` ${ collapsed ? 'px-5' : 'px-0'}  shadow-sm border  m-0  border-1  `} style={{position:'sticky', top:'0', height:'100vh'}} >
+            <OffCanvasNavComponent/>
+        </div>}
             <div className={`flex-fill  ${(isSmall && collapsed)? 'visually-hidden' :''}`}>
-                <div className=' m-0 p-0 sticky-top '>
+                <div  className=' m-0 p-0 sticky-top '>
                     <NavBarInner SetCollapsed={SetCollapsed}/>
                 </div>
                 <div className=' px-1 px-md-2 px-lg-5 m-0 '>
