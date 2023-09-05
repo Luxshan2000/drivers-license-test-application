@@ -1,12 +1,17 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 
-function NavBarInner() {
+function NavBarInner({SetCollapsed}) {
+  const handleClick =()=>{
+    SetCollapsed((prv) => !prv)
+  }
+    
+  
   return (
     <Navbar className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand >
-            <span className=' badge text-dark bg-dark-subtle'>
+        <Navbar.Brand  >
+            <span style={{cursor:'pointer'}} onClick={handleClick} className=' badge text-dark bg-dark-subtle'>
                 <i style={{fontSize:'1.5em'}} class="bi bi-list"></i>
             </span>
         </Navbar.Brand>

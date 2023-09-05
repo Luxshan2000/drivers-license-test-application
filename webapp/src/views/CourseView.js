@@ -3,6 +3,7 @@ import HeadingComponent from '../components/HeadingComponent'
 import '../assets/CSS/courseviewStyle.css'
 import OffCanvasNavComponent from '../components/OffCanvasNavComponent'
 import OutFrame from '../components/OutFrame'
+import FrameComponent from '../components/FrameComponent'
 function CourseView() {
   const heading = [
     {
@@ -87,7 +88,7 @@ function CourseView() {
     }]
 
   return (
-    <OutFrame>
+    <FrameComponent>
     <div className=' courseview p-0 container-fluid'>
       <div className='d-flex m-0 flex-row justify-content-center'>
         
@@ -110,7 +111,7 @@ function CourseView() {
         </div>
       </div>
     </div>
-    </OutFrame>
+    </FrameComponent>
   )
 }
 
