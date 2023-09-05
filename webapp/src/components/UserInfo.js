@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 function UserInfo() {
   return (
-    <div style={{position:'fixed', width:'220px',  left:'10px', top:'65px', maxHeight:'100vh' ,overflowY:'scroll'}} className=" bg-dark-subtle  px-2 border border-2  border-primary-subtle rounded-3 py-3">
+    <div style={{position:'fixed', width:'220px',  left:'10px', top:'65px', maxHeight:'100vh' ,overflowY:'scroll'}} className=" bg-dark-subtle  px-2 border border-2 visually-hidden  border-primary-subtle rounded-3 py-3">
         <h6 className=" text-center">DriveSmart</h6>
       <hr/>
       <ul className="nav nav-pills flex-column mb-auto ">
