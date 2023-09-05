@@ -3,7 +3,7 @@ import { useDeviceWidth } from '../context/DeviceWidthContext'
 import FooterComponent from './FooterComponent'
 import NavBarInner from './NavBarInner'
 import OffCanvasNavComponent from './OffCanvasNavComponent'
-import SideMenuComponent from './SideMenuComponent'
+
 
 function FrameComponent({children}) {
     const isSmall = useDeviceWidth()
@@ -18,7 +18,7 @@ function FrameComponent({children}) {
 
   return (
     <div  className={ !isSmall ? 'd-flex mt-0 ': 'mt-0'} >
-        {(collapsed && isSmall) && <div className='m-0 p-0 sticky-top '>
+        {(collapsed && isSmall) && <div  className='m-0 p-0 sticky-top'>
             <NavBarInner  SetCollapsed={SetCollapsed}/>
         </div>}
          <div className={` ${ collapsed ? 'px-5' : 'px-0'} shadow-sm border  m-0  border-1  `} style={{position:'sticky', top:'0', height:`${ isSmall? '0' :'100vh'}`}} >

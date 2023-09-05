@@ -1,25 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import Profile from '../assets/images/profile-sample.png'
-import { useDeviceWidth } from '../context/DeviceWidthContext'
-import { Link } from 'react-router-dom';
-
-function OffCanvasNavComponent({collapsed}) {
-  const isSmall = useDeviceWidth()
-  
-
-
-
-
+import React from 'react'
+import { Link } from 'react-router-dom'
+function UserInfo() {
   return (
-    <div style={{width:isSmall ? `${collapsed? '100%': '0'}` : `${collapsed? 200: 0}px`, overflowX:'hidden', transition: `width ${isSmall? '100ms' :'200ms'} linear`}}  className="d-flex  flex-column flex-shrink-0 vh-100 m-0">
-      <div className=''>
-        <a href="/" className=" text-center d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-          <i style={{fontSize:"10em"}} class="bi w-100  bi-person-circle"/>
-        </a>
-      </div>
-      <h6 className=" text-center">DriveSmart</h6>
+    <div style={{position:'fixed', width:'220px',  left:'10px', top:'65px', maxHeight:'100vh' ,overflowY:'scroll'}} className=" bg-dark-subtle  px-2 border border-2  border-primary-subtle rounded-3 py-3">
+        <h6 className=" text-center">DriveSmart</h6>
       <hr/>
-      <ul className="nav nav-pills flex-column mb-auto">
+      <ul className="nav nav-pills flex-column mb-auto ">
         <span className=' text-info' >MAIN MENU</span>
         <li className="nav-item">
           <Link to="/dashboard" className="nav-link active" >
@@ -69,4 +55,4 @@ function OffCanvasNavComponent({collapsed}) {
   )
 }
 
-export default OffCanvasNavComponent
+export default UserInfo
