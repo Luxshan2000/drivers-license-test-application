@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 export default function CarousalCard({ icon, description, title }) {
     return (
         
-            <Card style={{margin:50}}>
+            <Card style={{margin:50,height:'350px'}}>
                 <Card.Body>
                     <Card.Title style={{textAlign:'center'}}>{title}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">

@@ -9,61 +9,49 @@ import PasswordVerify from "../components/PasswordVerify";
 
 export default function ComplaintsForm() {
     return (
-        <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-            <div style={{  }}>
-                <h1 className="mb-4" style={{ textAlign: 'center' }}>We are here to assist you!</h1>
-                <p>Please complete the form below for your complaint.</p>
-                <>
+        <div className="container-fluid" style={{ display: 'flex', padding:'50px', height: '100vh' }}>
+            <Form>
+                    <h1 className="mb-4" style={{ textAlign: 'left' }}>We are here to assist you.</h1>
+                    <p>Please complete the form below for your complaint.</p>
+                    <Form.Group className="mb-3" controlId="formGridEmail">
+                        <Form.Label >Email</Form.Label>
+                        <Form.Control type="email" placeholder="Enter email" />
+                    </Form.Group>
 
-                    <>
-                        <Form.Floating className="mb-3">
-                            <Form.Control
-                                id="floatingInputCustom"
-                                type="email"
-                                placeholder="name@example.com"
-                                size="sm"
-                            />
-                            <label htmlFor="floatingInputCustom">Email address</label>
-                        </Form.Floating>
-                        <Form.Floating>
-                            <Form.Control
-                                id="floatingInputCustom"
-                                type="date"
-                                placeholder="Date"
-                                className="mb-3"
-                                size='sm'
-                            />
-                            <label htmlFor="floatingInputCustom">Date</label>
-                        </Form.Floating>
-                    </>
+                    <Form.Group className="mb-3" controlId="formGridDate">
+                        <Form.Label >Date</Form.Label>
+                        <Form.Control type="date" placeholder="dd/mm/yyyy" />
+                    </Form.Group>
 
-                    <p className="hr-line"></p>
-                    <Form.Floating>
-                            <Form.Control
-                                id="floatingInputCustom"
-                                as="textarea"
-                                placeholder="Complaint"
-                                row={3}
-                            />
-                            <label htmlFor="floatingInputCustom">Complaint</label>
-                        </Form.Floating>
 
-                </>
+                    <div className="col-12 col-md-6 col-lg-6">
+                        <p className="hr-line "></p>
+                    </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', marginTop: '50px' }}>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label>Example textarea</Form.Label>
+                        <Form.Control as="textarea" rows={3} />
+                    </Form.Group>
 
-                    <Button className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                        <div style={{textAlign: 'start' }}>
-                            Submit complaint
-                        </div>
-                    </Button>
-                </div>
+
+
+                    <div className="col-12 col-md-6 col-lg-6" style={{ display: 'flex', flexDirection: 'column', marginTop: '50px' }}>
+
+                        <Button className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                            <div style={{ textAlign: 'start' }}>
+                                Submit complaint
+                            </div>
+                        </Button>
+                    </div>
 
 
 
 
 
-            </div>
+                
+
+            </Form>
+
         </div >
 
     )
