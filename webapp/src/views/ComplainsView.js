@@ -28,9 +28,14 @@ export default function ComplaintsForm() {
                         <p className="hr-line "></p>
                     </div>
 
+                    <Form.Group className="mb-3" controlId="formGridSubject">
+                        <Form.Label >Subject</Form.Label>
+                        <Form.Control type="input" placeholder="Complaint about" />
+                    </Form.Group>
+
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Example textarea</Form.Label>
-                        <Form.Control as="textarea" rows={3} />
+                        <Form.Label>Complaint</Form.Label>
+                        <Form.Control as="textarea" rows={4} placeholder="Description" />
                     </Form.Group>
 
 
