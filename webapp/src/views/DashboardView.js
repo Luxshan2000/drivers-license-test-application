@@ -2,9 +2,12 @@ import '../assets/CSS/dashboardStyle.css'
 import BarChart from '../assets/images/bar-chart-outline.png'
 import Book from '../assets/images/Book.png'
 import Signs from '../assets/images/Signs.png'
-
+import FrameComponent from '../components/FrameComponent'
+import OutFrame from '../components/OutFrame'
+import { Link } from 'react-router-dom'
 function DashboardView() {
   return (
+    <FrameComponent>
     <section>
         <div className='container dashboard__container'>
             <div className='dashboard__content'>
@@ -14,7 +17,7 @@ function DashboardView() {
                 {/* <!-- Cards --> */}
                 <div className='dashboard__cards'>
 
-                    <a href='#' className='dashboard__card'>
+                    <Link to='/dashboard/progress' className='dashboard__card'>
                         <h5>Progress Tracking</h5>
                         <div className='card__image-details'>
                             <img className="card__image" src={BarChart} alt=""/>
@@ -23,9 +26,9 @@ function DashboardView() {
                             providing detailed feedback
                             and scores</h6>
                         </div>
-                    </a>
+                    </Link>
 
-                    <a href='##' className='dashboard__card'>
+                    <Link to='/dashboard/course' className='dashboard__card'>
                         <h5>Topic-wise study materials</h5>
                         <div className='card__image-details'>
                             <img className="card__image" src={Book} alt=""/>
@@ -36,9 +39,9 @@ function DashboardView() {
                             handbook or manual.</h6>
                         </div>
                         
-                    </a>
+                    </Link>
 
-                    <a href='###' className='dashboard__card'>
+                    <Link to='dashboard/practice' className='dashboard__card'>
                         <h5>Practice Tests</h5>
                         <div className='card__image-details'>
                             <img className="card__image" src={Signs} alt=""/>
@@ -47,9 +50,9 @@ function DashboardView() {
                             license exam.</h6>
                         </div>
                         
-                    </a>
+                    </Link>
 
-                    <a href='####' className='dashboard__card'>
+                    <Link to='/dashboard/course/heading/1' className='dashboard__card'>
                         <h5>Road Signs</h5>
                         <div className='card__image-details'>
                             <img className="card__image" src={Signs} alt=""/>
@@ -58,7 +61,7 @@ function DashboardView() {
                             handbook or manual.</h6>
                         </div>
                         
-                    </a>
+                    </Link>
 
                 </div>
             </div>
@@ -66,6 +69,7 @@ function DashboardView() {
         </div>
         
     </section>
+    </FrameComponent>
   )
 }
 

@@ -1,5 +1,6 @@
 import '../assets/CSS/premiumStyle.css'
 import React, { useState } from 'react';
+import FrameComponent from '../components/FrameComponent';
 
 const PremiumView = () => {
   const [agree, setAgree] = useState(false);
@@ -12,6 +13,7 @@ const PremiumView = () => {
   };
 
   return (
+    <FrameComponent>
     <section>
       <div className="container premium__container">
         <div className='premium__title'>
@@ -47,6 +49,7 @@ const PremiumView = () => {
         </div>
       </div>
     </section>
+    </FrameComponent>
   )
 }
 

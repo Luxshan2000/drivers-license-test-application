@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Profile from '../assets/images/profile-sample.png'
 import { useDeviceWidth } from '../context/DeviceWidthContext'
-
+import { Link } from 'react-router-dom';
 
 function OffCanvasNavComponent({collapsed}) {
   const isSmall = useDeviceWidth()
@@ -51,34 +51,35 @@ function OffCanvasNavComponent({collapsed}) {
       <ul className="nav nav-pills flex-column mb-auto">
         <span className=' text-info' >MAIN MENU</span>
         <li className="nav-item">
-          <a href="#" className="nav-link active" aria-current="page">
+          <Link to="/dashboard" className="nav-link active" >
             <i class="bi bi-speedometer2 pe-2"></i>
             Dashboard
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="nav-link text-dark">
+          <Link to="/dashboard/course" className="nav-link text-dark">
             <i class="bi bi-mortarboard pe-2"></i>
             Course
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="nav-link text-dark">
+          <Link to="/dashboard/premium" className="nav-link text-dark">
             <i class="bi bi-credit-card pe-2"></i>
             Premium
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="nav-link text-dark">
+          <Link to="/#contactus" className="nav-link text-dark">
             <i class="bi bi-chat-left pe-2"></i>
             Contact us
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="nav-link text-dark">
+          
+          <Link className="nav-link text-dark" to='/#aboutus'>
             <i class="bi bi-file-person pe-2"></i>
             About us
-          </a>
+          </Link>
         </li>
       </ul>
 

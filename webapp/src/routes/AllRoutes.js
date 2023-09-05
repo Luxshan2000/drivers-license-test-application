@@ -24,20 +24,19 @@ function AllRoutes() {
     <Routes>
         <Route path='/' exact element={<HomeView />}/>
         <Route element={<PrivateRoutes/>} >
-          <Route path='/content'  element={<ContentView />}/>
-          <Route path='/course' element={<CourseView />}/>
+          <Route path='/dashboard/course/heading/1'  element={<ContentView />}/>
+          <Route path='/dashboard/course' element={<CourseView />}/>
           <Route  path='/dashboard' element={<DashboardView/>}/>
-          <Route path='/quiz/view' element={<QuizView/>} />
+          <Route path='/dashboard/quiz/view' element={<QuizView/>} />
           <Route path='/signUp' element={<SignUp/>}/>
-          <Route path='/quiz/exam' element={<Exam/>}/>
+          <Route path='/dashboard/quiz/1' element={<Exam/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/passwordVerify' element={<PasswordVerify/>}/>
           <Route path='/resetPassword' element={<ResetPassword/>}/>
           <Route path='/passwordUpdated' element={<PasswordUpdated/>}/>
           <Route path='/dashboard/premium' element={<PremiumView/>} />
-          <Route path='/complaintsForm' element={<ComplaintsForm/>} />
-          <Route path='/updateProfile' element={<UpdateProfile/>}/>
-          <Route path='/frame' element={<OutFrame/>}/>
+          <Route path='/dashboard/complaintsForm' element={<ComplaintsForm/>} />
+          <Route path='/dashboard/updateProfile' element={<UpdateProfile/>}/>
         </Route>
      </Routes>
   )
