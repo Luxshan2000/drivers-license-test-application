@@ -1,10 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Profile from '../assets/images/profile-sample.png'
+import { useDeviceWidth } from '../context/DeviceWidthContext'
 
 
-function OffCanvasNavComponent() {
+function OffCanvasNavComponent({collapsed}) {
+  const isSmall = useDeviceWidth()
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if(collapsed){
+        setWidth((prv) => {
+            if(prv < 200) {
+              return prv + 3
+            }
+            else{
+              clearInterval(intervalId); 
+            }
+          });
+      }
+      else{
+        setWidth((prv) => {
+          if(prv > 0) {
+            return prv - 3
+          }
+          else{
+            clearInterval(intervalId); 
+          }
+        });
+      }
+        
+    }, 1); 
+
+    return () => {
+      clearInterval(intervalId); 
+    };
+  }, [collapsed]);
+
+
+
   return (
-    <div  className="d-flex  flex-column flex-shrink-0 vh-100 p-3 m-0">
+    <div style={{width:isSmall ? `${collapsed? '100%': '0'}` : `${collapsed? 200: 0}px`, overflowX:'hidden', transition: `width ${isSmall? '100ms' :'200ms'} linear`}}  className="d-flex  flex-column flex-shrink-0 vh-100 m-0">
       <div className=''>
         <a href="/" className=" text-center d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
           <i style={{fontSize:"10em"}} class="bi w-100  bi-person-circle"/>

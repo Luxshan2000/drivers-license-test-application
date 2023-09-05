@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+import { useDeviceWidth } from '../context/DeviceWidthContext';
 
 function NavBarInner({SetCollapsed}) {
+  
+  
   const handleClick =()=>{
     SetCollapsed((prv) => !prv)
   }
