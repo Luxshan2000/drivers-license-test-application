@@ -5,10 +5,13 @@ import { useDeviceWidth } from '../context/DeviceWidthContext';
 import UserInfo from './UserInfo';
 
 function NavBarInner({SetCollapsed}) {
-  
+  const [showProfile, setShowProfile] = useState(false)
   
   const handleClick =()=>{
     SetCollapsed((prv) => !prv)
+  }
+  const handleProfile = ()=>{
+    setShowProfile((prv)=> !prv)
   }
     
   
@@ -21,7 +24,7 @@ function NavBarInner({SetCollapsed}) {
             </span>
         </Navbar.Brand>
           <div className="">
-        <a href="#" class="d-flex align-items-center text-dark text-decoration-none" >
+        <a href="#" onClick={handleProfile} class="d-flex align-items-center text-dark text-decoration-none" >
           <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
         </a>
        
@@ -29,7 +32,7 @@ function NavBarInner({SetCollapsed}) {
           
         
       </Container>
-      <UserInfo/>
+      <UserInfo showProfile={showProfile} />
     </Navbar>
   );
 }

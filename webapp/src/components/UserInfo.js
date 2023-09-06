@@ -1,56 +1,44 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-function UserInfo() {
+function UserInfo({showProfile}) {
   return (
-    <div style={{position:'fixed', width:'220px',  left:'10px', top:'65px', maxHeight:'100vh' ,overflowY:'scroll'}} className=" bg-dark-subtle  px-2 border border-2 visually-hidden  border-primary-subtle rounded-3 py-3">
+    <div 
+      style={{position:'fixed', width:`${showProfile ? 220 : 0}px`, height:`${showProfile ? 315 : 0}px` ,   right:'10px', top:'65px', maxHeight:'100vh' ,overflowY:'scroll', transition:'width,height 300ms ease-in-out'}} >
+      <div className=" bg-dark-subtle px-2 py-3   border border-2   border-primary-subtle rounded-3 ">
         <h6 className=" text-center">DriveSmart</h6>
-      <hr/>
-      <ul className="nav nav-pills flex-column mb-auto ">
-        <span className=' text-info' >MAIN MENU</span>
-        <li className="nav-item">
-          <Link to="/dashboard" className="nav-link active" >
-            <i class="bi bi-speedometer2 pe-2"></i>
-            Dashboard
-          </Link>
-        </li>
-        <li>
-          <Link to="/dashboard/course" className="nav-link text-dark">
-            <i class="bi bi-mortarboard pe-2"></i>
-            Course
-          </Link>
-        </li>
-        <li>
-          <Link to="/dashboard/premium" className="nav-link text-dark">
-            <i class="bi bi-credit-card pe-2"></i>
-            Premium
-          </Link>
-        </li>
-        <li>
-          <Link to="/#contactus" className="nav-link text-dark">
-            <i class="bi bi-chat-left pe-2"></i>
-            Contact us
-          </Link>
-        </li>
-        <li>
+        <hr/>
+        <ul className="nav nav-pills flex-column mb-auto ">
           
-          <Link className="nav-link text-dark" to='/#aboutus'>
-            <i class="bi bi-file-person pe-2"></i>
-            About us
-          </Link>
-        </li>
-      </ul>
-
-      <hr/>
-      <ul className="nav nav-pills flex-column mb-auto">
-        <span className=' text-info' >PREFERENCE</span>
-        <li className="nav-item">
-          <a href="#" className="nav-link text-dark" aria-current="page">
-            <i class="bi bi-gear pe-2"></i>
-            Settings
-          </a>
-        </li>
-      </ul>
-      <hr/>
+          <li className="nav-item">
+            <Link to="/dashboard" className="nav-link active" >
+              <i class="bi bi-speedometer2 pe-2"></i>
+              Dashboard
+            </Link>
+          </li>
+          <li>
+            <Link to="/#contactus" className="nav-link text-dark">
+              <i class="bi bi-person pe-2"></i>
+              Profile
+            </Link>
+          </li>
+          <li>
+            <Link to="/#contactus" className="nav-link text-dark">
+              <i class="bi bi-chat-left pe-2"></i>
+              Contact us
+            </Link>
+          </li>
+        </ul>
+        <hr/>
+        <ul className="nav nav-pills flex-column mb-auto">
+          <li>
+            <Link to="/#contactus" className="nav-link text-dark">
+              <i class="bi bi-box-arrow-in-right pe-2"></i>
+              Log out
+            </Link>
+          </li>
+        </ul>
+        <hr/>
+      </div>
     </div>
   )
 }
