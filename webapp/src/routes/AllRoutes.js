@@ -18,6 +18,7 @@ import UpdateProfile from '../views/UpdateProfile';
 import Demo from '../views/Demo';
 import OutFrame from '../components/OutFrame';
 import TermsAndConditionsView from '../views/TermsAndConditionsView';
+import PracticeExamView from '../components/PracticeExamView';
 
 
 function AllRoutes() {
@@ -38,8 +39,10 @@ function AllRoutes() {
           <Route path='/dashboard/complaintsForm' element={<ComplaintsForm/>} />
           <Route path='/dashboard/updateProfile' element={<UpdateProfile/>}/>
           <Route path='/dashboard/course/heading/1'  element={<ContentView />}/>
-          <Route path='/dashboard/quiz/view' element={<QuizView/>} />
-          <Route path='/dashboard/quiz/exam/1' element={<Exam/>}/>
+          <Route path='/dashboard/quiz/1/view' element={<QuizView/>} />
+          <Route path='/dashboard/quiz/1/exam' element={<Exam/>}/>
+          <Route path='/dashboard/practice' element={<PracticeExamView/>}/>
+          <Route path='/dashboard/practice/1/view' element={<QuizView/>}/>
         </Route>
      </Routes>
   )

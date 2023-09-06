@@ -29,7 +29,7 @@ function ModalComponent() {
 
   const handleSuccess =()=>{
     closeModal()
-    navigate('/quiz/exam') 
+    navigate(goto) 
   }
 
   return (

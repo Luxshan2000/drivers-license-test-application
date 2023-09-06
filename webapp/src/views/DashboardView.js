@@ -41,7 +41,7 @@ function DashboardView() {
                         
                     </Link>
 
-                    <Link to='dashboard/practice' className='dashboard__card'>
+                    <Link to='/dashboard/practice' className='dashboard__card'>
                         <h5>Practice Tests</h5>
                         <div className='card__image-details'>
                             <img className="card__image" src={Signs} alt=""/>

@@ -7,7 +7,7 @@ function QuizView() {
   const showModal =()=>{
     setModal((prv)=>({
         ...prv,
-        goto:"/quiz/exam",
+        goto:"/dashboard/quiz/1/exam",
         heading :"Start Attempt",
         ok: "Start",
         statement:"Quiz will be automatically submitted once the allocated time is over.",

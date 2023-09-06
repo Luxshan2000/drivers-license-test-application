@@ -1,6 +1,6 @@
 import React, {  useState } from 'react'
 import '../assets/CSS/headingStyle.css'
-
+import { Link } from 'react-router-dom';
 
 
 function HeadingComponent({heading}) {
@@ -32,12 +32,12 @@ function HeadingComponent({heading}) {
           <div className='rounded-3 mb-3 p-3 pb-0 '>
             <div className='text-start mb-3 p-1'>
               <h5 className='CourseSubHeading'>
-                <a href='/content' style={{cursor:'pointer'}}>
+                <Link to='/dashboard/course/heading/1' style={{cursor:'pointer'}}>
                   <span class=" rounded-5 bg-success-subtle p-2 m-1 ">
                     <i class="bi  bi-book"></i>
                   </span>
                   {heading.subHeadings[0]}
-                </a>
+                </Link>
               </h5>
               <span className='CourseSubHeading badge m-1 p-2 text-dark bg-success-subtle'>
                 Done: Complete the activity
@@ -51,12 +51,12 @@ function HeadingComponent({heading}) {
             </div>
             <div className='text-start mb-3 p-1'>
               <h5 className='CourseSubHeading'>
-                <a href='/quiz/view' style={{cursor:'pointer'}}>
+                <Link to='/dashboard/quiz/1/view'  style={{cursor:'pointer'}}>
                   <span class=" rounded-5 bg-danger-subtle p-2 m-1 ">
                     <i class="bi  bi-pencil"></i>
                   </span>
                   {heading.subHeadings[1]}
-                </a>
+                </Link>
               </h5>
               <span className='CourseSubHeading badge m-1 p-2 text-dark bg-danger-subtle'>
                   To do: Complete the activity
