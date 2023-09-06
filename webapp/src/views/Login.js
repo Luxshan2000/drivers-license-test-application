@@ -3,14 +3,22 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import '../assets/CSS/signUp.css'
 import Button from 'react-bootstrap/Button';
-import Col from "react-bootstrap/esm/Col";
-import PasswordVerify from "../components/PasswordVerify";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../context/AuthContext";
 
 export default function Login() {
     const navigate = useNavigate()
+    const {auth} = useAuthContext()
+
     const handleSubmit = ()=>{
-        navigate("/dashboard",{replace:true})
+        
+        if(auth.isVerified){
+            navigate("/dashboard",{replace:true})
+        }
+        else{
+            navigate("/passwordverify",{replace:true})
+        }
+        
     }
     return (
         <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -33,7 +41,7 @@ export default function Login() {
                         // className="mb-3"
                         style={{ fontSize: 'small' }}
                     >
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control  type="password" placeholder="Password" />
                     </FloatingLabel>
                                                                                                                            
                 </>
