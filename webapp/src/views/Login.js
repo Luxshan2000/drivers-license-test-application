@@ -5,8 +5,13 @@ import '../assets/CSS/signUp.css'
 import Button from 'react-bootstrap/Button';
 import Col from "react-bootstrap/esm/Col";
 import PasswordVerify from "../components/PasswordVerify";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
+    const navigate = useNavigate()
+    const handleSubmit = ()=>{
+        navigate("/dashboard",{replace:true})
+    }
     return (
         <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <div className="blurEffect" style={{ width: '500px' }}>
@@ -33,13 +38,13 @@ export default function Login() {
                                                                                                                            
                 </>
                 <div style={{textAlign:'left'}}>
-                <a href='#' style={{fontSize:12,}}>
+                <Link to='/resetpassword' style={{fontSize:12,}}>
                             Forgot your password?
-                            </a>               
+                            </Link>               
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column',marginTop: '50px'}}>
-                    <Button className="mb-3 task-button">Login</Button>
+                    <Button onClick={handleSubmit} className="mb-3 task-button">Login</Button>
                     {/* <hr className="hr-lines"/>
                     <p>OR</p> */}
                     <p className="hr-line"><span>OR</span></p>
@@ -61,8 +66,6 @@ export default function Login() {
                         <div style={{ flex: 2 / 3, textAlign: 'start' }}>
                             Login with Facebook
                         </div>
-
-
                     </Button>
 
 
@@ -70,7 +73,7 @@ export default function Login() {
 
 
                     <p className="mb-3" style={{ fontSize: '12', fontWeight: 'lighter',textAlign:'center'}}>
-                        If you haven't registered yet? <a href='/signUp'><span>Register now</span></a>
+                        If you haven't registered yet? <Link to='/signup'><span>Register now</span></Link>
                     </p>
                 </div>
 

@@ -5,16 +5,21 @@ import  Carousal  from '../components/Carousal'
 import DownloadComponent from '../components/DownloadComponent'
 import About from '../components/AboutUsComponent'
 import HeroSection from '../components/HeroSectionComponent'
+import NavBarComponent from  '../components/NarbarComponent'
 
 function HomeView() {
   return (
-    <div>
-        <HeroSection/>
-        <Carousal/>
-        <About/>
-        <DownloadComponent/>
-        
-    </div>
+    <>
+    <NavBarComponent />
+      <div>
+          <HeroSection/>
+          <Carousal/>
+          <div id='#aboutus'>
+            <About/>
+          </div>
+          <DownloadComponent/>
+      </div>
+    </>
   )
 }
 

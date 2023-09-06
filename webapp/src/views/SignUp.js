@@ -3,11 +3,11 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import '../assets/CSS/signUp.css'
 import Button from 'react-bootstrap/Button';
-import Col from "react-bootstrap/esm/Col";
+import { Link } from "react-router-dom";
 
 export default function SignUp() {
     return (
-        <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <div className="container-fluid my-4" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div className="blurEffect" style={{ width: '500px' }}>
                 <h1 className="mb-4" style={{textAlign:'center'}}>SIGN-UP</h1>
                 <>
@@ -80,7 +80,7 @@ export default function SignUp() {
                         Policy and Cookies Policy
                     </p>
                     <p className="mb-3" style={{fontSize:'12',fontWeight:'lighter',textAlign:'center'}}>
-                        Already have an account ? <a href="/login"><span>Login Now</span></a>
+                        Already have an account ? <Link to="/login"><span>Login Now</span></Link>
                     </p>
                 </div>
 

@@ -14,7 +14,7 @@ function NarbarComponent() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Item style={{padding:"0 1em 0 1em"}} ><Link to='/'>Home</Link></Nav.Item>
-            <Nav.Item style={{padding:"0 1em 0 1em"}}><Link to='#aboutus'>About us</Link></Nav.Item>
+            <Nav.Item style={{padding:"0 1em 0 1em"}}><Link href='#aboutus'>About us</Link></Nav.Item>
             <Nav.Item style={{padding:"0 1em 0 1em"}}><Link to='#contactus'>Contact us</Link></Nav.Item>
             <Nav.Item style={{padding:"0 1em 0 1em"}}><Link to='/signup'>Sign up</Link></Nav.Item>
             <Nav.Item style={{padding:"0 1em 0 1em"}}><Link to='/login'>Login</Link></Nav.Item>

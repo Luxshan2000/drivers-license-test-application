@@ -3,15 +3,12 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import '../assets/CSS/signUp.css'
 import Button from 'react-bootstrap/Button';
-import Col from "react-bootstrap/esm/Col";
-import PasswordUpdated from "./UpdateSuccessful";
+import { useNavigate } from "react-router-dom";
 
 export default function ResetPassword() {
+    const navigate = useNavigate()
     const handlePasswordUpdate = () => {
-        return(
-            <PasswordUpdated/>
-        )
-        
+        navigate("/passwordupdated",{replace:true})
     }
     return (
         <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -38,7 +35,7 @@ export default function ResetPassword() {
                     </FloatingLabel>
                 </>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <Button className="mb-3 task-button" onClick={() => handlePasswordUpdate()} >Reset password</Button>
+                    <Button className="mb-3 task-button" onClick={handlePasswordUpdate} >Reset password</Button>
                 </div>
 
 

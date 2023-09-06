@@ -15,11 +15,8 @@ import PasswordUpdated from '../components/UpdateSuccessful';
 import PremiumView from '../views/PremiumView'
 import ComplaintsForm from '../views/ComplainsView';
 import UpdateProfile from '../views/UpdateProfile';
-import Demo from '../views/Demo';
-import OutFrame from '../components/OutFrame';
 import TermsAndConditionsView from '../views/TermsAndConditionsView';
 import PracticeExamView from '../components/PracticeExamView';
-
 
 function AllRoutes() {
   return (
@@ -27,8 +24,8 @@ function AllRoutes() {
         <Route path='/' exact element={<HomeView />}/>
         <Route path='/signUp' element={<SignUp/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/resetPassword' element={<ResetPassword/>}/>
-        <Route path='/passwordUpdated' element={<PasswordUpdated/>}/>
+        <Route path='/resetpassword' element={<ResetPassword/>}/>
+        <Route path='/passwordupdated' element={<PasswordUpdated/>}/>
         <Route path='/terms' element={<TermsAndConditionsView/>}/>
         
         <Route element={<PrivateRoutes/>} >
