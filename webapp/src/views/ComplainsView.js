@@ -1,14 +1,13 @@
 import React from "react";
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import '../assets/CSS/signUp.css'
 import Button from 'react-bootstrap/Button';
-import Col from "react-bootstrap/esm/Col";
-import PasswordVerify from "../components/PasswordVerify";
+import FrameComponent from "../components/FrameComponent";
 
 
 export default function ComplaintsForm() {
     return (
+        <FrameComponent>
         <div className="container-fluid" style={{ display: 'flex', padding:'50px', height: '100vh' }}>
             <Form>
                     <h1 className="mb-4" style={{ textAlign: 'left' }}>We are here to assist you.</h1>
@@ -58,6 +57,7 @@ export default function ComplaintsForm() {
             </Form>
 
         </div >
+        </FrameComponent>
 
     )
 }

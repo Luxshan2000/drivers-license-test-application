@@ -24,7 +24,7 @@ export default function Login() {
         <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <div className="blurEffect" style={{ width: '500px' }}>
                 <h1 className="mb-4" style={{textAlign:'center'}}>LOGIN</h1>
-                <>
+                <Form>
 
                     <FloatingLabel
                         controlId="floatingInput"
@@ -44,7 +44,7 @@ export default function Login() {
                         <Form.Control  type="password" placeholder="Password" />
                     </FloatingLabel>
                                                                                                                            
-                </>
+                
                 <div style={{textAlign:'left'}}>
                 <Link to='/resetpassword' style={{fontSize:12,}}>
                             Forgot your password?
@@ -52,12 +52,12 @@ export default function Login() {
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column',marginTop: '50px'}}>
-                    <Button onClick={handleSubmit} className="mb-3 task-button">Login</Button>
+                    <Button type="submit" onClick={handleSubmit} className="mb-3 task-button">Login</Button>
                     {/* <hr className="hr-lines"/>
                     <p>OR</p> */}
                     <p className="hr-line"><span>OR</span></p>
 
-                    <Button className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                    <Button type="submit" className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                         <div style={{ flex: 1 / 3, textAlign: 'start' }}>
                             <i class="bi bi-google"></i>
                         </div>
@@ -84,6 +84,7 @@ export default function Login() {
                         If you haven't registered yet? <Link to='/signup'><span>Register now</span></Link>
                     </p>
                 </div>
+                </Form>
 
 
 
