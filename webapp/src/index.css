@@ -40,6 +40,11 @@ code {
   font-size: 17px;
 }
 
+.instructionFamily{
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+}
+
 .paragraph{
   font-family: 'Poppins', sans-serif;
   font-size: 15px;

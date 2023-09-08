@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import AllRoutes from './routes/AllRoutes'
 import { ModalProvider } from './context/ModalContext';

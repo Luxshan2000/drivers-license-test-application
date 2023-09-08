@@ -19,7 +19,7 @@ function HeadingComponent({heading}) {
           <div className=' text-start row pe-2'>
             <h5 className=' col-11 CourseHeading'>
               {heading.name}
-              <span className='CourseSubHeading badge ms-1  p-2 text-dark bg-success-subtle'>
+              <span className='instructionFamily badge ms-1  p-2 text-dark bg-success-subtle'>
                 Completed!
               </span>
             </h5>
@@ -39,10 +39,10 @@ function HeadingComponent({heading}) {
                   {heading.subHeadings[0]}
                 </Link>
               </h5>
-              <span className='CourseSubHeading badge m-1 p-2 text-dark bg-success-subtle'>
+              <span className='instructionFamily badge m-1 p-2 text-dark bg-success-subtle'>
                 Done: Complete the activity
               </span>
-              <span className='CourseSubHeading badge m-1 p-2 text-dark bg-warning-subtle'>
+              <span className='instructionFamily badge m-1 p-2 text-dark bg-warning-subtle'>
                 To unlock: Upgrade to premium
               </span>
             </div>
@@ -58,7 +58,7 @@ function HeadingComponent({heading}) {
                   {heading.subHeadings[1]}
                 </Link>
               </h5>
-              <span className='CourseSubHeading badge m-1 p-2 text-dark bg-danger-subtle'>
+              <span className='instructionFamily badge m-1 p-2 text-dark bg-danger-subtle'>
                   To do: Complete the activity
               </span>
             </div>

@@ -1,7 +1,5 @@
 import React from "react";
 import CarousalCard from './CarousalCard'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css';
 // import Carousel from 'react-bootstrap/Carousel';
 import { useState } from 'react';
 import CarouselItem from "react-bootstrap/esm/CarouselItem";

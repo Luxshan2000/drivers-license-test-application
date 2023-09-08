@@ -1,6 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css';
 import Card from 'react-bootstrap/Card';
 
 export default function CarousalCard({ icon, description, title }) {
