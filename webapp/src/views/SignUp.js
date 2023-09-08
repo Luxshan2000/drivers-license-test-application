@@ -7,17 +7,17 @@ import { Link } from "react-router-dom";
 
 export default function SignUp() {
     return (
-        <div className="container-fluid my-4" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',height:'100vh' }}>
             <div className="blurEffect" style={{ width: '500px' }}>
                 <h1 className="mb-4" style={{textAlign:'center'}}>SIGN-UP</h1>
-                <>
+                <Form>
                     <FloatingLabel
                         controlId="floatingInput"
                         label="Name"
                         className="mb-3"
                         style={{ fontSize: 'small' }}
                     >
-                        <Form.Control type="text" placeholder="Enter your name" />
+                        <Form.Control type="text" placeholder="Enter your name" required />
                     </FloatingLabel>
 
                     <FloatingLabel
@@ -25,8 +25,9 @@ export default function SignUp() {
                         label="Email address"
                         className="mb-3"
                         style={{ fontSize: 'small' }}
+                        aria-required
                     >
-                        <Form.Control type="email" size="sm" placeholder="name@example.com" />
+                        <Form.Control type="email" size="sm" placeholder="name@example.com" required />
                     </FloatingLabel>
 
                     <FloatingLabel
@@ -34,8 +35,9 @@ export default function SignUp() {
                         label="Password"
                         className="mb-3"
                         style={{ fontSize: 'small' }}
+                        aria-required={true}
                     >
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="password" placeholder="Password" required />
                     </FloatingLabel>
 
                     <FloatingLabel
@@ -44,14 +46,14 @@ export default function SignUp() {
                         className="mb-3"
                         style={{ fontSize: 'small' }}
                     >
-                        <Form.Control type="password" placeholder="Re-enter password" />
+                        <Form.Control type="password" placeholder="Re-enter password" required/>
                     </FloatingLabel>
-                </>
+                
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <Button className="mb-3 task-button">Sign Up</Button>
+                    <Button type='submit' className="mb-3 task-button">Sign Up</Button>
                     <p className="hr-line"><span>OR</span></p>
                     
-                    <Button className="mb-3 task-button" style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+                    <Button type="submit" className="mb-3 task-button" style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
                         <div style={{flex:1/3,textAlign:'start'}}>
                         <i class="bi bi-google"></i>
                         </div>
@@ -61,7 +63,7 @@ export default function SignUp() {
                     
                        
                     </Button>
-                    <Button className="mb-3 task-button" style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+                    <Button type='submit' className="mb-3 task-button" style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
                         <div style={{flex:1/3,textAlign:'start'}}>
                         <i class="bi bi-facebook"></i>
                         </div>
@@ -83,6 +85,7 @@ export default function SignUp() {
                         Already have an account ? <Link to="/login"><span>Login Now</span></Link>
                     </p>
                 </div>
+                </Form>
 
 
 

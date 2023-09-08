@@ -4,9 +4,11 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import '../assets/CSS/signUp.css'
 import Image from 'react-bootstrap/Image';
+import FrameComponent from '../components/FrameComponent';
 
 function UpdateProfile() {
     return (
+        <FrameComponent>
         <div className="container-fluid" style={{ padding: '50px', height: '100vh' }}>
             <Form>
                 <h2>Account Settings</h2>
@@ -74,6 +76,7 @@ function UpdateProfile() {
 
             </Form>
         </div>
+        </FrameComponent>
     );
 }
 
