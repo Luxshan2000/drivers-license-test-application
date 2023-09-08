@@ -24,10 +24,9 @@ function NavBarInner({SetCollapsed}) {
             </span>
         </Navbar.Brand>
           <div className="">
-        <a href="#" onClick={handleProfile} class="d-flex align-items-center text-dark text-decoration-none" >
+        <span style={{cursor:'pointer'}} onClick={handleProfile} class="d-flex align-items-center text-dark text-decoration-none" >
           <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
-        </a>
-       
+        </span>
       </div>
           
         

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export default function SignUp() {
     return (
-        <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',height:'100vh' }}>
+        <div className="container-fluid m-5" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',height:'100vh' }}>
             <div className="blurEffect" style={{ width: '500px' }}>
                 <h1 className="mb-4" style={{textAlign:'center'}}>SIGN-UP</h1>
                 <Form>
