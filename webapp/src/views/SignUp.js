@@ -4,8 +4,22 @@ import Form from 'react-bootstrap/Form';
 import '../assets/CSS/signUp.css'
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 export default function SignUp() {
+
+    const handleRegister = ()=>{
+        axios.post('http://localhost:5000/auth/signup', {email:"me@gmail.com", password:"pwd123"})
+        .then(response => {
+            // Handle the successful response here
+            console.log('Registration successful:', response.data);
+        })
+        .catch(error => {
+            // Handle any errors that occur during the request
+            console.error('Registration failed:', error.response.data);
+        });
+    }
+
     return (
         <div className="container-fluid m-5" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',height:'100vh' }}>
             <div className="blurEffect" style={{ width: '500px' }}>
@@ -50,7 +64,7 @@ export default function SignUp() {
                     </FloatingLabel>
                 
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <Button type='submit' className="mb-3 task-button">Sign Up</Button>
+                    <Button onClick={handleRegister} type='submit' className="mb-3 task-button">Sign Up</Button>
                     <p className="hr-line"><span>OR</span></p>
                     
                     <Button type="submit" className="mb-3 task-button" style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
