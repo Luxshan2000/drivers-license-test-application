@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import axios from 'axios';
+import { getSessionCookie } from "../utils/cookie";
+import jwt_decode from 'jwt-decode'
 
 export default function Login() {
     const navigate = useNavigate()
@@ -17,7 +19,7 @@ export default function Login() {
         axios.post('http://localhost:5000/api/auth/login', {email:"someone@gmail.com", password:"pwd123"})
         .then(response => {
             // Handle the successful response here
-            
+            console.log(jwt_decode(getSessionCookie("token")))
             console.log('Registration successful:', response.data);
         })
         .catch(error => {
