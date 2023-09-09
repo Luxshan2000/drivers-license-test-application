@@ -9,7 +9,7 @@ import axios from 'axios';
 export default function SignUp() {
 
     const handleRegister = ()=>{
-        axios.post('http://localhost:5000/auth/signup', {email:"me@gmail.com", password:"pwd123"})
+        axios.post('http://localhost:5000/api/auth/signup', {email:"someone@gmail.com", password:"pwd123", name:"someone"})
         .then(response => {
             // Handle the successful response here
             console.log('Registration successful:', response.data);

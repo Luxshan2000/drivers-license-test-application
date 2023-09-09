@@ -10,9 +10,13 @@ const User= mongoose.model("users",{
         type:String,
         required:true
     },
+    name:{
+        type: String,
+        required: true
+    },
     isVerified: {
         type:Boolean,
-        default:false
+        default:false 
     },
     otp: {
         type : Number,

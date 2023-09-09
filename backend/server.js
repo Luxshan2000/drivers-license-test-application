@@ -21,7 +21,7 @@ connectMongoDb()
 
 
 
-app.use('/auth', authRoutes); 
+app.use('/api/auth', authRoutes); 
 
 
 

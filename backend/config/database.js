@@ -1,8 +1,9 @@
+require('dotenv').config();
 const mongoose = require("mongoose")
 
 
 const connectMongoDb = ()=>{
-        mongoose.connect("mongodb+srv://sldrivesmart:driveSmart890@cluster0.arb0qln.mongodb.net/drivesmart?retryWrites=true&w=majority", {
+        mongoose.connect(process.env.MONGODB_CONNECTION_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(()=>{

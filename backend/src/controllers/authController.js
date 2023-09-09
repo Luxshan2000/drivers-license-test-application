@@ -4,13 +4,12 @@ const crypto = require('crypto');
 exports.signup = async (req, res) => {
     try {
         // Extract user information
-        const { email, password } = req.body
+        const { email, password, name } = req.body
         const hash = crypto.createHash('sha256')
         hash.update(password)
         const hashedPassword = hash.digest('hex')
-        console.log(hashedPassword)
         // Create a new user 
-        const user = new User({ email, hashedPassword })
+        const user = new User({ email, hashedPassword, name })
         await user.save()
     
         // message and jwt
