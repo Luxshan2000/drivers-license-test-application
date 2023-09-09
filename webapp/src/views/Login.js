@@ -5,19 +5,33 @@ import '../assets/CSS/signUp.css'
 import Button from 'react-bootstrap/Button';
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
+import axios from 'axios';
 
 export default function Login() {
     const navigate = useNavigate()
-    const {auth} = useAuthContext()
+    
 
     const handleSubmit = ()=>{
         
-        if(auth.isVerified){
-            navigate("/dashboard",{replace:true})
-        }
-        else{
-            navigate("/passwordverify",{replace:true})
-        }
+        axios.defaults.withCredentials = true
+        axios.post('http://localhost:5000/api/auth/login', {email:"someone@gmail.com", password:"pwd123"})
+        .then(response => {
+            // Handle the successful response here
+            
+            console.log('Registration successful:', response.data);
+        })
+        .catch(error => {
+            // Handle any errors that occur during the request
+            console.error('Registration failed:', error.response.data);
+        });
+        
+        
+        // if(auth.isVerified){
+        //     navigate("/dashboard",{replace:true})
+        // }
+        // else{
+        //     navigate("/passwordverify",{replace:true})
+        // }
         
     }
     return (
@@ -52,14 +66,14 @@ export default function Login() {
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column',marginTop: '50px'}}>
-                    <Button type="submit" onClick={handleSubmit} className="mb-3 task-button">Login</Button>
+                    <Button  onClick={handleSubmit} className="mb-3 task-button">Login</Button>
                     {/* <hr className="hr-lines"/>
                     <p>OR</p> */}
                     <p className="hr-line"><span>OR</span></p>
 
                     <Button type="submit" className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                         <div style={{ flex: 1 / 3, textAlign: 'start' }}>
-                            <i class="bi bi-google"></i>
+                            <i className="bi bi-google"></i>
                         </div>
                         <div style={{ flex: 2 / 3, textAlign: 'start' }}>
                             Login with Google
@@ -69,7 +83,7 @@ export default function Login() {
                     </Button>
                     <Button className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                         <div style={{ flex: 1 / 3, textAlign: 'start' }}>
-                            <i class="bi bi-facebook"></i>
+                            <i className="bi bi-facebook"></i>
                         </div>
                         <div style={{ flex: 2 / 3, textAlign: 'start' }}>
                             Login with Facebook
