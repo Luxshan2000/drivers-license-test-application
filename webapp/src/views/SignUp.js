@@ -5,6 +5,7 @@ import '../assets/CSS/signUp.css'
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import GoogleLoginButton from "../components/GoogleLoginButton";
 
 export default function SignUp() {
 
@@ -67,16 +68,7 @@ export default function SignUp() {
                     <Button onClick={handleRegister} type='submit' className="mb-3 task-button">Sign Up</Button>
                     <p className="hr-line"><span>OR</span></p>
                     
-                    <Button type="submit" className="mb-3 task-button" style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                        <div style={{flex:1/3,textAlign:'start'}}>
-                        <i class="bi bi-google"></i>
-                        </div>
-                        <div style={{flex:2/3,textAlign:'start'}}>
-                        Login with Google
-                        </div>
-                    
-                       
-                    </Button>
+                    <GoogleLoginButton/>
                     <Button type='submit' className="mb-3 task-button" style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
                         <div style={{flex:1/3,textAlign:'start'}}>
                         <i class="bi bi-facebook"></i>
