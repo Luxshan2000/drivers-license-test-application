@@ -1,0 +1,7 @@
+.progress__background{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    margin-top: 2rem;
+}

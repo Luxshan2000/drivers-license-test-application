@@ -40,7 +40,7 @@ function OffCanvasNavComponent({collapsed}) {
           </Link>
         </li>
         <li>
-          <Link to="/#contactus" className="nav-link text-dark">
+          <Link to="/dashboard/contactus" className="nav-link text-dark">
             <i class="bi bi-chat-left pe-2"></i>
             Contact us
           </Link>

@@ -18,7 +18,7 @@
 
 .dashboard__card{
     flex: 1 1 40%;
-    background: var(--color-bg);
+    background: rgb(237, 247, 253);
     color: var(--color-black);
     border: 1px solid transparent;
     border-radius: 1rem;
@@ -43,7 +43,7 @@
 }
 
 .dashboard__title{
-    background: rgb(237, 247, 253);
+    background: var(--color-bg);
     color: black;
     border: 0.5px solid transparent;
     border-radius: 1rem;
