@@ -7,7 +7,7 @@ function ContactUsView() {
     <FrameComponent>
         <Container>
       <Row className="mb-4 mr-2">
-        <div className="col-md-6 mb-4 mt-4 mr-2 p-4" style={{borderRadius: '10px', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)' }}> {/* Added margin-bottom */}
+        <div className="col-md-6 mb-4 mt-4 mr-2 p-4" style={{borderRadius: '10px', boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)' }}>
           <h2>Contact Us</h2>
           <Form>
             <Form.Group controlId="formName">

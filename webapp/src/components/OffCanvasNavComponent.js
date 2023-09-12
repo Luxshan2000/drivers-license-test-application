@@ -47,7 +47,7 @@ function OffCanvasNavComponent({collapsed}) {
         </li>
         <li>
           
-          <Link className="nav-link text-dark" to='/#aboutus'>
+          <Link to="/dashboard/aboutus" className="nav-link text-dark">
             <i class="bi bi-file-person pe-2"></i>
             About us
           </Link>
