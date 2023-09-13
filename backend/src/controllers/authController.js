@@ -50,7 +50,7 @@ exports.login = async (req, res) => {
 
 
     res.cookie("token", token);
-
+    
     // Send the token in the response
     res.json({ message: 'Login successful' });
   } catch (error) {
@@ -58,6 +58,35 @@ exports.login = async (req, res) => {
     res.status(500).json({ error: 'Login failed' });
   }
 };
+
+exports.loginApp = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Check if the username exists in the database
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
+  
+    if (passwordMatch) {
+    
+      const token = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
+      return res.header("x-auth-token", token).status(201).send(token);
+
+    } else {
+      console.log("Invalid credentials.", user.email);
+      return res.status(401).json({ error: 'Incorrect password' });
+    }
+  } catch (error) {
+    console.error("Error during login:", error);
+    res.status(500).json({error: "An error occurred during login."});
+  }
+};
+
 
 exports.googleLogin = async (req, res) => {
   try {
