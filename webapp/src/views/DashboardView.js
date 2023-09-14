@@ -7,18 +7,18 @@ import { Link } from "react-router-dom";
 function DashboardView() {
   const cardDetails = [
     {
-      heading: "Progress Tracking",
-      content:
-        "Tracks  performance on practice tests and simulations, providing detailed feedback and scores",
-      icon: BarChart,
-      to:"/dashboard/progress",
-    },
-    {
       heading: "Topic-wise study materials",
       content:
         "Provides detailed explanations, illustrations, and references to relevant sections of the driver's handbook or manual.",
       icon: Book,
       to:"/dashboard/course",
+    },
+    {
+      heading: "Progress Tracking",
+      content:
+        "Tracks  performance on practice tests and simulations, providing detailed feedback and scores",
+      icon: BarChart,
+      to:"/dashboard/progress",
     },
     {
       heading: "Practice Tests",
