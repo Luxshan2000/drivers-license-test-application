@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import GoogleLoginButton from "../components/GoogleLoginButton";
+import FacebookLoginButton from "../components/FacebookLoginButton";
 
 export default function SignUp() {
 
@@ -14,6 +15,7 @@ export default function SignUp() {
         .then(response => {
             // Handle the successful response here
             console.log('Registration successful:', response.data);
+            
         })
         .catch(error => {
             // Handle any errors that occur during the request
@@ -69,7 +71,7 @@ export default function SignUp() {
                     <p className="hr-line"><span>OR</span></p>
                     
                     <GoogleLoginButton/>
-                    <Button type='submit' className="mb-3 task-button" style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+                    {/* <Button type='submit' className="mb-3 task-button" style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
                         <div style={{flex:1/3,textAlign:'start'}}>
                         <i class="bi bi-facebook"></i>
                         </div>
@@ -78,8 +80,8 @@ export default function SignUp() {
                         </div>
                     
                        
-                    </Button>
-                    
+                    </Button> */}
+                    <FacebookLoginButton/>
                     
                     
                     
