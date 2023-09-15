@@ -4,21 +4,22 @@ import Form from 'react-bootstrap/Form';
 import '../assets/CSS/signUp.css'
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
-import axios from 'axios';
+// import axios from 'axios';
 import GoogleLoginButton from "../components/GoogleLoginButton";
 
-export default function SignUp() {
+export default function SignUp({onSubmit}) {
 
     const handleRegister = ()=>{
-        axios.post('http://localhost:5000/api/auth/signup', {email:"someone@gmail.com", password:"pwd123", name:"someone"})
-        .then(response => {
-            // Handle the successful response here
-            console.log('Registration successful:', response.data);
-        })
-        .catch(error => {
-            // Handle any errors that occur during the request
-            console.error('Registration failed:', error.response.data);
-        });
+        onSubmit()
+        // axios.post('http://localhost:5000/api/auth/signup', {email:"someone@gmail.com", password:"pwd123", name:"someone"})
+        // .then(response => {
+        //     // Handle the successful response here
+        //     console.log('Registration successful:', response.data);
+        // })
+        // .catch(error => {
+        //     // Handle any errors that occur during the request
+        //     console.error('Registration failed:', error.response.data);
+        // });
     }
 
     return (
