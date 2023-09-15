@@ -88,7 +88,14 @@ exports.loginApp = async (req, res) => {
 };
 
 
-exports.googleLogin = async (req, res) => {
+exports.googleLogin = async (req , res) => {
+  return googleLoginBase(req,res, true)
+}
+
+
+
+
+const googleLoginBase = async (req, res, isWeb) => {
   try {
 
 
@@ -120,8 +127,14 @@ exports.googleLogin = async (req, res) => {
 
       // Send the response
       const newToken = jwt.sign({ name: newUser.name, isVerified: newUser.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
-      res.cookie("token", newToken);
-      res.json({ message: 'Login successful' });
+      if(isWeb){
+        res.cookie("token", newToken);
+        res.json({ message: 'Login successful' });
+      }else{
+        res.json({message  : 'Login Successful', token})
+      }
+      
+      
 
 
     }
@@ -137,5 +150,56 @@ exports.googleLogin = async (req, res) => {
     console.error(error);
     res.status(500).json({ error: 'Login failed' });
   }
+
+
+}
+exports.facebooklogin = async ( req,res) => {
+  
+  const { token } = req.body
+    console.log({ token })
+    //verfication of user by fetching user information from google
+    const facebookResponse = await fetch('https://graph.facebook.com/USER-ID?metadata=1', {
+      method: "GET", headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json'
+      }
+    }).then(res => res.json())
+
+    console.log(facebookResponse)
+    // const { email, name } = googleResponse
+    // //see if there is an user with that email already
+    // const user = await User.findOne({ email })
+    // console.log({ email, name })
+
+    // if (!user) {
+    //   //Generate random password
+    //   const password = GenerateRandomPassword
+    //   const saltRounds = 10; // Adjust
+    //   const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    //   //create a new user
+    //   const newUser = new User({ email, hashedPassword, name })
+    //   await newUser.save()
+
+    //   // Send the response
+    //   const newToken = jwt.sign({ name: newUser.name, isVerified: newUser.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
+    //   res.cookie("token", newToken);
+    //   res.json({ message: 'Login successful' });
+
+
+    // }
+
+    // const newToken = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
+
+
+    // res.cookie("token", newToken);
+
+    // // Send the token in the response
+    // res.json({ message: 'Login successful' });
+ 
+}
+
+exports.googleLoginApp = async (req,res) => {
+  const { token } = req.body
 
 }
