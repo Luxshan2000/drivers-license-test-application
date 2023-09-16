@@ -1,26 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import '../assets/CSS/signUp.css'
 import Button from 'react-bootstrap/Button';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import GoogleLoginButton from "../components/GoogleLoginButton";
 import FacebookLoginButton from "../components/FacebookLoginButton";
 
-export default function SignUp({onSubmit}) {
+export default function SignUp() {
+    const navigate = useNavigate()
+    const [email,setEmail] = useState("")
+    const [userName, setUserName] = useState("")
+    const [password, setPassword] = useState("")
+    const [conpassword, setConPassword] = useState("")
 
+    
     const handleRegister = ()=>{
-        onSubmit()
-        axios.post('http://localhost:5000/api/auth/signup', {email:"someone@gmail.com", password:"pwd123", name:"someone"})
+        if(password != conpassword){
+            return
+        }
+        
+        axios.post('http://localhost:5000/api/auth/signup', {email:email, password:password, name:userName})
         .then(response => {
             // Handle the successful response here
             console.log('Registration successful:', response.data);
+            
+           // navigate("/passwordverify", { replace: true });
+
+            
+
         })
         .catch(error => {
             // Handle any errors that occur during the request
             console.error('Registration failed:', error.response.data);
-        });
+        })
     }
 
     return (
@@ -34,7 +48,7 @@ export default function SignUp({onSubmit}) {
                         className="mb-3"
                         style={{ fontSize: 'small' }}
                     >
-                        <Form.Control type="text" placeholder="Enter your name" required />
+                        <Form.Control value={userName} onChange={(e)=> setUserName(e.target.value)}  type="text" placeholder="Enter your name" required />
                     </FloatingLabel>
 
                     <FloatingLabel
@@ -44,7 +58,7 @@ export default function SignUp({onSubmit}) {
                         style={{ fontSize: 'small' }}
                         aria-required
                     >
-                        <Form.Control type="email" size="sm" placeholder="name@example.com" required />
+                        <Form.Control value={email} onChange={(e)=> setEmail(e.target.value)} type="email" size="sm" placeholder="name@example.com" required />
                     </FloatingLabel>
 
                     <FloatingLabel
@@ -54,7 +68,7 @@ export default function SignUp({onSubmit}) {
                         style={{ fontSize: 'small' }}
                         aria-required={true}
                     >
-                        <Form.Control type="password" placeholder="Password" required />
+                        <Form.Control value={password} onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="Password" required />
                     </FloatingLabel>
 
                     <FloatingLabel
@@ -63,7 +77,7 @@ export default function SignUp({onSubmit}) {
                         className="mb-3"
                         style={{ fontSize: 'small' }}
                     >
-                        <Form.Control type="password" placeholder="Re-enter password" required/>
+                        <Form.Control value={conpassword} onChange={(e)=>setConPassword(e.target.value)} type="password" placeholder="Re-enter password" required/>
                     </FloatingLabel>
                 
                 <div style={{ display: 'flex', flexDirection: 'column' }}>

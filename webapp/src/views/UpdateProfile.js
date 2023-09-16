@@ -9,7 +9,7 @@ import FrameComponent from '../components/FrameComponent';
 function UpdateProfile() {
     return (
         <FrameComponent>
-        <div className="container-fluid" style={{ padding: '50px', height: '100vh' }}>
+        <div className="container-fluid" style={{ padding: '50px' }}>
             <Form>
                 <h2>Account Settings</h2>
 

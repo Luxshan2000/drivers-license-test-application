@@ -16,13 +16,13 @@ function UserInfo({showProfile}) {
             </Link>
           </li>
           <li>
-            <Link to="/#contactus" className="nav-link text-dark">
+            <Link to="/dashboard/updateProfile" className="nav-link text-dark">
               <i class="bi bi-person pe-2"></i>
               Profile
             </Link>
           </li>
           <li>
-            <Link to="/#contactus" className="nav-link text-dark">
+            <Link to="/" className="nav-link text-dark">
               <i class="bi bi-chat-left pe-2"></i>
               Contact us
             </Link>
@@ -31,7 +31,7 @@ function UserInfo({showProfile}) {
         <hr/>
         <ul className="nav nav-pills flex-column mb-auto">
           <li>
-            <Link to="/#contactus" className="nav-link text-dark">
+            <Link to="/" className="nav-link text-dark">
               <i class="bi bi-box-arrow-in-right pe-2"></i>
               Log out
             </Link>
