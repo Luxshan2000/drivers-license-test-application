@@ -75,7 +75,7 @@ exports.loginApp = async (req, res) => {
     if (passwordMatch) {
     
       const token = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
-      return res.header("x-auth-token", token).status(201).send(token);
+      return res.header("x-auth-token", token).status(201).json({token});
 
     } else {
       console.log("Invalid credentials.", user.email);
