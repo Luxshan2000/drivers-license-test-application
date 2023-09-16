@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 function GoogleLoginButton() {
     const responseMessage = (response) => {
-        console.log({ response });
+        
         axios.post('http://localhost:5000/api/auth/googleLogin', { token: response.access_token })
             .then(response => {
                 // Handle the successful response here
