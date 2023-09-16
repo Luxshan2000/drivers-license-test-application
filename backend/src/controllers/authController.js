@@ -128,7 +128,7 @@ const googleLoginBase = async (req, res, isWeb) => {
       // Send the response
       const newToken = jwt.sign({ name: newUser.name, isVerified: newUser.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
       if(isWeb){
-        res.cookie("token", newToken);
+        res.cookie("token", newToken,{ maxAge: 900000, httpOnly: true });
         res.json({ message: 'Login successful' });
       }else{
         res.json({message  : 'Login Successful', token})
