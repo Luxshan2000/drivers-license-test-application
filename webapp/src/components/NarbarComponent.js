@@ -9,7 +9,7 @@ function NarbarComponent() {
     <div  className='navStyle' >
        <Navbar scrolling dark collapseOnSelect expand="md" className="bg-body-tertiary " >
       <Container>
-        <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="/">DriveSmart</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
