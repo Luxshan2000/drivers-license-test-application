@@ -155,10 +155,10 @@ const googleLoginBase = async (req, res, isWeb) => {
 }
 exports.facebooklogin = async ( req,res) => {
   
-  const { token } = req.body
-    console.log({ token })
+  const { token , userID } = req.body
+    console.log({ token , userID })
     //verfication of user by fetching user information from google
-    const facebookResponse = await fetch('https://graph.facebook.com/USER-ID?metadata=1', {
+    const facebookResponse = await fetch(`https://graph.facebook.com/${userID}?fields=id,name,email&access_token=${token}`, {
       method: "GET", headers: {
         Authorization: `Bearer ${token}`,
         Accept: 'application/json'
