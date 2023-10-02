@@ -38,7 +38,7 @@ jobs:
 
   deploy:
     needs: [build-frontend, build-backend]
-    runs-on: aws-web-ec2
+    runs-on: aws-ec2-webapp
     steps:
       - name: Pull frontend image from Docker Hub
         run: docker pull drivesmart/drivesmart-frontend
