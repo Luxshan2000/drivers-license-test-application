@@ -17,9 +17,9 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker frontend image
-        run: docker build -t luxshan/drivesmart-frontend ./webapp
+        run: docker build -t drivesmart/drivesmart-frontend ./webapp
       - name: Publish frontend image to Docker Hub
-        run: docker push luxshan/drivesmart-frontend
+        run: docker push drivesmart/drivesmart-frontend
 
   build-backend:
     runs-on: ubuntu-latest
@@ -32,23 +32,23 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker backend image
-        run: docker build -t luxshan/drivesmart-backend ./backend
+        run: docker build -t drivesmart/drivesmart-backend ./backend
       - name: Publish backend image to Docker Hub
-        run: docker push luxshan/drivesmart-backend
+        run: docker push drivesmart/drivesmart-backend
 
   deploy:
     needs: [build-frontend, build-backend]
-    runs-on: aws-ec2
+    runs-on: aws-web-ec2
     steps:
       - name: Pull frontend image from Docker Hub
-        run: docker pull luxshan/drivesmart-frontend
+        run: docker pull drivesmart/drivesmart-frontend
       - name: Pull backend image from Docker Hub
-        run: docker pull luxshan/drivesmart-backend
+        run: docker pull drivesmart/drivesmart-backend
       - name: Delete old frontend container
         run: docker rm -f drivesmart-frontend-container
       - name: Delete old backend container
         run: docker rm -f drivesmart-backend-container
       - name: Run frontend container
-        run: docker run -d -p 3000:3000 --name drivesmart-frontend-container luxshan/drivesmart-frontend
+        run: docker run -d -p 3000:3000 --name drivesmart-frontend-container drivesmart/drivesmart-frontend
       - name: Run backend container
-        run: docker run -d -p 5000:5000 --name drivesmart-backend-container luxshan/drivesmart-backend
+        run: docker run -d -p 5000:5000 --name drivesmart-backend-container drivesmart/drivesmart-backend

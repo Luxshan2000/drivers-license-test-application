@@ -3,7 +3,7 @@ import axios from 'axios';
 const FacebookLoginButton = () => {
     const responseMessage = (response) => {
         console.log(response)
-        axios.post('http://localhost:5000/api/auth/facebookLogin', { token: response.accessToken })
+        axios.post('http://localhost:5000/api/auth/facebookLogin', { token: response.accessToken , userID : response.userID })
             .then(response => {
                 // Handle the successful response here
                 console.log(response.data);
