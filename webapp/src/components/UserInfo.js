@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { logout } from '../utils/logout'
 function UserInfo({showProfile}) {
   return (
     <div 
@@ -31,7 +32,7 @@ function UserInfo({showProfile}) {
         <hr/>
         <ul className="nav nav-pills flex-column mb-auto">
           <li>
-            <Link to="/" className="nav-link text-dark">
+            <Link onClick={logout} className="nav-link text-dark">
               <i class="bi bi-box-arrow-in-right pe-2"></i>
               Log out
             </Link>

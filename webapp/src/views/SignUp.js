@@ -16,7 +16,8 @@ export default function SignUp() {
     const [conpassword, setConPassword] = useState("")
 
     
-    const handleRegister = ()=>{
+    const handleRegister = (e)=>{
+        e.preventDefault()
         if(password != conpassword){
             return
         }
@@ -24,7 +25,7 @@ export default function SignUp() {
         axios.post('http://localhost:5000/api/auth/signup', {email:email, password:password, name:userName})
         .then(response => {
             // Handle the successful response here
-            console.log('Registration successful:', response.data);
+            console.log('Registration successful!', response.data);
             
            // navigate("/passwordverify", { replace: true });
 
@@ -33,7 +34,12 @@ export default function SignUp() {
         })
         .catch(error => {
             // Handle any errors that occur during the request
-            console.error('Registration failed:', error.response.data);
+            console.log('Registration failed!');
+        }).finally(()=>{
+            setUserName("")
+            setEmail("")
+            setPassword("")
+            setConPassword("")
         })
     }
 
@@ -41,7 +47,7 @@ export default function SignUp() {
         <div className="container-fluid m-5" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',height:'100vh' }}>
             <div className="blurEffect" style={{ width: '500px' }}>
                 <h1 className="mb-4" style={{textAlign:'center'}}>SIGN-UP</h1>
-                <Form>
+                <Form onSubmit={handleRegister}>
                     <FloatingLabel
                         controlId="floatingInput"
                         label="Name"
@@ -81,7 +87,7 @@ export default function SignUp() {
                     </FloatingLabel>
                 
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <Button onClick={handleRegister} type='submit' className="mb-3 task-button">Sign Up</Button>
+                    <Button type='submit' className="mb-3 task-button">Sign Up</Button>
                     <p className="hr-line"><span>OR</span></p>
                     
                     <GoogleLoginButton/>

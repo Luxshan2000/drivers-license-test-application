@@ -2,11 +2,20 @@ import { Outlet, Navigate} from "react-router-dom";
 
 import React from 'react'
 import { useAuthContext } from "../context/AuthContext";
+import { getSessionCookie } from "../utils/cookie";
+
 
 function PrivateRoutes() {
-    const {auth}=  useAuthContext()
+  
+
+  let allow = false
+
+  allow  = getSessionCookie("token")
+ 
+  
+  
   return (
-    auth.token ? <Outlet/> : <Navigate to='/' replace={true}/>
+    allow ? <Outlet/> : <Navigate to='/' replace={true}/>
   )
 }
 

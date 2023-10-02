@@ -49,8 +49,12 @@ exports.login = async (req, res) => {
     const token = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
 
 
-    res.cookie("token", token);
-    
+    const oneWeekInSeconds = 7 * 24 * 60 * 60; // 7 days * 24 hours * 60 minutes * 60 seconds
+    const expirationDate = new Date(Date.now() + oneWeekInSeconds * 1000); // Convert seconds to milliseconds
+    res.cookie('token', token, {
+    expires: expirationDate,
+   
+  });
     // Send the token in the response
     res.json({ message: 'Login successful' });
   } catch (error) {
@@ -203,3 +207,17 @@ exports.googleLoginApp = async (req,res) => {
   const { token } = req.body
 
 }
+
+
+exports.logout = async (req,res) =>{
+  try{
+    res.clearCookie('token')
+    res.json({msg:"Done"})
+  }
+  catch(err){
+    res.error(err)
+  }
+  
+}
+
+

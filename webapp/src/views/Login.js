@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import '../assets/CSS/signUp.css'
@@ -11,21 +11,43 @@ import jwt_decode from 'jwt-decode'
 
 export default function Login() {
     const navigate = useNavigate()
+    const {setAuth,auth} = useAuthContext()
+
+    const [email,setEmail] = useState("")
+    const [password,setPassword] = useState("")
+
+    
     
 
-    const handleSubmit = ()=>{
-        
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+
         axios.defaults.withCredentials = true
-        axios.post('http://localhost:5000/api/auth/login', {email:"someone@gmail.com", password:"pwd123"})
+        axios.post('http://localhost:5000/api/auth/login', {email:email, password:password})
         .then(response => {
             // Handle the successful response here
+        
             console.log(jwt_decode(getSessionCookie("token")))
-            console.log('Registration successful:', response.data);
+            setAuth(true)
+
+            if(jwt_decode(getSessionCookie("token")).isVerified){
+                navigate("/dashboard",{replace:true})
+            }
+            else{
+                navigate("/dashboard",{replace:true})
+            }
+
+            
+
+            
         })
         .catch(error => {
             // Handle any errors that occur during the request
-            console.error('Registration failed:', error.response.data);
-        });
+            console.log('Login failed!')
+        }).finally(()=>{
+            setEmail("")
+            setPassword("")
+        })
         
         
         // if(auth.isVerified){
@@ -40,7 +62,7 @@ export default function Login() {
         <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <div className="blurEffect" style={{ width: '500px' }}>
                 <h1 className="mb-4" style={{textAlign:'center'}}>LOGIN</h1>
-                <Form>
+                <Form onSubmit={handleSubmit}>
 
                     <FloatingLabel
                         controlId="floatingInput"
@@ -48,7 +70,7 @@ export default function Login() {
                         className="mb-3"
                         style={{ fontSize: 'small' }}
                     >
-                        <Form.Control type="email" size="sm" placeholder="name@example.com" />
+                        <Form.Control onChange={(e)=>setEmail(e.target.value)} value={email} type="email" size="sm" placeholder="name@example.com" />
                     </FloatingLabel>
 
                     <FloatingLabel
@@ -57,7 +79,7 @@ export default function Login() {
                         // className="mb-3"
                         style={{ fontSize: 'small' }}
                     >
-                        <Form.Control  type="password" placeholder="Password" />
+                        <Form.Control onChange={(e)=>setPassword(e.target.value)} value={password}  type="password" placeholder="Password" />
                     </FloatingLabel>
                                                                                                                            
                 
@@ -68,7 +90,7 @@ export default function Login() {
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column',marginTop: '50px'}}>
-                    <Button  onClick={handleSubmit} className="mb-3 task-button">Login</Button>
+                    <Button  type="submit" className="mb-3 task-button">Login</Button>
                     {/* <hr className="hr-lines"/>
                     <p>OR</p> */}
                     <p className="hr-line"><span>OR</span></p>

@@ -10,11 +10,7 @@ export const useAuthContext = () => useContext(AuthContext)
 //create provider
 export  const AuthProvider = ({children})=>{
     //Todo
-    const [auth,setAuth] = useState({
-        name:'UserName',
-        isVerified:true,
-        token:"dummy"
-    })
+    const [auth,setAuth] = useState(null)
 
     return (
         <AuthContext.Provider value={{ auth, setAuth}}>
