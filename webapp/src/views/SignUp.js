@@ -22,7 +22,7 @@ export default function SignUp() {
             return
         }
         
-        axios.post('http://localhost:5000/api/auth/signup', {email:email, password:password, name:userName})
+        axios.post('http://18.61.20.118:5000/api/auth/signup', {email:email, password:password, name:userName})
         .then(response => {
             // Handle the successful response here
             console.log('Registration successful!', response.data);
