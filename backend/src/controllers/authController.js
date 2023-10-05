@@ -91,6 +91,38 @@ exports.loginApp = async (req, res) => {
   }
 };
 
+exports.signUpApp = async (req, res) => {
+  try {
+    // Extract user information
+    const { email, password, name } = req.body;
+    const user = await User.findOne({ email })
+    if (user) {
+      console.log("User already has an account")
+    }else{
+      const saltRounds = 10; // Adjust
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
+      // Create a new user 
+      const user = new User({ email, hashedPassword, name });
+      await user.save();
+
+      const token = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
+      return res.header("x-auth-token", token).status(201).json({token});
+    }
+
+    
+
+
+
+    
+    
+
+  } catch (error) {
+    console.log('hi')
+    console.error(error);
+    res.status(500).json({ error: 'Signup failed' });
+  }
+};
+
 
 exports.googleLogin = async (req , res) => {
   return googleLoginBase(req,res, true)
