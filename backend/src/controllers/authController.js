@@ -2,11 +2,14 @@ const User = require('../models/user')
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 const { GenerateRandomPassword } = require('../utils/string');
+const emailModule = require("../utils/email")
+
 
 require('dotenv').config();
 exports.signup = async (req, res) => {
   try {
     // Extract user information
+    
     const { email, password, name } = req.body;
     const saltRounds = 10; // Adjust
     const hashedPassword = await bcrypt.hash(password, saltRounds);
@@ -14,13 +17,29 @@ exports.signup = async (req, res) => {
     const user = new User({ email, hashedPassword, name });
     await user.save();
 
+    const otp = 2327
 
+    console.log("Start");
+
+    await emailModule.sendOTP(email, otp)
+
+    
+    
 
     // Send the response
+
+    const token = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '7day' });
+
+
+    const oneWeekInSeconds = 7 * 24 * 60 * 60; // 7 days * 24 hours * 60 minutes * 60 seconds
+    const expirationDate = new Date(Date.now() + oneWeekInSeconds * 1000); // Convert seconds to milliseconds
+    res.cookie('token', token, {
+    expires: expirationDate,
+     
+    });
     res.json({ message: 'Signup successful' });
 
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Signup failed' });
   }
 };

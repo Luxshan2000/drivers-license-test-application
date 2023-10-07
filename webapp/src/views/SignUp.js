@@ -21,13 +21,13 @@ export default function SignUp() {
         if(password != conpassword){
             return
         }
-        
-        axios.post('http://18.61.20.118:5000/api/auth/signup', {email:email, password:password, name:userName})
+        //18.61.20.118
+        axios.post('http://localhost:5000/api/auth/signup', {email:email, password:password, name:userName})
         .then(response => {
             // Handle the successful response here
             console.log('Registration successful!', response.data);
             
-           // navigate("/passwordverify", { replace: true });
+            navigate("/passwordverify", { replace: true });
 
             
 

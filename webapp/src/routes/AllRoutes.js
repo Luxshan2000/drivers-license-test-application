@@ -30,9 +30,9 @@ function AllRoutes() {
         <Route path='/resetpassword' element={<ResetPassword/>}/>
         <Route path='/passwordupdated' element={<PasswordUpdated/>}/>
         <Route path='/terms' element={<TermsAndConditionsView/>}/>
+        <Route path='/passwordverify' element={<PasswordVerify/>}/>
         
         <Route element={<PrivateRoutes/>} >
-          <Route path='/passwordverify' element={<PasswordVerify/>}/>
           <Route  path='/dashboard' element={<DashboardView/>}/>
           <Route path='/dashboard/course' element={<CourseView />}/>
           <Route path='/dashboard/premium' element={<PremiumView/>} />

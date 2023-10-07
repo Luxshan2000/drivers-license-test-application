@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser')
 const connectMongoDb = require("./config/database")
 const authRoutes = require('./src/routes/authRoutes');
 
+
 const app = express()
 app.use(cookieParser())
 const PORT = process.env.PORT || 5000
@@ -23,6 +24,8 @@ connectMongoDb()
 
 
 app.use('/api/auth', authRoutes); 
+
+
 
 
 
