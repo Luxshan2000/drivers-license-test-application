@@ -22,6 +22,7 @@ export default function SignUp() {
             return
         }
         //18.61.20.118
+        axios.defaults.withCredentials = true
         axios.post('http://localhost:5000/api/auth/signup', {email:email, password:password, name:userName})
         .then(response => {
             // Handle the successful response here

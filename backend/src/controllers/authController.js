@@ -2,22 +2,25 @@ const User = require('../models/user')
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 const { GenerateRandomPassword } = require('../utils/string');
-const emailModule = require("../utils/email")
+const emailModule = require("../utils/email");
+const { OTPGenerator } = require('../utils/otpgenerator');
 
 
 require('dotenv').config();
 exports.signup = async (req, res) => {
   try {
     // Extract user information
+
+    const otp = OTPGenerator()
     
     const { email, password, name } = req.body;
     const saltRounds = 10; // Adjust
     const hashedPassword = await bcrypt.hash(password, saltRounds);
     // Create a new user 
-    const user = new User({ email, hashedPassword, name });
+    const user = new User({ email, hashedPassword, name, otp });
     await user.save();
 
-    const otp = 2327
+    
 
     console.log("Start");
 
@@ -28,7 +31,7 @@ exports.signup = async (req, res) => {
 
     // Send the response
 
-    const token = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '7day' });
+    const token = jwt.sign({ name: user.name, isVerified: user.isVerified, email: user.email }, process.env.SECURITY_KEY, { expiresIn: '7day' });
 
 
     const oneWeekInSeconds = 7 * 24 * 60 * 60; // 7 days * 24 hours * 60 minutes * 60 seconds
@@ -65,7 +68,7 @@ exports.login = async (req, res) => {
     }
 
     // If the username and password are correct, generate a JWT token
-    const token = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
+    const token = jwt.sign({ name: user.name, isVerified: user.isVerified, email: user.email }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
 
 
     const oneWeekInSeconds = 7 * 24 * 60 * 60; // 7 days * 24 hours * 60 minutes * 60 seconds
@@ -258,6 +261,64 @@ exports.googleLoginApp = async (req,res) => {
   const { token } = req.body
 
 }
+
+
+
+exports.verify = async (req, res) => {
+  try {
+    const { token, otp } = req.body
+    
+
+    console.log(token)
+
+    jwt.verify(token, process.env.SECURITY_KEY, (err, decoded) => {
+      if (err) {
+        // Token is invalid or has expired
+        console.error("JWT verification failed:", err);
+      } else {
+        // Token is valid, and 'decoded' contains the decoded payload
+        final = decoded
+      }
+    });
+
+    const email = final.email
+
+    
+
+
+    const user = await User.findOne({ email })
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" })
+    }
+
+    if (user.otp === otp) {
+      // Update isVerified as true and otp as null
+      user.isVerified = true
+      user.otp = null
+      await user.save() // Save the changes to the user document
+
+      const token = jwt.sign({ name: user.name, isVerified: user.isVerified, email: user.email }, process.env.SECURITY_KEY, { expiresIn: '7day' });
+
+
+      const oneWeekInSeconds = 7 * 24 * 60 * 60; // 7 days * 24 hours * 60 minutes * 60 seconds
+      const expirationDate = new Date(Date.now() + oneWeekInSeconds * 1000); // Convert seconds to milliseconds
+      res.cookie('token', token, {
+      expires: expirationDate,
+      
+      });
+     
+
+      return res.status(200).json({ message: "User verified successfully" })
+    } else {
+      return res.status(400).json({ message: "Invalid OTP" })
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal Server Error" })
+  }
+}
+
 
 
 exports.logout = async (req,res) =>{

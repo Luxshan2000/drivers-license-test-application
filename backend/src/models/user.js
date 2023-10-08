@@ -19,8 +19,8 @@ const User= mongoose.model("users",{
         default:false 
     },
     otp: {
-        type : Number,
-        default:"" 
+        type : String,
+        default:null 
     }
 })
 

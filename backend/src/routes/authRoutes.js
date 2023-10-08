@@ -8,7 +8,7 @@ router.post('/loginApp', authController.loginApp);
 router.post('/signUpApp',authController.signUpApp)
 router.post('/facebooklogin',authController.facebooklogin);
 router.post('/logout', authController.logout);
-
+router.post('/verifyotp', authController.verify);
 
 
 module.exports = router;

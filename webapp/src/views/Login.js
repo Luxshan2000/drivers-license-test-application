@@ -28,7 +28,7 @@ export default function Login() {
             // Handle the successful response here
         
             console.log(jwt_decode(getSessionCookie("token")))
-            setAuth(true)
+            // setAuth(true)
 
             if(jwt_decode(getSessionCookie("token")).isVerified){
                 navigate("/dashboard",{replace:true})

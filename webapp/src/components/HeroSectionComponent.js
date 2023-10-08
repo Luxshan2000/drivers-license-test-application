@@ -2,8 +2,10 @@ import React from 'react'
 import HeroSectionImage from '../assets/HeroSection.jpeg'
 import '../assets/CSS/homePageStyle.css'
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 function HeroSection() {
+    const naviagte = useNavigate()
     return (
         <div className='container-fluid hero-image' style={{ height: '100vh', display: 'flex', justifyContent: "center", alignItems: "center" }}>
             {/* <img className='image img-fluid' src={HeroSectionImage} alt='background' /> */}
@@ -29,7 +31,7 @@ function HeroSection() {
 
                 <div className='row' style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
                     <div className='col-12 col-md-6 col-lg-5 m-3 p-1'>
-                        <Button className='task-button'>Getting Started</Button>
+                        <Button onClick={(e)=>naviagte("/dashboard" ) } className='task-button'>Getting Started</Button>
                     </div>
 
 
