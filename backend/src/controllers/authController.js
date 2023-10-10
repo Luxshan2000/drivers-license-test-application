@@ -88,6 +88,7 @@ exports.login = async (req, res) => {
 exports.loginApp = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log({ email, password})
 
     // Check if the username exists in the database
     const user = await User.findOne({ email });
@@ -101,7 +102,7 @@ exports.loginApp = async (req, res) => {
     if (passwordMatch) {
     
       const token = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
-      return res.header("x-auth-token", token).status(201).json({token});
+      return res.header("x-auth-token", token).status(201).json({token, success : true});
 
     } else {
       console.log("Invalid credentials.", user.email);
@@ -115,6 +116,7 @@ exports.loginApp = async (req, res) => {
 
 exports.signUpApp = async (req, res) => {
   try {
+    const otp = OTPGenerator()
     // Extract user information
     const { email, password, name } = req.body;
     const user = await User.findOne({ email })
@@ -127,17 +129,13 @@ exports.signUpApp = async (req, res) => {
       const user = new User({ email, hashedPassword, name });
       await user.save();
 
+      await emailModule.sendOTP(email, otp)
+
+
       const token = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
-      return res.header("x-auth-token", token).status(201).json({token});
-    }
-
-    
-
-
-
-    
-    
-
+      return res.header("x-auth-token", token).status(201).json({token, success : true});
+      
+    }  
   } catch (error) {
     console.log('hi')
     console.error(error);
@@ -184,6 +182,7 @@ const googleLoginBase = async (req, res, isWeb) => {
       await newUser.save()
 
       // Send the response
+      newUser.isVerified = true
       const newToken = jwt.sign({ name: newUser.name, isVerified: newUser.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
       if(isWeb){
         res.cookie("token", newToken,{ maxAge: 900000, httpOnly: true });
@@ -196,7 +195,7 @@ const googleLoginBase = async (req, res, isWeb) => {
 
 
     }
-
+    user.isVerified = true
     const newToken = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
 
 
