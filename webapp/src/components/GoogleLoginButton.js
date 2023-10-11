@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 
 function GoogleLoginButton() {
+    const navigate = useNavigate()
     const responseMessage = (response) => {
         axios.defaults.withCredentials = true
         axios.post('http://localhost:5000/api/auth/googleLogin', { token: response.access_token })
             .then(response => {
                 // Handle the successful response here
                 console.log(response.data);
-                alert('login successful')
+                // alert('login successful')
+                navigate('/dashboard',{replace : true})
             })
             .catch(error => {
                 // Handle any errors that occur during the request

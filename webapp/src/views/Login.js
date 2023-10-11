@@ -8,6 +8,7 @@ import { useAuthContext } from "../context/AuthContext";
 import axios from 'axios';
 import { getSessionCookie } from "../utils/cookie";
 import jwt_decode from 'jwt-decode'
+import GoogleLoginButton from "../components/GoogleLoginButton";
 
 export default function Login() {
     const navigate = useNavigate()
@@ -95,7 +96,9 @@ export default function Login() {
                     <p>OR</p> */}
                     <p className="hr-line"><span>OR</span></p>
 
-                    <Button type="submit" className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                    <GoogleLoginButton/>
+
+                    {/* <Button type="submit" className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                         <div style={{ flex: 1 / 3, textAlign: 'start' }}>
                             <i className="bi bi-google"></i>
                         </div>
@@ -104,7 +107,7 @@ export default function Login() {
                         </div>
 
 
-                    </Button>
+                    </Button> */}
                     <Button className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                         <div style={{ flex: 1 / 3, textAlign: 'start' }}>
                             <i className="bi bi-facebook"></i>
