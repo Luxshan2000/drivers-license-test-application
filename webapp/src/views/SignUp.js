@@ -3,6 +3,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import '../assets/CSS/signUp.css'
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import GoogleLoginButton from "../components/GoogleLoginButton";
@@ -14,10 +15,22 @@ export default function SignUp() {
     const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
     const [conpassword, setConPassword] = useState("")
+    const [validated, setValidated] = useState(false)
+
+    const [feedBack, setFeedback] = useState()
 
     
     const handleRegister = (e)=>{
-        e.preventDefault()
+
+    //     const form = e.currentTarget;
+    //     if (form.checkValidity() === false) {
+    //         e.preventDefault();
+    //     }
+
+    //    setValidated(true);
+    e.preventDefault();
+
+        
         if(password != conpassword){
             return
         }
@@ -36,6 +49,9 @@ export default function SignUp() {
         .catch(error => {
             // Handle any errors that occur during the request
             console.log('Registration failed!');
+
+
+            console.log(email,password, userName)
         }).finally(()=>{
             setUserName("")
             setEmail("")
@@ -48,24 +64,27 @@ export default function SignUp() {
         <div className="container-fluid m-5" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',height:'100vh' }}>
             <div className="blurEffect" style={{ width: '500px' }}>
                 <h1 className="mb-4" style={{textAlign:'center'}}>SIGN-UP</h1>
-                <Form onSubmit={handleRegister}>
+                <Form noValidate validated={validated} onSubmit={handleRegister}>
+                    
                     <FloatingLabel
-                        controlId="floatingInput"
+                        controlId="floatingInput1"
                         label="Name"
                         className="mb-3"
                         style={{ fontSize: 'small' }}
                     >
                         <Form.Control value={userName} onChange={(e)=> setUserName(e.target.value)}  type="text" placeholder="Enter your name" required />
+                        <Form.Control.Feedback type="invalid">Name cann't be empty!</Form.Control.Feedback>
                     </FloatingLabel>
 
                     <FloatingLabel
-                        controlId="floatingInput"
+                        controlId="floatingInput2"
                         label="Email address"
                         className="mb-3"
                         style={{ fontSize: 'small' }}
                         aria-required
                     >
                         <Form.Control value={email} onChange={(e)=> setEmail(e.target.value)} type="email" size="sm" placeholder="name@example.com" required />
+                        <Form.Control.Feedback type="invalid">Please put a valid email!</Form.Control.Feedback>
                     </FloatingLabel>
 
                     <FloatingLabel
@@ -79,13 +98,15 @@ export default function SignUp() {
                     </FloatingLabel>
 
                     <FloatingLabel
-                        controlId="floatingInput"
+                        controlId="floatingInput3"
                         label="Re-enter password"
                         className="mb-3"
                         style={{ fontSize: 'small' }}
                     >
                         <Form.Control value={conpassword} onChange={(e)=>setConPassword(e.target.value)} type="password" placeholder="Re-enter password" required/>
                     </FloatingLabel>
+
+                   {feedBack && <Alert onClose={()=> setFeedback("") } variant="danger" className=" text-center" dismissible >{feedBack}</Alert> }
                 
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <Button type='submit' className="mb-3 task-button">Sign Up</Button>
@@ -102,7 +123,7 @@ export default function SignUp() {
                     
                        
                     </Button> */}
-                    <FacebookLoginButton/>
+                    {/* <FacebookLoginButton/> */}
                     
                     
                     

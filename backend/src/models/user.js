@@ -19,7 +19,7 @@ const User= mongoose.model("users",{
         default:false 
     },
     preLanguage:{
-        type:Strig,
+        type:String,
         default:"English",
         required: true,
         enum :["Sinhala", "Tamil", "English"] 
