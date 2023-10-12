@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import '../assets/CSS/signUp.css'
@@ -16,6 +16,13 @@ export default function Login() {
 
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
+
+
+    useEffect(()=>{
+        if(getSessionCookie("token")){
+            navigate("/dashboard", {replace:true})
+        }
+    })
 
     
     
