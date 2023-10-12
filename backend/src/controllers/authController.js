@@ -88,7 +88,9 @@ const login = async (req, res, isWeb) => {
         // Send the token in the response
         res.json({ message: 'Login successful' });
       } else {
-        return res.header("x-auth-token", token).status(201).json({ token, success: true });
+        const isVerified = jwt.verify(token, process.env.SECURITY_KEY).isVerified
+        return res.header("x-auth-token", token).status(201).json({ token, success: true, isVerified });
+
       }
     }
   } catch (error) {
