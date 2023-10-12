@@ -22,17 +22,18 @@ export default function SignUp() {
     
     const handleRegister = (e)=>{
 
-    //     const form = e.currentTarget;
-    //     if (form.checkValidity() === false) {
-    //         e.preventDefault();
-    //     }
+        e.preventDefault();
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+            e.preventDefault();
+        }
 
-    //    setValidated(true);
-    e.preventDefault();
+       setValidated(true);
+    
 
         
         if(password != conpassword){
-            return
+            setFeedback("Password mismatch!")
         }
         //18.61.20.118
         axios.defaults.withCredentials = true
