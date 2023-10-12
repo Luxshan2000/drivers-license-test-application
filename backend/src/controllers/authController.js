@@ -13,15 +13,24 @@ const signup = async (req, res, isWeb) => {
 
     const otp = OTPGenerator()
 
+
+
     const { email, password, name } = req.body;
+    const isAdmin = false
+
+
+    
+
     const saltRounds = 10; // Adjust
     const hashedPassword = await bcrypt.hash(password, saltRounds);
     const user = await User.findOne({ email });
-    if (!user){
 
     
+    if (!user){
+
+      
     // Create a new user 
-    const user = new User({ email, hashedPassword, name, otp });
+    const user = new User({ email, hashedPassword, name, otp, isAdmin });
     await user.save();
 
     console.log("Start");
@@ -49,6 +58,7 @@ const signup = async (req, res, isWeb) => {
     return res.status(404).json({error : "User exists", success : false})
   }
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Signup failed' });
   }
 };
