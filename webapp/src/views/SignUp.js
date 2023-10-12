@@ -39,7 +39,7 @@ export default function SignUp() {
         axios.post('http://localhost:5000/api/auth/signup', {email:email, password:password, name:userName})
         .then(response => {
             // Handle the successful response here
-            console.log('Registration successful!', response.data);
+            
             
             navigate("/passwordverify", { replace: true });
 
@@ -48,10 +48,12 @@ export default function SignUp() {
         })
         .catch(error => {
             // Handle any errors that occur during the request
-            console.log('Registration failed!');
-
-
-            console.log(email,password, userName)
+            if(error.response){
+               setFeedback( error.response.data.error)
+            }else{
+                setFeedback("Network Error!")
+            }
+            
         }).finally(()=>{
             setUserName("")
             setEmail("")
