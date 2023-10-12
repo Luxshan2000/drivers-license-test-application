@@ -3,6 +3,8 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import '../assets/CSS/signUp.css'
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
+import Alert from 'react-bootstrap/Alert';
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import axios from 'axios';
@@ -17,26 +19,47 @@ export default function Login() {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
 
+    const [validated, setValidated] = useState(false)
 
+    const [loading, setLoading] = useState(false)
+    const [feedBack, setFeedback] = useState()
+    
+    
     useEffect(()=>{
         if(getSessionCookie("token")){
             navigate("/dashboard", {replace:true})
-        }
-    })
+        }    
+    },[])
+    
 
     
     
 
     const handleSubmit = (e)=>{
-        e.preventDefault()
+
+        setLoading(true)
+
+        e.preventDefault();
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation(); 
+            setValidated(true)
+            setLoading(false)
+            return 
+        }
+
+       setValidated(true)
 
         axios.defaults.withCredentials = true
         axios.post('http://localhost:5000/api/auth/login', {email:email, password:password})
         .then(response => {
             // Handle the successful response here
-        
-            console.log(jwt_decode(getSessionCookie("token")))
-            // setAuth(true)
+    
+            setEmail("")
+            setPassword("")
+
+            
 
             if(jwt_decode(getSessionCookie("token")).isVerified){
                 navigate("/dashboard",{replace:true})
@@ -51,10 +74,15 @@ export default function Login() {
         })
         .catch(error => {
             // Handle any errors that occur during the request
-            console.log('Login failed!')
+            if(error.response){
+                setFeedback( error.response.data.error)
+            }else{
+                 setFeedback("Network Error!")
+            }
+
+
         }).finally(()=>{
-            setEmail("")
-            setPassword("")
+            setLoading(false)
         })
         
         
@@ -70,7 +98,7 @@ export default function Login() {
         <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <div className="blurEffect" style={{ width: '500px' }}>
                 <h1 className="mb-4" style={{textAlign:'center'}}>LOGIN</h1>
-                <Form onSubmit={handleSubmit}>
+                <Form noValidate validated={validated} onSubmit={handleSubmit}>
 
                     <FloatingLabel
                         controlId="floatingInput"
@@ -78,7 +106,8 @@ export default function Login() {
                         className="mb-3"
                         style={{ fontSize: 'small' }}
                     >
-                        <Form.Control onChange={(e)=>setEmail(e.target.value)} value={email} type="email" size="sm" placeholder="name@example.com" />
+                        <Form.Control onChange={(e)=>setEmail(e.target.value)} value={email} type="email" size="sm" placeholder="name@example.com" required />
+                        <Form.Control.Feedback type="invalid">Please put a valid email!</Form.Control.Feedback>
                     </FloatingLabel>
 
                     <FloatingLabel
@@ -87,7 +116,8 @@ export default function Login() {
                         // className="mb-3"
                         style={{ fontSize: 'small' }}
                     >
-                        <Form.Control onChange={(e)=>setPassword(e.target.value)} value={password}  type="password" placeholder="Password" />
+                        <Form.Control required  onChange={(e)=>setPassword(e.target.value)} value={password}  type="password" placeholder="Password" />
+                        <Form.Control.Feedback type="invalid">Password cann't be empty!</Form.Control.Feedback>
                     </FloatingLabel>
                                                                                                                            
                 
@@ -97,8 +127,12 @@ export default function Login() {
                             </Link>               
                 </div>
 
+                {feedBack && <Alert onClose={()=> setFeedback("") } variant="danger" className=" text-center" dismissible >{feedBack}</Alert> }
+
                 <div style={{ display: 'flex', flexDirection: 'column',marginTop: '50px'}}>
-                    <Button  type="submit" className="mb-3 task-button">Login</Button>
+                    <Button  type="submit" className="mb-3 task-button">
+                    {loading? (<Spinner color="gray" animation="border" />) :"Login" }
+                    </Button>
                     {/* <hr className="hr-lines"/>
                     <p>OR</p> */}
                     <p className="hr-line"><span>OR</span></p>
@@ -115,14 +149,14 @@ export default function Login() {
 
 
                     </Button> */}
-                    <Button className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                    {/* <Button className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                         <div style={{ flex: 1 / 3, textAlign: 'start' }}>
                             <i className="bi bi-facebook"></i>
                         </div>
                         <div style={{ flex: 2 / 3, textAlign: 'start' }}>
                             Login with Facebook
                         </div>
-                    </Button>
+                    </Button> */}
 
 
 
