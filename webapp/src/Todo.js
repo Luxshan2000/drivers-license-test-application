@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-
+import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import Alert from 'react-bootstrap/Alert';
@@ -60,9 +60,9 @@ export default function Todo() {
                                                                                                                            
                 
                 <div style={{textAlign:'left'}}>
-                <a href='/resetpassword' style={{fontSize:12,}}>
+                <Link to='/resetpassword' style={{fontSize:12,}}>
                             Forgot your password?
-                            </a>               
+                            </Link>               
                 </div>
 
                 {feedBack && <Alert onClose={()=> setFeedback("") } variant="danger" className=" text-center" dismissible >{feedBack}</Alert> }
@@ -101,7 +101,7 @@ export default function Todo() {
 
 
                     <p className="mb-3" style={{ fontSize: '12', fontWeight: 'lighter',textAlign:'center'}}>
-                        If you haven't registered yet? <a href='/signup'><span>Register now</span></a>
+                        If you haven't registered yet? <Link to='/signup'><span>Register now</span></Link>
                     </p>
                 </div>
                 </Form>
