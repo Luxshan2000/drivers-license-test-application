@@ -92,24 +92,7 @@ const User= mongoose.model("users",{
            }
         }
     ],
-    completed:[
-        {
-            topicId:{
-                type: Number,
-                required: true
-            },
-            isVideoFinished:{
-                type: Boolean,
-                required: true,
-                default: false
-            },
-            isQuizFinished:{
-                type: Boolean,
-                required: true,
-                default: false
-            }
-        }
-    ]
+    completed:[String]
 })
 
 module.exports = User

@@ -20,7 +20,7 @@ function HeadingComponent({heading}) {
             <h5 className=' col-11 CourseHeading'>
               {heading.no + ". "+ heading.title}
               <span className='instructionFamily badge ms-1  p-2 text-dark bg-success-subtle'>
-                Completed!
+                {heading.isCompleted ? "Completed!" : ""}
               </span>
             </h5>
             {!toggle? <i  class=" col-1 bi p-1 bi-chevron-down"></i>:<i  class=" col-1 bi p-1 bi-chevron-up"></i>}
@@ -39,9 +39,9 @@ function HeadingComponent({heading}) {
                   {heading.videoUrl? `${heading.no}.1 Interactive Video and notes` :"" }
                 </Link>
               </h5>
-              <span className='instructionFamily badge m-1 p-2 text-dark bg-success-subtle'>
+              {/* <span className='instructionFamily badge m-1 p-2 text-dark bg-success-subtle'>
                 Done: Complete the activity
-              </span>
+              </span> */}
             </div>
             <div>
               <hr/>
@@ -55,11 +55,12 @@ function HeadingComponent({heading}) {
                   {`${heading.no}.2 Quiz`}
                 </Link>
               </h5>
-              <span className='instructionFamily badge m-1 p-2 text-dark bg-danger-subtle'>
-                  To do: Complete the activity
+              <hr className=' text-success'/>
+              <span className={`instructionFamily badge m-1 p-2 text-dark ${ heading.isCompleted ?"bg-success-subtle"  :"bg-danger-subtle"}`}>
+                  { !heading.isCompleted ? "To do: Complete the activity" : "Done: Completed"}
               </span>
               <span className='instructionFamily badge m-1 p-2 text-dark bg-warning-subtle'>
-                To unlock: Upgrade to premium
+              To unlock quizzes: Premium upgrade is required
               </span>
             </div>
 
