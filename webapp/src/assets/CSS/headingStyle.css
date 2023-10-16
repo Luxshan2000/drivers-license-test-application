@@ -12,7 +12,7 @@ a{
 
 .hover-effect {
     transition: background-color, box-shadow 0.5s ease; 
-    background-color: rgb(225, 238, 254);
+    background-color: rgb(241, 246, 253);
   }
 .hover-effect:hover {
     background-color: rgb(233, 242, 255); 

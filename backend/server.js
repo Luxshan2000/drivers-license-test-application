@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser')
 
 const connectMongoDb = require("./config/database")
 const authRoutes = require('./src/routes/authRoutes');
-
+const materialRoutes = require('./src/routes/materialRoutes')
 
 const app = express()
 app.use(cookieParser())
@@ -24,7 +24,7 @@ connectMongoDb()
 
 
 app.use('/api/auth', authRoutes); 
-
+app.use('/api/material',materialRoutes )
 
 
 

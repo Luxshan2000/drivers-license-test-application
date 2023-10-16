@@ -144,8 +144,9 @@ const googleLoginBase = async (req, res, isWeb) => {
       const saltRounds = 10; // Adjust
       const hashedPassword = await bcrypt.hash(password, saltRounds);
 
+      const isAdmin = false
       //create a new user
-      const newUser = new User({ email, hashedPassword, name })
+      const newUser = new User({ email, hashedPassword, name, isAdmin })
       await newUser.save()
 
       // Send the response
