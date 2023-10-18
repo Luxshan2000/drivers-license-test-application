@@ -9,6 +9,7 @@ function QuizView() {
   const showModal =()=>{
     setModal((prv)=>({
         ...prv,
+        id: id,
         goto:`/dashboard/quiz/exam/${id}`,
         heading :"Start Attempt",
         ok: "Start",

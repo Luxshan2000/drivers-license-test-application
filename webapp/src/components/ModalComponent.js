@@ -4,12 +4,13 @@ import Modal from 'react-bootstrap/Modal';
 import { Navigate, useNavigate } from 'react-router-dom';
 import "../assets/CSS/modelStyle.css"
 import { useModal } from '../context/ModalContext';
+import axios from 'axios';
 
 function ModalComponent() {
   const navigate = useNavigate()
   const {modal, closeModal}  = useModal()
 
-  
+  const id = modal.id
   const heading = modal.heading
   const cancelButtonName = modal.cancel 
   const okButtonName = modal.ok
@@ -28,8 +29,25 @@ function ModalComponent() {
   
 
   const handleSuccess =()=>{
+
+    try{
+        axios.defaults.withCredentials = true
+        axios.post(`http://localhost:5000/api/material/startexam/${id}`)
+        .then(res=>{
+            console.log("Started!")
+        }).catch(err=>{
+            console.log("Error!")
+            return
+        })
+    }
+    catch(err){
+      return
+    }
+
     closeModal()
+    
     navigate(goto) 
+    
   }
 
   return (
