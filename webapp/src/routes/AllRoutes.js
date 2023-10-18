@@ -20,6 +20,7 @@ import PracticeExamView from '../components/PracticeExamView';
 import ProgressView from '../views/ProgressView';
 import ContactUs from '../views/ContactUsView';
 import AboutUs from '../views/AboutUsView';
+import PracticeQuizView from '../views/PracticeQuizView';
 
 function AllRoutes() {
   return (
@@ -42,7 +43,7 @@ function AllRoutes() {
           <Route path='/dashboard/quiz/1/view' element={<QuizView/>} />
           <Route path='/dashboard/quiz/1/exam' element={<Exam/>}/>
           <Route path='/dashboard/practice' element={<PracticeExamView/>}/>
-          <Route path='/dashboard/practice/1/view' element={<QuizView/>}/>
+          <Route path='/dashboard/practice/practiceQuiz' element={<PracticeQuizView/>}/>
           <Route path='/dashboard/progress' element={<ProgressView/>} />
           <Route path='/dashboard/contactus' element={<ContactUs/>}/>
           <Route path='/dashboard/aboutus' element={<AboutUs/>}/>
