@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import FrameComponent from '../components/FrameComponent'
 import { useModal } from '../context/ModalContext'
 
 function QuizView() {
   const {setModal}  = useModal()
+  const {id} = useParams()
   const showModal =()=>{
     setModal((prv)=>({
         ...prv,
-        goto:"/dashboard/quiz/1/exam",
+        goto:`/dashboard/quiz/exam/${id}`,
         heading :"Start Attempt",
         ok: "Start",
         statement:"Quiz will be automatically submitted once the allocated time is over.",

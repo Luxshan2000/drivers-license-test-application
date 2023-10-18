@@ -40,6 +40,18 @@ exports.getTopicScript = async (req,res) =>{
     }
 }
 
+exports.getTopicQuiz = async (req,res) =>{
+    try{
+        const no = req.params.id
+        const topicData = await Topic.findOne({no}).select("title questions no")
+        res.status(200).json(topicData)
+    }
+    catch{
+        res.status(500).json({error: err})
+    }
+}
+
+
 
 
 

@@ -40,8 +40,8 @@ function AllRoutes() {
           <Route path='/dashboard/complaintsForm' element={<ComplaintsForm/>} />
           <Route path='/dashboard/updateProfile' element={<UpdateProfile/>}/>
           <Route path='/dashboard/course/heading/:id'  element={<ContentView />}/>
-          <Route path='/dashboard/quiz/1/view' element={<QuizView/>} />
-          <Route path='/dashboard/quiz/1/exam' element={<Exam/>}/>
+          <Route path='/dashboard/quiz/view/:id' element={<QuizView/>} />
+          <Route path='/dashboard/quiz/exam/:id' element={<Exam/>}/>
           <Route path='/dashboard/practice' element={<PracticeExamView/>}/>
           <Route path='/dashboard/practice/practiceQuiz' element={<PracticeQuizView/>}/>
           <Route path='/dashboard/progress' element={<ProgressView/>} />

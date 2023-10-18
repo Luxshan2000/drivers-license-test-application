@@ -32,6 +32,7 @@ const  verifyUser = (req,res,next) => {
 
 router.get('/topics',verifyUser,topicController.getAllTopics)
 router.get('/topic/:id',verifyUser,topicController.getTopicScript)
+router.get('/topic/quiz/:id',verifyUser,topicController.getTopicQuiz)
 router.get('/getQuestions', verifyUser, questionController.getQuestions)
 
 

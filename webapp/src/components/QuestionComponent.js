@@ -7,7 +7,7 @@ function QuestionComponent({id , mcq}) {
   // }
   return (
     <div className=' mb-3'>
-      <h6 className=' p-0 m-0'>{mcq.question}</h6>
+      <h6 className=' p-0 m-0'>{id+1+") "+mcq.ques}</h6>
       {/* <h6 className=' p-0 m-0'>{mcq}</h6> */}
       <ul style={{padding:'0',margin:'0',marginLeft:'5px'}}>
         {mcq.options.map((ans,index) => 

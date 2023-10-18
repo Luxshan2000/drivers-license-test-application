@@ -14,13 +14,15 @@ function Exam() {
         console.log("submitted!")
     }
 
+    console.log(question)
+
     useEffect(()=>{
         axios.defaults.withCredentials = true
-        axios.get('http://localhost:5000/api/material/getQuestions')
+        axios.get(`http://localhost:5000/api/material/topic/quiz/${id}`)
             .then(response => {
                 // Handle the successful response here
-                setQuestion(response.data)
-                console.log(response.data)
+                setQuestion(response.data.questions)
+                // console.log(response.data.questions)
                 
     
                 
