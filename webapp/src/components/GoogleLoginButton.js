@@ -35,7 +35,7 @@ function GoogleLoginButton() {
         <div>
 
             {/* <GoogleLogin onSuccess={responseMessage} onError={errorMessage} /> */}
-            <Button onClick={onClick} type="submit" className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+            <Button onClick={onClick}  className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                 <div style={{ flex: 1 / 3, textAlign: 'start' }}>
                     <i class="bi bi-google"></i>
                 </div>

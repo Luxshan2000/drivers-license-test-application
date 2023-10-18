@@ -7,49 +7,69 @@ const { OTPGenerator } = require('../utils/otpgenerator');
 
 
 require('dotenv').config();
-exports.signup = async (req, res) => {
+const signup = async (req, res, isWeb) => {
   try {
     // Extract user information
 
     const otp = OTPGenerator()
-    
+
+
+
     const { email, password, name } = req.body;
+    const isAdmin = false
+
+
+    
+
     const saltRounds = 10; // Adjust
     const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const user = await User.findOne({ email });
+
+    
+    if (!user){
+
+      
     // Create a new user 
-    const user = new User({ email, hashedPassword, name, otp });
+    const user = new User({ email, hashedPassword, name, otp, isAdmin });
     await user.save();
 
-    
-
     console.log("Start");
-
     await emailModule.sendOTP(email, otp)
 
-    
-    
+
 
     // Send the response
-
     const token = jwt.sign({ name: user.name, isVerified: user.isVerified, email: user.email }, process.env.SECURITY_KEY, { expiresIn: '7day' });
+    if (isWeb) {
+      const oneWeekInSeconds = 7 * 24 * 60 * 60; // 7 days * 24 hours * 60 minutes * 60 seconds
+      const expirationDate = new Date(Date.now() + oneWeekInSeconds * 1000); // Convert seconds to milliseconds
+      res.cookie('token', token, {
+        expires: expirationDate,
+
+      });
+      res.json({ message: 'Signup successful' });
+    }else{
+      return res.header("x-auth-token", token).status(201).json({ token, success: true });
+
+    }
 
 
-    const oneWeekInSeconds = 7 * 24 * 60 * 60; // 7 days * 24 hours * 60 minutes * 60 seconds
-    const expirationDate = new Date(Date.now() + oneWeekInSeconds * 1000); // Convert seconds to milliseconds
-    res.cookie('token', token, {
-    expires: expirationDate,
-     
-    });
-    res.json({ message: 'Signup successful' });
-
+  }else{
+    return res.status(404).json({error : "User exists", success : false})
+  }
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Signup failed' });
   }
 };
+exports.signUpWeb = async (req, res) => {
+  return signup(req, res, true)
+}
+exports.signUpApp = async (req, res) => {
+  return signup(req, res, false)
+}
 
-
-
-exports.login = async (req, res) => {
+const login = async (req, res, isWeb) => {
   try {
     const { email, password } = req.body;
 
@@ -57,104 +77,51 @@ exports.login = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({ error: 'User not found', success: false });
     }
 
     // Compare the provided password with the hashed password in the database
     const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
 
     if (!passwordMatch) {
-      return res.status(401).json({ error: 'Incorrect password' });
+      return res.status(401).json({ error: 'Incorrect password', success: false });
+    } else {
+      // If the username and password are correct, generate a JWT token
+      const token = jwt.sign({ name: user.name, isVerified: user.isVerified, email: user.email }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
+      if (isWeb) {
+        const oneWeekInSeconds = 7 * 24 * 60 * 60; // 7 days * 24 hours * 60 minutes * 60 seconds
+        const expirationDate = new Date(Date.now() + oneWeekInSeconds * 1000); // Convert seconds to milliseconds
+        res.cookie('token', token, {
+          expires: expirationDate,
+
+        });
+        // Send the token in the response
+        res.json({ message: 'Login successful' });
+      } else {
+        const isVerified = jwt.verify(token, process.env.SECURITY_KEY).isVerified
+        return res.header("x-auth-token", token).status(201).json({ token, success: true, isVerified });
+
+      }
     }
-
-    // If the username and password are correct, generate a JWT token
-    const token = jwt.sign({ name: user.name, isVerified: user.isVerified, email: user.email }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
-
-
-    const oneWeekInSeconds = 7 * 24 * 60 * 60; // 7 days * 24 hours * 60 minutes * 60 seconds
-    const expirationDate = new Date(Date.now() + oneWeekInSeconds * 1000); // Convert seconds to milliseconds
-    res.cookie('token', token, {
-    expires: expirationDate,
-   
-  });
-    // Send the token in the response
-    res.json({ message: 'Login successful' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Login failed' });
   }
 };
 
-exports.loginApp = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    console.log({ email, password})
-
-    // Check if the username exists in the database
-    const user = await User.findOne({ email });
-
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-
-    const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
-  
-    if (passwordMatch) {
-    
-      const token = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
-      return res.header("x-auth-token", token).status(201).json({token, success : true});
-
-    } else {
-      console.log("Invalid credentials.", user.email);
-      return res.status(401).json({ error: 'Incorrect password' });
-    }
-  } catch (error) {
-    console.error("Error during login:", error);
-    res.status(500).json({error: "An error occurred during login."});
-  }
-};
-
-exports.signUpApp = async (req, res) => {
-  try {
-    const otp = OTPGenerator()
-    // Extract user information
-    const { email, password, name } = req.body;
-    const user = await User.findOne({ email })
-    if (user) {
-      console.log("User already has an account")
-    }else{
-      const saltRounds = 10; // Adjust
-      const hashedPassword = await bcrypt.hash(password, saltRounds);
-      // Create a new user 
-      const user = new User({ email, hashedPassword, name });
-      await user.save();
-
-      await emailModule.sendOTP(email, otp)
-
-
-      const token = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
-      return res.header("x-auth-token", token).status(201).json({token, success : true});
-      
-    }  
-  } catch (error) {
-    console.log('hi')
-    console.error(error);
-    res.status(500).json({ error: 'Signup failed' });
-  }
-};
-
-
-exports.googleLogin = async (req , res) => {
-  return googleLoginBase(req,res, true)
+exports.loginWeb = async (req, res) => {
+  return login(req, res, true)
 }
 
+exports.loginApp = async (req, res) => {
+  return login(req, res, false)
+}
 
-
-
+exports.googleLogin = async (req, res) => {
+  return googleLoginBase(req, res, true)
+}
 const googleLoginBase = async (req, res, isWeb) => {
   try {
-
-
     const { token } = req.body
     console.log({ token })
     //verfication of user by fetching user information from google
@@ -177,21 +144,22 @@ const googleLoginBase = async (req, res, isWeb) => {
       const saltRounds = 10; // Adjust
       const hashedPassword = await bcrypt.hash(password, saltRounds);
 
+      const isAdmin = false
       //create a new user
-      const newUser = new User({ email, hashedPassword, name })
+      const newUser = new User({ email, hashedPassword, name, isAdmin })
       await newUser.save()
 
       // Send the response
       newUser.isVerified = true
       const newToken = jwt.sign({ name: newUser.name, isVerified: newUser.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
-      if(isWeb){
-        res.cookie("token", newToken,{ maxAge: 900000, httpOnly: true });
+      if (isWeb) {
+        res.cookie("token", newToken, { maxAge: 900000, httpOnly: true });
         res.json({ message: 'Login successful' });
-      }else{
-        res.json({message  : 'Login Successful', token})
+      } else {
+        res.json({ message: 'Login Successful', token })
       }
-      
-      
+
+
 
 
     }
@@ -210,66 +178,63 @@ const googleLoginBase = async (req, res, isWeb) => {
 
 
 }
-exports.facebooklogin = async ( req,res) => {
-  
-  const { token , userID } = req.body
-    console.log({ token , userID })
-    //verfication of user by fetching user information from google
-    const facebookResponse = await fetch(`https://graph.facebook.com/${userID}?fields=id,name,email&access_token=${token}`, {
-      method: "GET", headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: 'application/json'
-      }
-    }).then(res => res.json())
+exports.facebooklogin = async (req, res) => {
 
-    console.log(facebookResponse)
-    // const { email, name } = googleResponse
-    // //see if there is an user with that email already
-    // const user = await User.findOne({ email })
-    // console.log({ email, name })
+  const { token, userID } = req.body
+  console.log({ token, userID })
+  //verfication of user by fetching user information from google
+  const facebookResponse = await fetch(`https://graph.facebook.com/${userID}?fields=id,name,email&access_token=${token}`, {
+    method: "GET", headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: 'application/json'
+    }
+  }).then(res => res.json())
 
-    // if (!user) {
-    //   //Generate random password
-    //   const password = GenerateRandomPassword
-    //   const saltRounds = 10; // Adjust
-    //   const hashedPassword = await bcrypt.hash(password, saltRounds);
+  console.log(facebookResponse)
+  // const { email, name } = googleResponse
+  // //see if there is an user with that email already
+  // const user = await User.findOne({ email })
+  // console.log({ email, name })
 
-    //   //create a new user
-    //   const newUser = new User({ email, hashedPassword, name })
-    //   await newUser.save()
+  // if (!user) {
+  //   //Generate random password
+  //   const password = GenerateRandomPassword
+  //   const saltRounds = 10; // Adjust
+  //   const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    //   // Send the response
-    //   const newToken = jwt.sign({ name: newUser.name, isVerified: newUser.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
-    //   res.cookie("token", newToken);
-    //   res.json({ message: 'Login successful' });
+  //   //create a new user
+  //   const newUser = new User({ email, hashedPassword, name })
+  //   await newUser.save()
 
-
-    // }
-
-    // const newToken = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
+  //   // Send the response
+  //   const newToken = jwt.sign({ name: newUser.name, isVerified: newUser.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
+  //   res.cookie("token", newToken);
+  //   res.json({ message: 'Login successful' });
 
 
-    // res.cookie("token", newToken);
+  // }
 
-    // // Send the token in the response
-    // res.json({ message: 'Login successful' });
- 
-}
+  // const newToken = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
 
-exports.googleLoginApp = async (req,res) => {
-  const { token } = req.body
+
+  // res.cookie("token", newToken);
+
+  // // Send the token in the response
+  // res.json({ message: 'Login successful' });
 
 }
 
+exports.googleLoginApp = async (req, res) => {
+  return googleLoginBase(req, res, false)
+
+}
 
 
-exports.verify = async (req, res) => {
+
+const verify = async (req, res, isWeb) => {
   try {
     const { token, otp } = req.body
-    
-
-    console.log(token)
-
+    console.log({token , otp})
     jwt.verify(token, process.env.SECURITY_KEY, (err, decoded) => {
       if (err) {
         // Token is invalid or has expired
@@ -279,14 +244,8 @@ exports.verify = async (req, res) => {
         final = decoded
       }
     });
-
     const email = final.email
-
-    
-
-
     const user = await User.findOne({ email })
-
     if (!user) {
       return res.status(404).json({ message: "User not found" })
     }
@@ -299,16 +258,16 @@ exports.verify = async (req, res) => {
 
       const token = jwt.sign({ name: user.name, isVerified: user.isVerified, email: user.email }, process.env.SECURITY_KEY, { expiresIn: '7day' });
 
-
-      const oneWeekInSeconds = 7 * 24 * 60 * 60; // 7 days * 24 hours * 60 minutes * 60 seconds
-      const expirationDate = new Date(Date.now() + oneWeekInSeconds * 1000); // Convert seconds to milliseconds
-      res.cookie('token', token, {
-      expires: expirationDate,
-      
-      });
-     
-
-      return res.status(200).json({ message: "User verified successfully" })
+      if (isWeb) {
+        const oneWeekInSeconds = 7 * 24 * 60 * 60; // 7 days * 24 hours * 60 minutes * 60 seconds
+        const expirationDate = new Date(Date.now() + oneWeekInSeconds * 1000); // Convert seconds to milliseconds
+        res.cookie('token', token, {
+          expires: expirationDate
+        })
+        return res.status(200).json({ message: "User verified successfully" })
+      } else {
+        return res.header("x-auth-token", token).status(201).json({ token, success: true });
+      }
     } else {
       return res.status(400).json({ message: "Invalid OTP" })
     }
@@ -318,17 +277,21 @@ exports.verify = async (req, res) => {
   }
 }
 
-
-
-exports.logout = async (req,res) =>{
-  try{
+exports.verificationWeb = async (req, res) => {
+  return verify(req, res, true)
+}
+exports.verificationApp = async (req, res) => {
+  return verify(req, res, false)
+}
+exports.logout = async (req, res) => {
+  try {
     res.clearCookie('token')
-    res.json({msg:"Done"})
+    res.json({ msg: "Done" })
   }
-  catch(err){
+  catch (err) {
     res.error(err)
   }
-  
+
 }
 
 

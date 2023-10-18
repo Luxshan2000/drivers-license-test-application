@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import '../assets/CSS/signUp.css'
+import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import Alert from 'react-bootstrap/Alert';
-import { Link, useNavigate } from "react-router-dom";
-import { useAuthContext } from "../context/AuthContext";
-import axios from 'axios';
-import { getSessionCookie } from "../utils/cookie";
-import jwt_decode from 'jwt-decode'
-import GoogleLoginButton from "../components/GoogleLoginButton";
 
-export default function Login() {
-    const navigate = useNavigate()
-    const {setAuth,auth} = useAuthContext()
+
+
+
+
+export default function Todo() {
+   
+   
 
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
@@ -25,80 +23,20 @@ export default function Login() {
     const [feedBack, setFeedback] = useState()
     
     
-    useEffect(()=>{
-        if(getSessionCookie("token")){
-            navigate("/dashboard", {replace:true})
-        }    
-    },[])
+   
     
 
     
     
 
-    const handleSubmit = (e)=>{
-
-        setLoading(true)
-
-        e.preventDefault();
-        const form = e.currentTarget;
-        if (form.checkValidity() === false) {
-            e.preventDefault();
-            e.stopPropagation(); 
-            setValidated(true)
-            setLoading(false)
-            return 
-        }
-
-       setValidated(true)
-
-        axios.defaults.withCredentials = true
-        axios.post('http://localhost:5000/api/auth/login', {email:email, password:password})
-        .then(response => {
-            // Handle the successful response here
     
-            setEmail("")
-            setPassword("")
-
-            
-
-            if(jwt_decode(getSessionCookie("token")).isVerified){
-                navigate("/dashboard",{replace:true})
-            }
-            else{
-                navigate("/dashboard",{replace:true})
-            }
-
-            
-
-            
-        })
-        .catch(error => {
-            // Handle any errors that occur during the request
-            if(error.response){
-                setFeedback( error.response.data.error)
-            }else{
-                 setFeedback("Network Error!")
-            }
-
-
-        }).finally(()=>{
-            setLoading(false)
-        })
         
-        
-        // if(auth.isVerified){
-        //     navigate("/dashboard",{replace:true})
-        // }
-        // else{
-        //     navigate("/passwordverify",{replace:true})
-        // }
-        
-    }
+    
     return (
         <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <div className="blurEffect" style={{ width: '500px' }}>
                 <h1 className="mb-4" style={{textAlign:'center'}}>LOGIN</h1>
-                <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                <Form noValidate validated={validated} >
 
                     <FloatingLabel
                         controlId="floatingInput"
@@ -137,7 +75,7 @@ export default function Login() {
                     <p>OR</p> */}
                     <p className="hr-line"><span>OR</span></p>
 
-                    <GoogleLoginButton/>
+                   
 
                     {/* <Button type="submit" className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                         <div style={{ flex: 1 / 3, textAlign: 'start' }}>

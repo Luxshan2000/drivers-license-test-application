@@ -1,91 +1,118 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import HeadingComponent from '../components/HeadingComponent'
 import '../assets/CSS/courseviewStyle.css'
 import OffCanvasNavComponent from '../components/OffCanvasNavComponent'
 import OutFrame from '../components/OutFrame'
 import FrameComponent from '../components/FrameComponent'
+import axios from 'axios';
 function CourseView() {
-  const heading = [
-    {
-      id:"1",
-      name: "1. Overview",
-      status:"Completed!",
-      availability:"Free",
-      video:"URL Video",
-      quiz:"QuizId",
-      subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
-    },
-    {
-      id:"2",
-      name: "2. Who can apply for driving license?",
-      status:"Completed!",
-      availability:"Free",
-      video:"URL Video",
-      quiz:"QuizId",
-      subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
-    },
-    {
-      id:"3",
-      name: "3. What are the ways to apply License?",  
-      status:"Completed!",
-      availability:"Free",
-      video:"URL Video",
-      quiz:"QuizId",
-      subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
-    },
-    {
-      id:"4",
-      name: "4. Sample heading",  
-      status:"Process!",
-      availability:"Premium",
-      video:"URL Video",
-      quiz:"QuizId",
-      subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
-    },
-    {
+
+  const [heading, setHeading] = useState([])
+  
+  useEffect(()=>{
+    axios.defaults.withCredentials = true
+    axios.get('http://localhost:5000/api/material/topics')
+        .then(response => {
+            // Handle the successful response here
+    
+            setHeading(response.data)
+
+            
+        })
+        .catch(error => {
+            console.log(error)
+
+
+        })
+  },[])
+  
+
+  
+  
+
+
+
+  // const heading = [
+  //   {
+  //     id:"1",
+  //     name: "1. Overview",
+  //     status:"Completed!",
+  //     availability:"Free",
+  //     video:"URL Video",
+  //     quiz:"QuizId",
+  //     subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
+  //   },
+  //   {
+  //     id:"2",
+  //     name: "2. Who can apply for driving license?",
+  //     status:"Completed!",
+  //     availability:"Free",
+  //     video:"URL Video",
+  //     quiz:"QuizId",
+  //     subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
+  //   },
+  //   {
+  //     id:"3",
+  //     name: "3. What are the ways to apply License?",  
+  //     status:"Completed!",
+  //     availability:"Free",
+  //     video:"URL Video",
+  //     quiz:"QuizId",
+  //     subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
+  //   },
+  //   {
+  //     id:"4",
+  //     name: "4. Sample heading",  
+  //     status:"Process!",
+  //     availability:"Premium",
+  //     video:"URL Video",
+  //     quiz:"QuizId",
+  //     subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
+  //   },
+  //   {
       
-      id:"5",
-      name: "5. Sample heading",  
-      status:"Process!",
-      availability:"Premium",
-      video:"URL Video",
-      quiz:"QuizId",
-      subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
+  //     id:"5",
+  //     name: "5. Sample heading",  
+  //     status:"Process!",
+  //     availability:"Premium",
+  //     video:"URL Video",
+  //     quiz:"QuizId",
+  //     subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
       
-    },
-    {
+  //   },
+  //   {
       
-      id:"6",
-      name: "6. Sample heading",  
-      status:"Process!",
-      availability:"Premium",
-      video:"URL Video",
-      quiz:"QuizId",
-      subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
+  //     id:"6",
+  //     name: "6. Sample heading",  
+  //     status:"Process!",
+  //     availability:"Premium",
+  //     video:"URL Video",
+  //     quiz:"QuizId",
+  //     subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
       
-    },
-    {
+  //   },
+  //   {
       
-      id:"7",
-      name: "7. Sample heading",  
-      status:"Process!",
-      availability:"Premium",
-      video:"URL Video",
-      quiz:"QuizId",
-      subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
+  //     id:"7",
+  //     name: "7. Sample heading",  
+  //     status:"Process!",
+  //     availability:"Premium",
+  //     video:"URL Video",
+  //     quiz:"QuizId",
+  //     subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
       
-    },
-    {
+  //   },
+  //   {
       
-      id:"8",
-      name: "8. Sample heading",  
-      status:"Process!",
-      availability:"Premium",
-      video:"URL Video",
-      quiz:"QuizId",
-      subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
+  //     id:"8",
+  //     name: "8. Sample heading",  
+  //     status:"Process!",
+  //     availability:"Premium",
+  //     video:"URL Video",
+  //     quiz:"QuizId",
+  //     subHeadings:["1.1 Interactive Video", "1.2 Quiz"]
       
-    }]
+  //   }]
 
   return (
     <FrameComponent>
