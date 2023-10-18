@@ -2,9 +2,16 @@ import React, { useEffect, useState } from 'react'
 import FrameComponent from '../components/FrameComponent'
 import QuestionComponent from '../components/QuestionComponent'
 import axios from 'axios'
+import Counter from '../components/Counter'
 
 function Exam() {
     const [question, setQuestion] = useState([])
+
+
+    const handleSubmit = ()=>{
+        console.log("submitted!")
+    }
+
     useEffect(()=>{
         axios.defaults.withCredentials = true
         axios.get('http://localhost:5000/api/material/getQuestions')
@@ -39,10 +46,10 @@ function Exam() {
                                 <h6>Status: Ongoing</h6>
                             </div>
                             <div className='col-12 col-md-4 col-lg-4 text-md-end text-lg-end'>
-                                <h6 className=' text-white'>Remaining: 10 min, 23 Sec</h6>
+                                <Counter onSubmit={handleSubmit}/>
                             </div>
                         </div>
-                        <div>
+                        <form onSubmit={handleSubmit} >
                             <hr/>
                             {question.map((mcq, index) => (
                                 <QuestionComponent id={index} mcq = {mcq} />
@@ -57,7 +64,7 @@ function Exam() {
                             <QuestionComponent id={8} />
                             <QuestionComponent id={9} />
                             <QuestionComponent id={10} /> */}
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -66,7 +73,7 @@ function Exam() {
                     <div className=' row'>
                         <div className='  col-6 col-md-8 col-lg-9  text-start'>
                         </div>
-                        <button className=' btn-success btn col-6   col-md-4 col-lg-3 rounded-2 p-2  text-center'>
+                        <button onClick={handleSubmit} className=' btn-success btn col-6   col-md-4 col-lg-3 rounded-2 p-2  text-center'>
                             Finish and Submit
                         </button>
                     </div>
