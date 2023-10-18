@@ -9,6 +9,9 @@ function Exam() {
     const [question, setQuestion] = useState([])
     const { id } = useParams();
 
+    const initialMinutes = 15;
+    const initialSeconds = 0;
+
 
     const handleSubmit = ()=>{
         console.log("submitted!")
@@ -50,7 +53,7 @@ function Exam() {
                                 <h6>Status: Ongoing</h6>
                             </div>
                             <div className='col-12 col-md-4 col-lg-4 text-md-end text-lg-end'>
-                                <Counter onSubmit={handleSubmit}/>
+                                <Counter initialSeconds={initialSeconds} initialMinutes={initialMinutes}  onSubmit={handleSubmit}/>
                             </div>
                         </div>
                         <form onSubmit={handleSubmit} >

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-function Counter({onSubmit}) {
-  const initialMinutes = 1;
-  const initialSeconds = 0;
+function Counter({initialMinutes,initialSeconds,onSubmit}) {
+  
   const [minutes, setMinutes] = useState(initialMinutes);
   const [seconds, setSeconds] = useState(initialSeconds);
   const [color,setColor] = useState("white")
