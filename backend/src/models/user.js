@@ -92,7 +92,37 @@ const User= mongoose.model("users",{
            }
         }
     ],
-    completed:[String]
+    completed:[
+        {
+            quizNo:{
+                type:Number,
+                required: true
+            },
+            status: {
+                type: Number,
+                default: 1
+            },
+            startOn:{
+                type: Date,
+                required: true,
+                default: Date.now
+            },
+            submitOn:{
+                type: Date,
+            },
+            data:[{
+                quesId:{
+                    type:Number,
+                    required: true
+                },
+                ans:{
+                    type:String,
+                    default:"NULL",
+                    required: true
+                }
+            }]
+        }
+    ]
 })
 
 module.exports = User

@@ -46,6 +46,17 @@ export default function PasswordVerify() {
         })
     }
 
+
+    const resendRequest= ()=>{
+        axios.defaults.withCredentials = true
+        axios.post('http://localhost:5000/api/auth/resend')
+        .then(res=>{
+            console.log("Sent!")
+        }).catch(err=>{
+            console.log("Error!")
+        })
+    }
+
     
     return (
         <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -73,7 +84,7 @@ export default function PasswordVerify() {
                     <div style={{ display: 'flex', flexDirection: 'column', marginTop: '50px' }}>
                         <Button type='submit' className="mb-3 task-button">Verify</Button>
                         <p className="mb-3" style={{ fontSize: '12', fontWeight: 'lighter' }}>
-                            Didn't receive the verification OTP?<a href='#'><span>Resend</span></a>
+                            Didn't receive the verification OTP?<a href='#'><span onClick={resendRequest}> Resend</span></a>
                         </p>
                     </div>
                 </Form>

@@ -272,7 +272,7 @@ const verify = async (req, res, isWeb) => {
       return res.status(400).json({ message: "Invalid OTP" })
     }
   } catch (err) {
-    console.error(err);
+    //console.error(err);
     res.status(500).json({ message: "Internal Server Error" })
   }
 }
@@ -292,6 +292,31 @@ exports.logout = async (req, res) => {
     res.error(err)
   }
 
+}
+
+exports.resendOTP = async (req,res)=>{
+  try {
+    // Extract user information
+
+    console.log("Came")
+    const otp = OTPGenerator()
+    const email = req.email;
+    const user = await User.findOne({ email });
+    if (user){
+      // Create a new user 
+      user.otp = otp 
+      await user.save()
+      await emailModule.sendOTP(email, otp)
+      res.status(200).json({msg:"ok"})
+    }
+
+    else{
+      res.status(404).json({msg:"user not found!"})
+    }
+  }
+  catch (err){
+    res.status(404).json({msg:"user not found!"})
+  }
 }
 
 
