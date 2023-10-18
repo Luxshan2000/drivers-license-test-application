@@ -3,9 +3,11 @@ import FrameComponent from '../components/FrameComponent'
 import QuestionComponent from '../components/QuestionComponent'
 import axios from 'axios'
 import Counter from '../components/Counter'
+import { useParams } from 'react-router-dom';
 
 function Exam() {
     const [question, setQuestion] = useState([])
+    const { id } = useParams();
 
 
     const handleSubmit = ()=>{

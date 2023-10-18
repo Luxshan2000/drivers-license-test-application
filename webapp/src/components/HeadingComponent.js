@@ -32,7 +32,7 @@ function HeadingComponent({heading}) {
           <div className='rounded-3 mb-3 p-3 pb-0 '>
             <div className='text-start mb-3 p-1'>
               <h5 className='CourseSubHeading'>
-                <Link to='/dashboard/course/heading/1' style={{cursor:'pointer'}}>
+                <Link to={`/dashboard/course/heading/${heading.no}`} style={{cursor:'pointer'}}>
                   <span class=" rounded-5 bg-success-subtle p-2 m-1 ">
                     <i class="bi  bi-book"></i>
                   </span>
@@ -48,7 +48,7 @@ function HeadingComponent({heading}) {
             </div>
             <div className='text-start mb-3 p-1'>
               <h5 className='CourseSubHeading'>
-                <Link to='/dashboard/quiz/1/view'  style={{cursor:'pointer'}}>
+                <Link to={`/dashboard/quiz/${heading.no}/view`}  style={{cursor:'pointer'}}>
                   <span class=" rounded-5 bg-danger-subtle p-2 m-1 ">
                     <i class="bi  bi-pencil"></i>
                   </span>

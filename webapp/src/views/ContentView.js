@@ -1,15 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import FrameComponent from '../components/FrameComponent'
 import ScriptComponent from '../components/ScriptComponent'
 import VideoComponent from '../components/VideoComponent'
-
+import axios from 'axios'
 
 function ContentView() {
+  const { id } = useParams()
+  const [heading, setHeading] = useState()
+
+
+
+  useEffect(()=>{
+    axios.defaults.withCredentials = true
+    axios.get(`http://localhost:5000/api/material/topic/${id}`)
+        .then(response => {
+            // Handle the successful response here
+           setHeading(response.data)
+          
+            
+
+            
+        })
+        .catch(error => {
+            console.log(error)
+
+
+        })
+  },[])
+
+
+
   return (
     <FrameComponent>
-      <div  className=' container-fluid mt-2 pt-2 ' >
+      {heading && <div  className=' container-fluid mt-2 pt-2 ' >
         <div className=' text-center row'>
-          <h5 className=' PageHeading' >1.Overview</h5>
+          <h5 className=' PageHeading' >{heading.no+". "+heading.title}</h5>
         </div>
         <div className=' row' >
           <div className=' col-12   overflow-hidden'>
@@ -17,7 +43,7 @@ function ContentView() {
           </div>
         </div> 
         <div className='row m-0 mb-3 mt-1 p-0'>
-          <ScriptComponent />
+          <ScriptComponent data={heading.script} />
         </div> 
         <div className='row   mt-1'>
           <div className='m-auto col-12 col-md-10 col-lg-10 ' >
@@ -27,7 +53,7 @@ function ContentView() {
             </div>   
           </div>
         </div>
-      </div>
+      </div>}
     </FrameComponent>
   )
 }

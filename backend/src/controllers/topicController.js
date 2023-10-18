@@ -29,6 +29,17 @@ exports.getAllTopics = async (req, res) => {
     }
 }
 
+exports.getTopicScript = async (req,res) =>{
+    try{
+        const no = req.params.id
+        const topicData = await Topic.findOne({no}).select("title script videoUrl no")
+        res.status(200).json(topicData)
+    }
+    catch{
+        res.status(500).json({error: err})
+    }
+}
+
 
 
 
