@@ -47,7 +47,7 @@ function PracticeExamView() {
                 { 
                     tests.map((test)=>(
                     <Col className=' mx-auto mb-3' lg={6} sm={11} >
-                        <Link to='/dashboard/practice/1/view'>
+                        <Link to='/dashboard/practice/practiceQuiz'>
                             <Card border='info' className=' h-100 rounded-4 hover-effect' style={{backgroundColor:'lightblue', cursor:'pointer'}}>
                                 <Card.Body>
                                     <Card.Title className=' text-center'>Practice test - {test.no}</Card.Title>
