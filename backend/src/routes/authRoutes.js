@@ -7,7 +7,8 @@ router.post('/signUpApp',authController.signUpApp);
 router.post('/login', authController.loginWeb);
 router.post('/loginApp', authController.loginApp);
 
-router.post('/googleLogin',authController.googleLoginApp);
+router.post('/googleLogin',authController.googleLogin)
+router.post('/googleLoginApp',authController.googleLoginApp);
 
 router.post('/facebooklogin',authController.facebooklogin);
 
