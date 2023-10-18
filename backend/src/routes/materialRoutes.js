@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const topicController = require('../controllers/topicController');
+const questionController = require('../controllers/questionController');
 require('dotenv').config();
 
 
@@ -30,7 +31,7 @@ const  verifyUser = (req,res,next) => {
   }
 
 router.get('/topics',verifyUser,topicController.getAllTopics)
-
+router.get('/getQuestions', verifyUser, questionController.getQuestions)
 
 
 module.exports = router;

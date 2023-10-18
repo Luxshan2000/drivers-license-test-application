@@ -1,6 +1,7 @@
 require('dotenv').config();
 const mongoose = require("mongoose");
 const Topic = require('../src/models/topic');
+const Question = require('../src/models/questions')
 
 
 const connectMongoDb = ()=>{
@@ -45,6 +46,9 @@ const connectMongoDb = ()=>{
         // }
 
         // sample()
+        
+
+
 
 
     }).catch((error)=>{
