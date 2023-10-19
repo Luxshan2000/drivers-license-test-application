@@ -57,8 +57,28 @@ function Exam() {
     }
 
     const autoSubmit = ()=>{
+
+        const answersTemp = [...answers]
+
+        if(question.length != answers.length){
+           question.forEach((item)=> {
+            let find = false
+            for(let i=0; i<answers.length ; i++){
+                if(answers[i].quesId == item._id ){
+                    find = true
+                }
+            }
+
+            if(!find){
+                answersTemp.push({ quesId: item._id , ans: "NULL" });
+            }
+           })
+        }
+
+
+
         axios.defaults.withCredentials = true
-        axios.post(`http://localhost:5000/api/material/topic/quiz/answer/${id}`,answers)
+        axios.post(`http://localhost:5000/api/material/topic/quiz/answer/${id}`,answersTemp)
         .then(res=>{
             console.log(res.data)
             navigate(`/dashboard/quiz/view/${id}`, {replace:true})
@@ -80,7 +100,7 @@ function Exam() {
                
 
                 const end = new Date(response.data.startOn)
-                end.setMinutes(end.getMinutes() + 18)
+                end.setMinutes(end.getMinutes() + 1)
 
                 
 
