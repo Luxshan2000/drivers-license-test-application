@@ -101,6 +101,8 @@ exports.saveQuizAns = async (req, res) => {
       // Access the last 'completed' object and update the 'data' field
       const lastCompletedIndex = user.completed.length - 1;
       user.completed[lastCompletedIndex].data = data;
+
+      user.completed[lastCompletedIndex].status = 1;
   
       await user.save(); // Save the changes to the database
   

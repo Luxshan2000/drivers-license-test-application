@@ -3,11 +3,12 @@ import FrameComponent from '../components/FrameComponent'
 import QuestionComponent from '../components/QuestionComponent'
 import axios from 'axios'
 import Counter from '../components/Counter'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function Exam() {
     const [question, setQuestion] = useState([])
     const { id } = useParams();
+    const navigate = useNavigate()
 
     const [answers, setAnswers] = useState([])
 
@@ -44,6 +45,8 @@ function Exam() {
         axios.post(`http://localhost:5000/api/material/topic/quiz/answer/${id}`,answers)
         .then(res=>{
             console.log(res.data)
+            navigate(`/dashboard/quiz/view/${id}`, {replace:true})
+            
         }).catch(err=>{
             console.log("Error!")
         })

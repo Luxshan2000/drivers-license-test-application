@@ -7,7 +7,7 @@ import axios from 'axios'
 function QuizView() {
   const {setModal}  = useModal()
   const [review,setReview] = useState([])
-  const [conti, setConti] = useState()
+  const [conti, setConti] = useState([])
 
   const {id} = useParams()
   const showModal =()=>{
@@ -29,6 +29,7 @@ function QuizView() {
         .then(res=>{
             setReview(res.data.review)
             setConti(res.data.continue)
+            
         }).catch(err=>{
             console.log(err)
         })
@@ -85,7 +86,7 @@ function QuizView() {
                   </table>
                 </div>
               </div>
-              {conti ?<Link to={`/dashboard/quiz/exam/${id}`}  style={{backgroundColor:"#004053d1",color:'white'}}  type="button" class="btn mt-3 mb-1 w-auto m-auto">Continue</Link> : <button onClick={showModal} style={{backgroundColor:"#004053d1",color:'white'}}  type="button" class="btn mt-3 mb-1 w-auto m-auto">Attempt Quiz Now</button>}
+              {conti.length ?<Link to={`/dashboard/quiz/exam/${id}`}  style={{backgroundColor:"#004053d1",color:'white'}}  type="button" class="btn mt-3 mb-1 w-auto m-auto">Continue</Link> : <button onClick={showModal} style={{backgroundColor:"#004053d1",color:'white'}}  type="button" class="btn mt-3 mb-1 w-auto m-auto">Attempt Quiz Now</button>}
               <h6>Your quiz will be automatically submitted once the allocated time is completed.</h6>
             </div>
             <div className='mt-1  ' >
