@@ -106,10 +106,28 @@ exports.saveQuizAns = async (req, res) => {
   
       res.status(200).json({ message: "Quiz answers saved successfully" });
     } catch (error) {
-      console.error(error);
+    //   console.error(error);
       res.status(500).json({ message: "Internal server error" });
     }
   }
+
+exports.getTopicQuizReviewView = async (req,res)=>{
+    try{
+        const email = req.email
+        const no = req.params.id
+        const user = await User.findOne({email}).select("completed")
+        
+        const reviewArray = user.completed.filter((item)=> (item.quizNo == no && item.status == 1 ) )
+        const continueArray = user.completed.filter((item)=> (item.quizNo == no && item.status == 0 ) )
+
+
+        res.status(200).json({review: reviewArray, continue: continueArray})
+    }
+    catch(err){
+        res.status(500).json({message:"Internal server error"})
+        console.log("Error")
+    }
+}
   
 
 

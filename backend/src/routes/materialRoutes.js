@@ -36,5 +36,5 @@ router.get('/topic/quiz/:id',verifyUser,topicController.getTopicQuiz)
 router.get('/getQuestions', verifyUser, questionController.getQuestions)
 router.post('/startexam/:id', verifyUser, topicController.startQuiz )
 router.post('/topic/quiz/answer/:id', verifyUser, topicController.saveQuizAns )
-
+router.get('/topic/quiz/review/:id', verifyUser, topicController.getTopicQuizReviewView )
 module.exports = router;

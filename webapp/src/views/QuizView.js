@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import FrameComponent from '../components/FrameComponent'
 import { useModal } from '../context/ModalContext'
+import axios from 'axios'
 
 function QuizView() {
   const {setModal}  = useModal()
+  const [review,setReview] = useState([])
+  const [conti, setConti] = useState()
+
   const {id} = useParams()
   const showModal =()=>{
     setModal((prv)=>({
@@ -17,6 +21,29 @@ function QuizView() {
         show:true
       }))
   }
+
+
+  useEffect(()=>{
+        axios.defaults.withCredentials = true
+        axios.get(`http://localhost:5000/api/material/topic/quiz/review/${id}`)
+        .then(res=>{
+            setReview(res.data.review)
+            setConti(res.data.continue)
+        }).catch(err=>{
+            console.log(err)
+        })
+  },[])
+
+  const options = {
+    weekday: 'long',   // Full weekday name (e.g., Tuesday)
+    day: 'numeric',    // Day of the month (e.g., 14)
+    month: 'long',     // Full month name (e.g., June)
+    year: 'numeric',   // 4-digit year (e.g., 2022)
+    hour: 'numeric',   // Hour in 12-hour clock format (e.g., 10)
+    minute: 'numeric', // Minutes (e.g., 20)
+    second: 'numeric', // Seconds (e.g., 52)
+    hour12: true       // Use 12-hour clock (AM/PM)
+  };
 
   return (
     <FrameComponent>
@@ -43,19 +70,22 @@ function QuizView() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className=' table-success'>
-                        <td scope="row">1</td>
-                        <td className=' text-start'>Finished <br/>
-                            Submitted Tuesday, 14 June 2022, 10:20 AM
+                      {review.map((item,index)=>(
+                      <tr key={index} className=' table-success'>
+                        <td scope="row">{index+1}</td>
+                        <td className=' text-start'>Finished<br/>
+                            {/* Submitted Tuesday, 14 June 2022, 10:20 AM */}
+                            {new Date(item.startOn).toLocaleTimeString('en-US',options)}
                         </td>
-                        <td>80%</td>
-                        <td>Review</td>
+                        <td>{"80%"}</td>
+                        <td>{"Review"}</td>
                       </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
               </div>
-              <button onClick={showModal} style={{backgroundColor:"#004053d1",color:'white'}}  type="button" class="btn mt-3 mb-1 w-auto m-auto">Attempt Quiz Now</button>
+              {conti ?<Link to={`/dashboard/quiz/exam/${id}`}  style={{backgroundColor:"#004053d1",color:'white'}}  type="button" class="btn mt-3 mb-1 w-auto m-auto">Continue</Link> : <button onClick={showModal} style={{backgroundColor:"#004053d1",color:'white'}}  type="button" class="btn mt-3 mb-1 w-auto m-auto">Attempt Quiz Now</button>}
               <h6>Your quiz will be automatically submitted once the allocated time is completed.</h6>
             </div>
             <div className='mt-1  ' >
