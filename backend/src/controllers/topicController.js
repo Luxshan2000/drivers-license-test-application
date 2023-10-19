@@ -51,6 +51,9 @@ exports.getTopicQuiz = async (req,res) =>{
     }
 }
 
+
+
+
 exports.startQuiz = async (req,res) =>{
     try{
         const no = req.params.id
@@ -83,6 +86,31 @@ exports.startQuiz = async (req,res) =>{
 }
 
 
+exports.saveQuizAns = async (req, res) => {
+    const email = req.email;
+    const data = req.body;
+    console.log(email);
+  
+    try {
+      const user = await User.findOne({ email });
+  
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+  
+      // Access the last 'completed' object and update the 'data' field
+      const lastCompletedIndex = user.completed.length - 1;
+      user.completed[lastCompletedIndex].data = data;
+  
+      await user.save(); // Save the changes to the database
+  
+      res.status(200).json({ message: "Quiz answers saved successfully" });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  }
+  
 
 
 

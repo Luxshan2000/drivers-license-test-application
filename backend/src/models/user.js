@@ -112,7 +112,7 @@ const User= mongoose.model("users",{
             },
             data:[{
                 quesId:{
-                    type:Number,
+                    type:String,
                     required: true
                 },
                 ans:{

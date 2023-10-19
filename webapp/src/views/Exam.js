@@ -9,15 +9,48 @@ function Exam() {
     const [question, setQuestion] = useState([])
     const { id } = useParams();
 
+    const [answers, setAnswers] = useState([])
+
     const initialMinutes = 15;
     const initialSeconds = 0;
 
 
-    const handleSubmit = ()=>{
-        console.log("submitted!")
+    const handleAnswerChange = (e) => {
+         
+
+    const answersCopy = [...answers]
+    const quesId = e.target.name
+    
+    const updatedAnswerIndex = answersCopy.findIndex(answer => answer.quesId === quesId);
+
+    if (updatedAnswerIndex !== -1) {
+      
+      answersCopy[updatedAnswerIndex].ans = e.target.value;
+    } else {
+      
+      answersCopy.push({ quesId, ans: e.target.value });
     }
 
-    console.log(question)
+    
+    setAnswers(answersCopy);
+    }
+
+
+    const handleSubmit = ()=>{
+        console.log("submitted!")
+        console.log(answers);
+
+        axios.defaults.withCredentials = true
+        axios.post(`http://localhost:5000/api/material/topic/quiz/answer/${id}`,answers)
+        .then(res=>{
+            console.log(res.data)
+        }).catch(err=>{
+            console.log("Error!")
+        })
+
+    }
+
+    // console.log(question)
 
     useEffect(()=>{
         axios.defaults.withCredentials = true
@@ -31,7 +64,7 @@ function Exam() {
                 
             })
             .catch(error => {
-                console.log(error)
+                console.log("error")
     
     
             })
@@ -59,7 +92,7 @@ function Exam() {
                         <form onSubmit={handleSubmit} >
                             <hr/>
                             {question.map((mcq, index) => (
-                                <QuestionComponent id={index} mcq = {mcq} />
+                                <QuestionComponent  handleAnswerChange={handleAnswerChange} key={index} no={index} id={mcq._id} mcq = {mcq} />
                             ))}
                             
                             {/* <QuestionComponent id={2} />
