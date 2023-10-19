@@ -98,6 +98,10 @@ const User= mongoose.model("users",{
                 type:Number,
                 required: true
             },
+            grade:{
+                type: Number,
+                default:0
+            },
             status: {
                 type: Number,
                 default: 1

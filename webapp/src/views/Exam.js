@@ -37,7 +37,8 @@ function Exam() {
     }
 
 
-    const handleSubmit = ()=>{
+    const handleSubmit = (e)=>{
+        e.preventDefault()
         console.log("submitted!")
         console.log(answers);
 
@@ -74,7 +75,7 @@ function Exam() {
       },[])
   return (
     <FrameComponent>
-        <div className='container min-vh-100 rounded-1 mb-1 mb-md-2 mb-lg-3 mt-1 mt-md-2 mt-lg-3 col-11 col-md-10 col-lg-10 mx-auto' >
+        <form onSubmit={handleSubmit} className='container min-vh-100 rounded-1 mb-1 mb-md-2 mb-lg-3 mt-1 mt-md-2 mt-lg-3 col-11 col-md-10 col-lg-10 mx-auto' >
             <div className=' row'>
                 <div className=' ps-2 pe-2 p-1 rounded-1   text-center'>
                     <h5 className='PageHeading'>Quiz for Road sign</h5>
@@ -92,7 +93,7 @@ function Exam() {
                                 <Counter initialSeconds={initialSeconds} initialMinutes={initialMinutes}  onSubmit={handleSubmit}/>
                             </div>
                         </div>
-                        <form onSubmit={handleSubmit} >
+                        <div  >
                             <hr/>
                             {question.map((mcq, index) => (
                                 <QuestionComponent  handleAnswerChange={handleAnswerChange} key={index} no={index} id={mcq._id} mcq = {mcq} />
@@ -107,7 +108,7 @@ function Exam() {
                             <QuestionComponent id={8} />
                             <QuestionComponent id={9} />
                             <QuestionComponent id={10} /> */}
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -116,13 +117,13 @@ function Exam() {
                     <div className=' row'>
                         <div className='  col-6 col-md-8 col-lg-9  text-start'>
                         </div>
-                        <button onClick={handleSubmit} className=' btn-success btn col-6   col-md-4 col-lg-3 rounded-2 p-2  text-center'>
+                        <button type='submit'  className=' btn-success btn col-6   col-md-4 col-lg-3 rounded-2 p-2  text-center'>
                             Finish and Submit
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </FrameComponent>
   )
 }

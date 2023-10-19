@@ -1,7 +1,7 @@
 const Topic = require('../models/topic')
 const User  = require('../models/user')
 const jwt = require("jsonwebtoken");
-
+const { ObjectId } = require('mongodb');
 
 exports.getAllTopics = async (req, res) => {
 //   console.log(req.email)
@@ -89,17 +89,54 @@ exports.startQuiz = async (req,res) =>{
 exports.saveQuizAns = async (req, res) => {
     const email = req.email;
     const data = req.body;
+    const no = req.params.id
     console.log(email);
   
     try {
-      const user = await User.findOne({ email });
-  
+      const topicData = await Topic.findOne({no}).select("title questions no")
+      const user = await User.findOne({ email })
+
+      const obid =( topicData.questions[0]._id).toString()
+      
+
+      let grade = 0
+      data.forEach((userQues,index)=>{
+        for(let i=0; i< topicData.questions.length ; i++){
+            // console.log(topicData.questions[i]._id.toString())
+            if(userQues.quesId == topicData.questions[i]._id.toString() ){
+                if(userQues.ans == topicData.questions[i].answer ){
+                    grade +=1
+                }else{
+                    break
+                }
+            }
+        }
+      })
+
+      
+
+      grade = grade*100/data.length
+
+      console.log(grade)
+      
+
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
   
       // Access the last 'completed' object and update the 'data' field
-      const lastCompletedIndex = user.completed.length - 1;
+      let lastCompletedIndex;
+
+      (user.completed).forEach((element, index) => {
+        if(element.status == 0 && element.quizNo == no){
+            lastCompletedIndex = index
+        }
+      });
+
+      user.completed[lastCompletedIndex].grade = grade
+
+      user.completed[lastCompletedIndex].submitOn = new Date()
+
       user.completed[lastCompletedIndex].data = data;
 
       user.completed[lastCompletedIndex].status = 1;

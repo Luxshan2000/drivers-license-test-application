@@ -12,14 +12,15 @@ function QuestionComponent({id , no, mcq, handleAnswerChange}) {
       <ul style={{padding:'0',margin:'0',marginLeft:'5px'}}>
         {mcq.options.map((ans,index) => 
         <li key={index} style={{listStyleType:'none'}} >
-          <label className="form-check-label" htmlFor={id}>
+          <label  className="form-check-label" htmlFor={id+index}>
             <input 
+              required
               className="form-check-input me-2" 
               type="radio" 
               value={ans}
               name={id}
               onChange={handleAnswerChange} 
-              id={id}/>
+              id={id+index}/>
             {ans}
           </label>
         </li>)}
