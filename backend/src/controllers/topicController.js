@@ -43,10 +43,32 @@ exports.getTopicScript = async (req,res) =>{
 exports.getTopicQuiz = async (req,res) =>{
     try{
         const no = req.params.id
+        const email = req.email
         const topicData = await Topic.findOne({no}).select("title questions no")
-        res.status(200).json(topicData)
+        const user = await User.findOne({ email })
+
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+          }
+      
+          // Access the last 'completed' object and update the 'data' field
+          let lastCompletedIndex;
+    
+          (user.completed).forEach((element, index) => {
+            if(element.status == 0 && element.quizNo == no){
+                lastCompletedIndex = index
+            }
+          });
+    
+          const startOn = user.completed[lastCompletedIndex].startOn
+
+
+
+
+        res.status(200).json({ array: topicData,startOn:startOn })
     }
-    catch{
+    catch(err){
         res.status(500).json({error: err})
     }
 }
@@ -96,7 +118,7 @@ exports.saveQuizAns = async (req, res) => {
       const topicData = await Topic.findOne({no}).select("title questions no")
       const user = await User.findOne({ email })
 
-      const obid =( topicData.questions[0]._id).toString()
+      // const obid =( topicData.questions[0]._id).toString()
       
 
       let grade = 0

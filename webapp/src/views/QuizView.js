@@ -72,13 +72,13 @@ function QuizView() {
                     </thead>
                     <tbody>
                       {review.map((item,index)=>(
-                      <tr key={index} className=' table-success'>
+                      <tr key={index} className={ item.grade < 75 ? 'table-danger' :'table-success'}>
                         <td scope="row">{index+1}</td>
                         <td className=' text-start'>Finished<br/>
                             {/* Submitted Tuesday, 14 June 2022, 10:20 AM */}
                             {new Date(item.startOn).toLocaleTimeString('en-US',options)}
                         </td>
-                        <td>{"80%"}</td>
+                        <td>{item.grade+"%"}</td>
                         <td>{"Review"}</td>
                       </tr>
                       ))}

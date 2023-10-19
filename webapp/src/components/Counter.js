@@ -15,7 +15,8 @@ function Counter({initialMinutes,initialSeconds,onSubmit}) {
       if(minutes <= 1){
         setColor("darkred")
       }
-      if (minutes === 0 && seconds === 0) {
+      
+      if (minutes <= 0 && seconds <= 0) {
         clearInterval(timer); // Stop the timer when it reaches 0
         onSubmit()
         
