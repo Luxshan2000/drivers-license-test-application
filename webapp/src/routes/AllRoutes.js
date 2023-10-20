@@ -21,6 +21,7 @@ import ProgressView from '../views/ProgressView';
 import ContactUs from '../views/ContactUsView';
 import AboutUs from '../views/AboutUsView';
 import PracticeQuizView from '../views/PracticeQuizView';
+import Review from '../views/Review';
 
 function AllRoutes() {
   return (
@@ -47,6 +48,7 @@ function AllRoutes() {
           <Route path='/dashboard/progress' element={<ProgressView/>} />
           <Route path='/dashboard/contactus' element={<ContactUs/>}/>
           <Route path='/dashboard/aboutus' element={<AboutUs/>}/>
+          <Route path='/dashboard/quiz/review/:id' element={<Review/>}/>
         </Route>
      </Routes>
   )
