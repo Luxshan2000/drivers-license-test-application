@@ -48,7 +48,7 @@ function AllRoutes() {
           <Route path='/dashboard/progress' element={<ProgressView/>} />
           <Route path='/dashboard/contactus' element={<ContactUs/>}/>
           <Route path='/dashboard/aboutus' element={<AboutUs/>}/>
-          <Route path='/dashboard/quiz/review/:id' element={<Review/>}/>
+          <Route path='/dashboard/quiz/review/:id/:rid' element={<Review/>}/>
         </Route>
      </Routes>
   )

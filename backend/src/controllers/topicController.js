@@ -189,6 +189,20 @@ exports.getTopicQuizReviewView = async (req,res)=>{
         console.log("Error")
     }
 }
+
+exports.getTopicQuizReview = async (req,res)=>{
+    const email = req.email
+    const rid = req.params.rid
+    const user = await User.findOne({email}).select("completed")
+    const continueArray = user.completed.filter((item)=> (item._id == rid ) )
+
+    const sendData = continueArray[0]
+
+    
+
+
+    console.log(continueArray)
+}
   
 
 

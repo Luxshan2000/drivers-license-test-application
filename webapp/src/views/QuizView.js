@@ -29,6 +29,8 @@ function QuizView() {
         .then(res=>{
             setReview(res.data.review)
             setConti(res.data.continue)
+
+            console.log(res.data.review)
             
         }).catch(err=>{
             console.log(err)
@@ -79,7 +81,7 @@ function QuizView() {
                             {new Date(item.startOn).toLocaleTimeString('en-US',options)}
                         </td>
                         <td>{item.grade+"%"}</td>
-                        <td>{"Review"}</td>
+                        <td><Link to={`/dashboard/quiz/review/${id}/${item._id}`} >Review</Link> </td>
                       </tr>
                       ))}
                     </tbody>

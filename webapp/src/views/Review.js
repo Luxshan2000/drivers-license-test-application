@@ -9,12 +9,14 @@ function Review() {
   
 
     const [question, setQuestion] = useState([])
-    const { id } = useParams();
+    const { id, rid } = useParams()
     const navigate = useNavigate()
     const [startTime,setStartTime] = useState("2023-10-20T05:42:41.445Z")
     const [endTime, setEndTime] = useState("")
 
     const [answers, setAnswers] = useState([])
+
+    
 
     const initialMinutes = 15;
     const initialSeconds = 0;
@@ -31,7 +33,8 @@ function Review() {
 
     useEffect(()=>{
         axios.defaults.withCredentials = true
-        axios.get(`http://localhost:5000/api/material/topic/quiz/${id}`)
+        // axios.get(`http://localhost:5000/api/material/topic/quiz/${id}`)
+        axios.get(`http://localhost:5000/api/material/topic/quiz/get/review/${rid}`)
             .then(response => {
                 // Handle the successful response here
                 setQuestion(response.data.array.questions)
