@@ -145,32 +145,25 @@ const googleLoginBase = async (req, res, isWeb) => {
       const hashedPassword = await bcrypt.hash(password, saltRounds);
 
       const isAdmin = false
+      const isVerified = true
       //create a new user
-      const newUser = new User({ email, hashedPassword, name, isAdmin })
+      const newUser = new User({ email, hashedPassword, name, isAdmin, isVerified })
       await newUser.save()
-
       // Send the response
-      newUser.isVerified = true
-      const newToken = jwt.sign({ name: newUser.name, isVerified: newUser.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
+      const newToken = jwt.sign({ name: newUser.name, isVerified: newUser.isVerified, email : newUser.email }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
       if (isWeb) {
         res.cookie("token", newToken, { maxAge: 900000, httpOnly: true });
         res.json({ message: 'Login successful' });
       } else {
         res.json({ message: 'Login Successful', token })
       }
-
-
-
-
+    }else{
+      user.isVerified = true
+      const newToken = jwt.sign({ name: user.name, isVerified: user.isVerified, email : user.email }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
+      res.cookie("token", newToken);
+      res.json({ message: 'Login successful' });
     }
-    user.isVerified = true
-    const newToken = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
-
-
-    res.cookie("token", newToken);
-
-    // Send the token in the response
-    res.json({ message: 'Login successful' });
+    // Send the token in the response  
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Login failed' });
