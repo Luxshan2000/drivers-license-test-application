@@ -145,25 +145,26 @@ const googleLoginBase = async (req, res, isWeb) => {
       const hashedPassword = await bcrypt.hash(password, saltRounds);
 
       const isAdmin = false
+      const isVerified = true
       //create a new user
-      const newUser = new User({ email, hashedPassword, name, isAdmin })
+      const newUser = new User({ email, hashedPassword, name, isAdmin, isVerified })
+      
       await newUser.save()
-
-      // Send the response
-      newUser.isVerified = true
       const newToken = jwt.sign({ name: newUser.name, isVerified: newUser.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
       if (isWeb) {
-        res.cookie("token", newToken, { maxAge: 900000, httpOnly: true });
+        res.cookie("token", newToken);
         res.json({ message: 'Login successful' });
+        return
       } else {
         res.json({ message: 'Login Successful', token })
+        return
       }
 
 
 
 
     }
-    user.isVerified = true
+    
     const newToken = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
 
 
