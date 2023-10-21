@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import FrameComponent from '../components/FrameComponent'
 import axios from 'axios'
 import PracticeQuizComponent from '../components/PracticeQuizComponent'
+import { Link } from 'react-router-dom'
 
 function PracticeQuizView() {
     const [answers, setAnswers] = useState({})
@@ -24,14 +25,28 @@ function PracticeQuizView() {
             })
     }, [])
 
+    const handleSubmit = () => {
+        console.log("clicked")
+        console.log({answers})
+        axios.defaults.withCredentials = true
+        axios.post('http://localhost:5000/api/material/submitPracticeQuiz', 
+            {
+                practiceQuiz : answers
+            })
+        .then(response => {
+            console.log({response})
+        })
+
+    }
+
     // useEffect(() => {
     //     console.log("test")
     // }, [answers])
 
 
     const handleAnswer = (questionID, answer) => {
-        setAnswers((anwerList) => {
-            const newAnswerList = { ...anwerList }
+        setAnswers((answerList) => {
+            const newAnswerList = { ...answerList }
             newAnswerList[questionID] = answer
             console.log({ newAnswerList, answers })
             return newAnswerList
@@ -82,9 +97,12 @@ function PracticeQuizView() {
                         <div className=' row'>
                             <div className='  col-6 col-md-8 col-lg-9  text-start'>
                             </div>
-                            <button className=' btn-success btn col-6   col-md-4 col-lg-3 rounded-2 p-2  text-center'>
+                            <Link type='button' className='btn-success btn col-6   col-md-4 col-lg-3 rounded-2 p-2  text-center' onClick={handleSubmit}>
+                                Finish and submit
+                            </Link>
+                            {/* <button onClick={handleSubmit} className=' btn-success btn col-6   col-md-4 col-lg-3 rounded-2 p-2  text-center'>
                                 Finish and Submit
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                 </div>

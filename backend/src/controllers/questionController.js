@@ -13,3 +13,26 @@ exports.getQuestions = async (req, res) => {
         res.status(500).json({error : err})
     }
 }
+
+exports.submitPracticeQuiz = async (req, res) => {
+    try{
+        // const {userPracticePaper} = req.body; 
+        const { practiceQuiz } = req.body
+        const { email } = req.email
+
+        console.log(email)
+
+        console.log( practiceQuiz )
+        res.status(200).json({success : true , message : "Submitted successfully"})
+    }catch(err){
+        res.status(500).json({error : err})
+    }
+}
+
+exports.getReview = async (req, res) => {
+    try{
+        res.status(200).json({success : true , message : "Submitted successfully"})
+    }catch{
+        res.status(500).json({error : err})
+    }
+}

@@ -37,4 +37,6 @@ router.get('/getQuestions', verifyUser, questionController.getQuestions)
 router.post('/startexam/:id', verifyUser, topicController.startQuiz )
 router.post('/topic/quiz/answer/:id', verifyUser, topicController.saveQuizAns )
 router.get('/topic/quiz/review/:id', verifyUser, topicController.getTopicQuizReviewView )
+router.post('/submitPracticeQuiz',verifyUser, questionController.submitPracticeQuiz)
+router.get('/getReview',verifyUser, questionController.getReview)
 module.exports = router;
