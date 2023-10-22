@@ -22,6 +22,7 @@ import ContactUs from '../views/ContactUsView';
 import AboutUs from '../views/AboutUsView';
 import PracticeQuizView from '../views/PracticeQuizView';
 import Review from '../views/Review';
+import PracticeQuizReview from '../views/PracticeQuizReview';
 
 function AllRoutes() {
   return (
@@ -35,7 +36,7 @@ function AllRoutes() {
         <Route path='/passwordverify' element={<PasswordVerify/>}/>
         
         <Route element={<PrivateRoutes/>} >
-          <Route  path='/dashboard' element={<DashboardView/>}/>
+          <Route path='/dashboard' element={<DashboardView/>}/>
           <Route path='/dashboard/course' element={<CourseView />}/>
           <Route path='/dashboard/premium' element={<PremiumView/>} />
           <Route path='/dashboard/complaintsForm' element={<ComplaintsForm/>} />
@@ -45,6 +46,7 @@ function AllRoutes() {
           <Route path='/dashboard/quiz/exam/:id' element={<Exam/>}/>
           <Route path='/dashboard/practice' element={<PracticeExamView/>}/>
           <Route path='/dashboard/practice/practiceQuiz' element={<PracticeQuizView/>}/>
+          <Route path='/dashboard/practice/review' element={<PracticeQuizReview/>}/>
           <Route path='/dashboard/progress' element={<ProgressView/>} />
           <Route path='/dashboard/contactus' element={<ContactUs/>}/>
           <Route path='/dashboard/aboutus' element={<AboutUs/>}/>
