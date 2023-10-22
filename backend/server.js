@@ -7,6 +7,8 @@ const connectMongoDb = require("./config/database")
 const authRoutes = require('./src/routes/authRoutes');
 const materialRoutes = require('./src/routes/materialRoutes')
 
+const userModel = require('./src/models/user')
+
 const app = express()
 app.use(cookieParser())
 const PORT = process.env.PORT || 5000
@@ -20,7 +22,12 @@ app.use(bodyParser.json())
 
 connectMongoDb()
 
-
+// get all users
+app.get('/getUsers', async (req, res) => {
+  await userModel.find()
+  .then(users => res.json(users))
+  .catch(err => res.json(err))
+})
 
 
 app.use('/api/auth', authRoutes); 
