@@ -7,7 +7,8 @@ function PracticeQuizComponent({ id, mcq, handleAnswer, answers }) {
   // }
 
   const handleOnChange = (answer) => {
-    handleAnswer(id, answer)
+    console.log(mcq._id)
+    handleAnswer(mcq._id, answer)
   }
   return (
     <div className=' mb-3'>
@@ -15,7 +16,7 @@ function PracticeQuizComponent({ id, mcq, handleAnswer, answers }) {
       {/* <h6 className=' p-0 m-0'>{mcq}</h6> */}
       <ul style={{ padding: '0', margin: '0', marginLeft: '5px' }}>
         {mcq.options.map((ans, index) => {
-          const answerChecked = answers.hasOwnProperty(id) && answers[id] == ans
+          const answerChecked = answers.hasOwnProperty(mcq._id) && answers[mcq._id] == ans
           return (
             <li style={{ listStyleType: 'none' }} key={index} >
               <input

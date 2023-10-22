@@ -43,4 +43,7 @@ router.get('/topic/quiz/get/review/:rid', verifyUser, topicController.getTopicQu
 
 
 
+router.post('/submitPracticeQuiz',verifyUser, questionController.submitPracticeQuiz)
+router.get('/getPracticeQuiz',questionController.getPracticeQuiz)
+router.get('/getReview',questionController.getReview)
 module.exports = router;
