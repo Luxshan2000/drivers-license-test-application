@@ -8,6 +8,7 @@ const authRoutes = require('./src/routes/authRoutes');
 const materialRoutes = require('./src/routes/materialRoutes')
 
 const userModel = require('./src/models/user')
+const topicModel = require('./src/models/topic')
 
 const app = express()
 app.use(cookieParser())
@@ -26,6 +27,13 @@ connectMongoDb()
 app.get('/getUsers', async (req, res) => {
   await userModel.find()
   .then(users => res.json(users))
+  .catch(err => res.json(err))
+})
+
+// get all topics
+app.get('/getTopics', async (req, res) => {
+  await topicModel.find()
+  .then(topics => res.json(topics))
   .catch(err => res.json(err))
 })
 
