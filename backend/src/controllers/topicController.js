@@ -191,17 +191,66 @@ exports.getTopicQuizReviewView = async (req,res)=>{
 }
 
 exports.getTopicQuizReview = async (req,res)=>{
-    const email = req.email
-    const rid = req.params.rid
-    const user = await User.findOne({email}).select("completed")
-    const continueArray = user.completed.filter((item)=> (item._id == rid ) )
+    try{
+        const email = req.email
+        const rid = req.params.rid
+        const user = await User.findOne({email}).select("completed")
+        const continueArray = user.completed.filter((item)=> (item._id == rid ) )
 
-    const sendData = continueArray[0]
+        const sendData = continueArray[0]
+
+
+        const no = sendData.quizNo
+
+        const topicData = await Topic.findOne({no}).select("title questions no")
+        
+
+        const sendObj = (sendData.data).map((item,index)=>{
+            for(let i=0; i<(topicData.questions).length; i++ ){
+                // console.log(topicData.questions[0]._id)
+                if(item.quesId === topicData.questions[i]._id.toString()){
+                    
+                    const obj = {
+                        _id: topicData.questions[i]._id,
+                        ques: topicData.questions[i].ques,
+                        answer:  topicData.questions[i].answer,
+                        posFeedback: topicData.questions[i].posFeedback,
+                        negativeFeedback: topicData.questions[i].negativeFeedback,
+                        options: topicData.questions[i].options,
+                        userAns: item.ans
+                    }
+
+                    // console.log(obj)
+
+                    return obj
+                    
+                }
+
+            }
+        })
+
+        // console.log(topicData);
+
+        
+
+        res.status(200).json({data: sendObj, grade: sendData.grade, startOn: sendData.startOn,submitOn: sendData.submitOn , title: topicData.title })
+
+
+
+    } catch(err){
+        res.status(500).json({error:err})
+    }
+    
+
 
     
 
 
-    console.log(continueArray)
+    
+
+    // console.log((topicData.questions).length)
+
+
 }
   
 
