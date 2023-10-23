@@ -23,7 +23,7 @@ function ReviewComponent({ id, mcq }) {
             </li>)
         })}
       </ul>
-      <p>{mcq.feedback}</p>
+      <p style={{fontSize : 12 , color : mcq.color}}>{mcq.feedback}</p>
     </div>
   )
 }

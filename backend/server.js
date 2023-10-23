@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser')
 const connectMongoDb = require("./config/database")
 const authRoutes = require('./src/routes/authRoutes');
 const materialRoutes = require('./src/routes/materialRoutes')
+const practiceQuizRoutes = require('./src/routes/practiceQuizRoutes')
 
 const userModel = require('./src/models/user')
 const topicModel = require('./src/models/topic')
@@ -40,6 +41,7 @@ app.get('/getTopics', async (req, res) => {
 
 app.use('/api/auth', authRoutes); 
 app.use('/api/material',materialRoutes )
+app.use('/api/practiceQuizzes',practiceQuizRoutes)
 
 
 

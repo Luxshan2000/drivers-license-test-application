@@ -2,40 +2,47 @@ import React, { useEffect, useState } from 'react'
 import FrameComponent from '../components/FrameComponent'
 import axios from 'axios'
 import PracticeQuizComponent from '../components/PracticeQuizComponent'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 function PracticeQuizView() {
+    let { state } = useLocation();
     const [answers, setAnswers] = useState({})
     const [question, setQuestion] = useState([])
+    const [test, setTest] = useState()
+    const [quizNum, setQuizNum] = useState()
+    const [loading, setLoading] = useState(true)
+    var today = new Date();
     useEffect(() => {
+        
+        if(state?.test){
+            setTest(state.test)
+            setQuizNum(state.test.quizNumber)
+            setQuestion(state.test.questions)
+        console.log(state.test.questions)
+        setLoading(false)
+        }
+    }, [state])
+
+
+    const handleSubmit = () => {
+        console.log("clicked")
+        console.log({ answers })
         axios.defaults.withCredentials = true
-        axios.get('http://localhost:5000/api/material/getQuestions')
-            .then(response => {
-                // Handle the successful response here
-                setQuestion(response.data)
-                console.log(response.data)
-
-
-
+        axios.post('http://localhost:5000/api/practiceQuizzes/submitPracticeQuiz',
+            {
+                userPracticePaper : answers,
+                quizNumber : quizNum,
+                submitOn : today.toLocaleTimeString(),
+                startedOn : today.toDateString()
             })
+            .then(response => 
+                console.log({ response })
+            )
             .catch(error => {
                 console.log(error)
 
 
             })
-    }, [])
-
-    const handleSubmit = () => {
-        console.log("clicked")
-        console.log({answers})
-        axios.defaults.withCredentials = true
-        axios.post('http://localhost:5000/api/material/submitPracticeQuiz', 
-            {
-                practiceQuiz : answers
-            })
-        .then(response => {
-            console.log({response})
-        })
 
     }
 
@@ -52,13 +59,16 @@ function PracticeQuizView() {
             return newAnswerList
         })
     }
+    if(loading){
+        return <>loading</>
+    }
 
     return (
         <FrameComponent>
             <div className='container min-vh-100 rounded-1 mb-1 mb-md-2 mb-lg-3 mt-1 mt-md-2 mt-lg-3 col-11 col-md-10 col-lg-10 mx-auto' >
                 <div className=' row'>
                     <div className=' ps-2 pe-2 p-1 rounded-1   text-center'>
-                        <h5 className='PageHeading'>Quiz for Road sign</h5>
+                        <h5 className='PageHeading'>Practice Quiz {test.quizNumber}</h5>
                     </div>
                 </div>
                 <div style={{ backgroundColor: "rgb(225, 238, 254)" }} className=' row rounded-2 mt-2 p-2'>
@@ -66,7 +76,7 @@ function PracticeQuizView() {
                         <div className=' container-fluid' >
                             <div style={{ backgroundColor: "#004053bc" }} className=' row  rounded-2 p-3'>
                                 <div className='col-12 col-md-8 col-lg-8 text-start'>
-                                    {/* <h6>Started On: 22 August 2023, 11.09 PM</h6> */}
+                                    <h6>Started On: {today.toDateString()}</h6>
                                     <h6>Status: Ongoing</h6>
                                 </div>
                                 <div className='col-12 col-md-4 col-lg-4 text-md-end text-lg-end'>
