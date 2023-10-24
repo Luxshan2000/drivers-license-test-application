@@ -38,6 +38,12 @@ app.get('/getTopics', async (req, res) => {
   .catch(err => res.json(err))
 })
 
+// get user quiz marks
+app.get('/getMarks', async (req, res) => {
+  await userModel.findById('6534f69cd43292e1a6a7402d')
+  .then(user => res.json(user))
+  .catch(err => res.json(err))
+})
 
 app.use('/api/auth', authRoutes); 
 app.use('/api/material',materialRoutes )
