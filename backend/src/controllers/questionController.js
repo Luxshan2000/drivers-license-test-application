@@ -4,7 +4,6 @@ const PracticeQuizPapers = require("../models/questions")
 
 exports.getMark =  async (req, res) => {
   const email= req.email;
-
   await User
     .findOne({ email })
     .then((user) => res.json(user))
