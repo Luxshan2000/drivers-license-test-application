@@ -7,32 +7,32 @@ const BarRechartComponent = () => {
   const data = [
     {
       name: "Quiz 1",
-      value: 54.85,
+      value: 100,
       time: '10 min'
     },
     {
       name: "Quiz 2",
-      value: 47.91,
+      value: 0,
       time: '10 min'
     },
     {
       name: "Quiz 3",
-      value: 26.85,
+      value: 0,
       time: '10 min'
     },
     {
       name: "Quiz 4",
-      value: 94.85,
+      value: 0,
       time: '10 min'
     },
     {
       name: "Quiz 5",
-      value: 87.91,
+      value: 0,
       time: '10 min'
     },
     {
       name: "Quiz 6",
-      value: 46.85,
+      value: 0,
       time: '10 min'
     }
   ];
