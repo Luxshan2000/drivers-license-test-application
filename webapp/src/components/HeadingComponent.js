@@ -23,7 +23,7 @@ function HeadingComponent({heading}) {
                 {heading.isCompleted ? "Completed!" : ""}
               </span>
             </h5>
-            {!toggle? <i  class=" col-1 bi p-1 bi-chevron-down"></i>:<i  class=" col-1 bi p-1 bi-chevron-up"></i>}
+            {!toggle? <i  className=" col-1 bi p-1 bi-chevron-down"></i>:<i  className=" col-1 bi p-1 bi-chevron-up"></i>}
             
           </div>
         </div>
@@ -33,8 +33,8 @@ function HeadingComponent({heading}) {
             <div className='text-start mb-3 p-1'>
               <h5 className='CourseSubHeading'>
                 <Link to={`/dashboard/course/heading/${heading.no}`} style={{cursor:'pointer'}}>
-                  <span class=" rounded-5 bg-success-subtle p-2 m-1 ">
-                    <i class="bi  bi-book"></i>
+                  <span className=" rounded-5 bg-success-subtle p-2 m-1 ">
+                    <i className="bi  bi-book"></i>
                   </span>
                   {heading.videoUrl? `${heading.no}.1 Interactive Video and notes` :"" }
                 </Link>
@@ -49,8 +49,8 @@ function HeadingComponent({heading}) {
             <div className='text-start mb-3 p-1'>
               <h5 className='CourseSubHeading'>
                 <Link to={`/dashboard/quiz/view/${heading.no}`}  style={{cursor:'pointer'}}>
-                  <span class=" rounded-5 bg-danger-subtle p-2 m-1 ">
-                    <i class="bi  bi-pencil"></i>
+                  <span className=" rounded-5 bg-danger-subtle p-2 m-1 ">
+                    <i className="bi  bi-pencil"></i>
                   </span>
                   {`${heading.no}.2 Quiz`}
                 </Link>
