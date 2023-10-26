@@ -10,7 +10,7 @@ import Alert from 'react-bootstrap/Alert';
 
 
 
-export default function Todo() {
+export default function Login() {
    
    
 
@@ -71,35 +71,7 @@ export default function Todo() {
                     <Button  type="submit" className="mb-3 task-button">
                     {loading? (<Spinner color="gray" animation="border" />) :"Login" }
                     </Button>
-                    {/* <hr className="hr-lines"/>
-                    <p>OR</p> */}
-                    <p className="hr-line"><span>OR</span></p>
-
-                   
-
-                    {/* <Button type="submit" className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                        <div style={{ flex: 1 / 3, textAlign: 'start' }}>
-                            <i className="bi bi-google"></i>
-                        </div>
-                        <div style={{ flex: 2 / 3, textAlign: 'start' }}>
-                            Login with Google
-                        </div>
-
-
-                    </Button> */}
-                    {/* <Button className="mb-3 task-button" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                        <div style={{ flex: 1 / 3, textAlign: 'start' }}>
-                            <i className="bi bi-facebook"></i>
-                        </div>
-                        <div style={{ flex: 2 / 3, textAlign: 'start' }}>
-                            Login with Facebook
-                        </div>
-                    </Button> */}
-
-
-
-
-
+                 
                     <p className="mb-3" style={{ fontSize: '12', fontWeight: 'lighter',textAlign:'center'}}>
                         If you haven't registered yet? <Link to='/signup'><span>Register now</span></Link>
                     </p>
