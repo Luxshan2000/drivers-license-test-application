@@ -61,9 +61,9 @@ function PracticeExamView() {
                                             <span className={`CourseSubHeading badge m-1 p-2 text-dark bg-success-subtle`}>
                                                     <Link to='/dashboard/practice/review' state={{test : test}} style={{marginRight : 20}}>Quiz Review</Link>
                                             </span>
-                                            <span className={`CourseSubHeading badge m-1 p-2 text-dark bg-success-subtle`}>
+                                            {/* <span className={`CourseSubHeading badge m-1 p-2 text-dark bg-success-subtle`}>
                                                 <Link to='/dashboard/practice/practiceQuiz' state={{test : test}} style={{marginRight : 20}}>Reattempt quiz</Link>
-                                            </span>
+                                            </span> */}
                                             <span className='CourseSubHeading badge m-1 p-2 text-dark bg-success-subtle'>
                                                 Grade: {test.user_quiz.grade}
                                             </span>
