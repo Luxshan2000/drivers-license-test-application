@@ -126,7 +126,43 @@ const User= mongoose.model("users",{
                 }
             }]
         }
+    ],
+    practiceQuiz : [
+        {
+            quizID:{
+                type:Number,
+                required: true
+            },
+            grade:{
+                type: Number,
+                default:0
+            },
+            status: {
+                type: Number,
+                default: 1
+            },
+            startOn:{
+                type: String,
+                required: true,
+                // default: Date.now
+            },
+            submitOn:{
+                type: String,
+            },
+            data:[{
+                quesId:{
+                    type:String,
+                    required: true
+                },
+                ans:{
+                    type:String,
+                    default:"NULL",
+                    required: true
+                }
+            }]
+        }
     ]
 })
 
+//practiceQuiz = [{ quizID : 1 , },]
 module.exports = User

@@ -1,27 +1,39 @@
 const mongoose = require("mongoose")
 
-const Question = mongoose.model("questions",{
-    question : {
+const PracticeQuizPapers = mongoose.model("questions",{
+    quizNumber : {
         type : String,
-        required : true,
-        unique : true
+        required : true
     },
-    options : [{
-        type : String,
-        trim : true
-    }],
-    answer : {
-        type : String,
-        trim : true
+    time : {
+        type : Number
     },
-    positiveFeedback : {
-        type : String,
-        trim : true
-    },
-    negativeFeedback : {
-        type : String,
-        trim : true
-    }
+    questions : [
+        {
+            question : {
+                type : String,
+                required : true,
+                unique : true
+            },
+            options : [{
+                type : String,
+                trim : true
+            }],
+            answer : {
+                type : String,
+                trim : true
+            },
+            positiveFeedback : {
+                type : String,
+                trim : true
+            },
+            negativeFeedback : {
+                type : String,
+                trim : true
+            }
+        }
+    ]
+    
 })
 
-module.exports =  Question
+module.exports =  PracticeQuizPapers

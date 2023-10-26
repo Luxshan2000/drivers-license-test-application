@@ -148,9 +148,9 @@ const googleLoginBase = async (req, res, isWeb) => {
       const isVerified = true
       //create a new user
       const newUser = new User({ email, hashedPassword, name, isAdmin, isVerified })
-      
       await newUser.save()
-      const newToken = jwt.sign({ name: newUser.name, isVerified: newUser.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
+      // Send the response
+      const newToken = jwt.sign({ name: newUser.name, isVerified: newUser.isVerified, email : newUser.email }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
       if (isWeb) {
         res.cookie("token", newToken);
         res.json({ message: 'Login successful' });
@@ -159,19 +159,13 @@ const googleLoginBase = async (req, res, isWeb) => {
         res.json({ message: 'Login Successful', token })
         return
       }
-
-
-
-
+    }else{
+      user.isVerified = true
+      const newToken = jwt.sign({ name: user.name, isVerified: user.isVerified, email : user.email }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
+      res.cookie("token", newToken);
+      res.json({ message: 'Login successful' });
     }
-    
-    const newToken = jwt.sign({ name: user.name, isVerified: user.isVerified }, process.env.SECURITY_KEY, { expiresIn: '5hour' });
-
-
-    res.cookie("token", newToken);
-
-    // Send the token in the response
-    res.json({ message: 'Login successful' });
+    // Send the token in the response  
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Login failed' });
