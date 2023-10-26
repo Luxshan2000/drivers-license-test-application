@@ -8,7 +8,8 @@ const BarRechartComponent = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/getMarks')
+    axios.defaults.withCredentials = true;
+    axios.get('http://localhost:5000/api/material/getMarks')
       .then(res => {
         // Process the data to get maximum marks for each quiz
         const processedData = processQuizData(res.data);
