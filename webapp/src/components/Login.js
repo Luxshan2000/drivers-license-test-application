@@ -21,9 +21,6 @@ export default function Login() {
 
     const [loading, setLoading] = useState(false)
     const [feedBack, setFeedback] = useState()
-
-
-    
     
     
    
@@ -33,7 +30,7 @@ export default function Login() {
         <div className="container-fluid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <div className="blurEffect" style={{ width: '500px' }}>
                 <h1 className="mb-4" style={{textAlign:'center'}}>LOGIN</h1>
-                <Form noValidate validated={validated} onSubmit={handleSubmit} >
+                <Form noValidate validated={validated} >
 
                     <FloatingLabel
                         controlId="floatingInput"
