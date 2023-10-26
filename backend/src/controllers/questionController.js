@@ -2,7 +2,14 @@ const jwt = require("jsonwebtoken")
 const User = require('../models/user')
 const PracticeQuizPapers = require("../models/questions")
 
+exports.getMark =  async (req, res) => {
+  const email= req.email;
 
+  await User
+    .findOne({ email })
+    .then((user) => res.json(user))
+    .catch((err) => res.json(err));
+};
 //calculate grade of practice quiz
 const calculateGrade = async (userAnswers, quizNumber) => {
   var grade = 0
