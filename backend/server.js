@@ -12,6 +12,7 @@ const userModel = require("./src/models/user");
 const topicModel = require("./src/models/topic");
 
 const app = express();
+app.disable('etag');
 app.use(cookieParser());
 const PORT = process.env.PORT || 5000;
 
