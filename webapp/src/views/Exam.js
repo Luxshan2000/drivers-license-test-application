@@ -100,7 +100,7 @@ function Exam() {
                
 
                 const end = new Date(response.data.startOn)
-                end.setMinutes(end.getMinutes() + 1)
+                end.setMinutes(end.getMinutes() + 15)
 
                 
 
