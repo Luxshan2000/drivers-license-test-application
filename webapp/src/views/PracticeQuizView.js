@@ -12,6 +12,8 @@ function PracticeQuizView() {
     const [quizNum, setQuizNum] = useState()
     const [loading, setLoading] = useState(true)
     var today = new Date();
+    const navigate = useNavigate();
+
     useEffect(() => {
         
         if(state?.test){
@@ -35,8 +37,9 @@ function PracticeQuizView() {
                 submitOn : today.toLocaleTimeString(),
                 startedOn : today.toDateString()
             })
-            .then(response => 
+            .then(response => {
                 console.log({ response })
+                navigate("/dashboard/practice")}
             )
             .catch(error => {
                 console.log(error)
@@ -98,7 +101,7 @@ function PracticeQuizView() {
                         <div className=' row'>
                             <div className='  col-6 col-md-8 col-lg-9  text-start'>
                             </div>
-                            <Link to='/dashboard/practice' type='button' className='btn-success btn col-6   col-md-4 col-lg-3 rounded-2 p-2  text-center' onClick={handleSubmit}>
+                            <Link type='button' className='btn-success btn col-6   col-md-4 col-lg-3 rounded-2 p-2  text-center' onClick={handleSubmit}>
                                 Finish and submit
                             </Link>
                             {/* <button onClick={handleSubmit} className=' btn-success btn col-6   col-md-4 col-lg-3 rounded-2 p-2  text-center'>

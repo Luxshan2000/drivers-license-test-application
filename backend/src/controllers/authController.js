@@ -10,10 +10,13 @@ const signup = async (req, res, isWeb) => {
   try {
     // Extract user information
 
-    const otp = OTPGenerator();
+    const otp = OTPGenerator()
+
+
 
     const { email, password, name } = req.body;
-    const isAdmin = false;
+    email = email.toLowerCase()
+    const isAdmin = false
 
     const saltRounds = 10; // Adjust
     const hashedPassword = await bcrypt.hash(password, saltRounds);
@@ -63,7 +66,9 @@ exports.signUpApp = async (req, res) => {
 
 const login = async (req, res, isWeb) => {
   try {
-    const { email, password } = req.body;
+    let { email, password } = req.body;
+
+    email = email.toLowerCase()
 
     // Check if the username exists in the database
     const user = await User.findOne({ email });

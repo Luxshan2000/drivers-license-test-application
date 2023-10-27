@@ -12,12 +12,13 @@ const userModel = require("./src/models/user");
 const topicModel = require("./src/models/topic");
 
 const app = express();
+app.disable('etag');
 app.use(cookieParser());
 const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: ["http://localhost:3000", "http://localhost:3001","*"],
     methods: ["POST", "GET"],
     credentials: true,
   })

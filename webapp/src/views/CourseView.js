@@ -5,6 +5,10 @@ import OffCanvasNavComponent from '../components/OffCanvasNavComponent'
 import OutFrame from '../components/OutFrame'
 import FrameComponent from '../components/FrameComponent'
 import axios from 'axios';
+import Spinner from 'react-bootstrap/Spinner';
+
+
+
 function CourseView() {
 
   const [heading, setHeading] = useState([])
@@ -46,7 +50,14 @@ function CourseView() {
                   </div>
                 </div>
             </div>
-            {heading.map((item) =><HeadingComponent key={item.name} heading={item} /> )}
+            {heading.length === 0 ?(<p class="card-text placeholder-glow">
+      <span class="placeholder col-7"></span>
+      <span class="placeholder col-4"></span>
+      <span class="placeholder col-4"></span>
+      <span class="placeholder col-6"></span>
+      <span class="placeholder col-8"></span>
+    </p>) :""}
+            { heading.map((item) =><HeadingComponent key={item.name} heading={item} /> )}
           </div>
         </div>
       </div>

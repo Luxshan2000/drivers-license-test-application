@@ -33,7 +33,7 @@ function DashboardView() {
       content:
         "A collection of road signs that are containing in the driver's handbook or manual.",
       icon: Signs,
-      to:"/dashboard/course/heading/1",
+      to:"/dashboard/roadsigns",
     },
   ];
   return (
