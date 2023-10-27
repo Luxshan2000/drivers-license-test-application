@@ -3,13 +3,14 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "rec
 import '../assets/CSS/progressStyle.css';
 import FrameComponent from '../components/FrameComponent';
 import axios from 'axios';
+import { BACKEND_URL } from "../utils/constants";
 
 const BarRechartComponent = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios.defaults.withCredentials = true;
-    axios.get('http://localhost:5000/api/material/getMarks')
+    axios.get(`${BACKEND_URL}/api/material/getMarks`)
       .then(res => {
         // Process the data to get maximum marks for each quiz
         const processedData = processQuizData(res.data);

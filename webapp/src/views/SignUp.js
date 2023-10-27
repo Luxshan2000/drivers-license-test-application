@@ -9,6 +9,7 @@ import axios from 'axios';
 import GoogleLoginButton from "../components/GoogleLoginButton";
 import FacebookLoginButton from "../components/FacebookLoginButton";
 import Spinner from 'react-bootstrap/Spinner';
+import { BACKEND_URL } from "../utils/constants";
 
 
 export default function SignUp() {
@@ -50,7 +51,7 @@ export default function SignUp() {
         }
         //18.61.20.118
         axios.defaults.withCredentials = true
-        axios.post('http://localhost:5000/api/auth/signup', {email:email, password:password, name:userName})
+        axios.post(`${BACKEND_URL}/api/auth/signup`, {email:email, password:password, name:userName})
         .then(response => {
             // Handle the successful response here
 

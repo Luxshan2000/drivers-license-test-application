@@ -6,11 +6,12 @@ import Card from 'react-bootstrap/Card'
 import FrameComponent from '../components/FrameComponent'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { BACKEND_URL } from '../utils/constants'
 function PracticeExamView() {
     const [tests,setTests] = useState([])
     useEffect(() => {
         axios.defaults.withCredentials = true
-        axios.get('http://localhost:5000/api/practiceQuizzes/getPracticeQuizPapers')
+        axios.get(`${BACKEND_URL}/api/practiceQuizzes/getPracticeQuizPapers`)
             .then(response => {
                 // Handle the successful response here
                 //[{quizNumber : 1,time : 20,questions : [],user_quiz : [{id : 1,grade : '10'}]},{quizNumber : 1,time : 20,questions : []},{quizNumber : 1,time : 20,questions : []},]

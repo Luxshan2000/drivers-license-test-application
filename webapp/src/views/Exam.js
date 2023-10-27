@@ -4,6 +4,7 @@ import QuestionComponent from '../components/QuestionComponent'
 import axios from 'axios'
 import Counter from '../components/Counter'
 import { useNavigate, useParams } from 'react-router-dom';
+import { BACKEND_URL } from '../utils/constants'
 
 function Exam() {
     const [question, setQuestion] = useState([])
@@ -45,7 +46,7 @@ function Exam() {
         console.log(answers);
 
         axios.defaults.withCredentials = true
-        axios.post(`http://localhost:5000/api/material/topic/quiz/answer/${id}`,answers)
+        axios.post(`${BACKEND_URL}/api/material/topic/quiz/answer/${id}`,answers)
         .then(res=>{
             console.log(res.data)
             navigate(`/dashboard/quiz/view/${id}`, {replace:true})
@@ -78,7 +79,7 @@ function Exam() {
 
 
         axios.defaults.withCredentials = true
-        axios.post(`http://localhost:5000/api/material/topic/quiz/answer/${id}`,answersTemp)
+        axios.post(`${BACKEND_URL}/api/material/topic/quiz/answer/${id}`,answersTemp)
         .then(res=>{
             console.log(res.data)
             navigate(`/dashboard/quiz/view/${id}`, {replace:true})
@@ -92,7 +93,7 @@ function Exam() {
 
     useEffect(()=>{
         axios.defaults.withCredentials = true
-        axios.get(`http://localhost:5000/api/material/topic/quiz/${id}`)
+        axios.get(`${BACKEND_URL}/api/material/topic/quiz/${id}`)
             .then(response => {
                 // Handle the successful response here
                 setQuestion(response.data.array.questions)

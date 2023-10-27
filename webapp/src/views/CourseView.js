@@ -6,6 +6,7 @@ import OutFrame from '../components/OutFrame'
 import FrameComponent from '../components/FrameComponent'
 import axios from 'axios';
 import Spinner from 'react-bootstrap/Spinner';
+import { BACKEND_URL } from "../utils/constants";
 
 
 
@@ -15,7 +16,7 @@ function CourseView() {
   
   useEffect(()=>{
     axios.defaults.withCredentials = true
-    axios.get('http://localhost:5000/api/material/topics')
+    axios.get(`${BACKEND_URL}/api/material/topics`)
         .then(response => {
             // Handle the successful response here
     

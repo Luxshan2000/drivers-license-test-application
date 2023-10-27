@@ -3,13 +3,14 @@ import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+import { BACKEND_URL } from '../utils/constants';
 
 
 function GoogleLoginButton() {
     const navigate = useNavigate()
     const responseMessage = (response) => {
         axios.defaults.withCredentials = true
-        axios.post('http://localhost:5000/api/auth/googleLogin', { token: response.access_token })
+        axios.post(`${BACKEND_URL}/api/auth/googleLogin`, { token: response.access_token })
             .then(response => {
                 // Handle the successful response here
                 console.log(response.data);

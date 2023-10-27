@@ -3,6 +3,7 @@ import FrameComponent from '../components/FrameComponent'
 import axios from 'axios'
 import PracticeQuizComponent from '../components/PracticeQuizComponent'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { BACKEND_URL } from '../utils/constants'
 
 function PracticeQuizView() {
     let { state } = useLocation();
@@ -30,7 +31,7 @@ function PracticeQuizView() {
         console.log("clicked")
         console.log({ answers })
         axios.defaults.withCredentials = true
-        axios.post('http://localhost:5000/api/practiceQuizzes/submitPracticeQuiz',
+        axios.post(`${BACKEND_URL}/api/practiceQuizzes/submitPracticeQuiz`,
             {
                 userPracticePaper : answers,
                 quizNumber : quizNum,

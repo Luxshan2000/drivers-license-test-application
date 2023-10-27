@@ -11,6 +11,7 @@ import axios from 'axios';
 import { getSessionCookie } from "../utils/cookie";
 import jwt_decode from 'jwt-decode'
 import GoogleLoginButton from "../components/GoogleLoginButton";
+import { BACKEND_URL } from "../utils/constants";
 
 export default function Login() {
     const navigate = useNavigate()
@@ -52,7 +53,7 @@ export default function Login() {
        setValidated(true)
 
         axios.defaults.withCredentials = true
-        axios.post('http://localhost:5000/api/auth/login', {email:email, password:password})
+        axios.post(`${BACKEND_URL}/api/auth/login`, {email:email, password:password})
         .then(response => {
             // Handle the successful response here
     

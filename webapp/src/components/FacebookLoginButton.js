@@ -1,9 +1,10 @@
 import FacebookLogin from '@greatsumini/react-facebook-login';
 import axios from 'axios';
+import { BACKEND_URL } from '../utils/constants';
 const FacebookLoginButton = () => {
     const responseMessage = (response) => {
         console.log(response)
-        axios.post('http://localhost:5000/api/auth/facebookLogin', { token: response.accessToken , userID : response.userID })
+        axios.post(`${BACKEND_URL}/api/auth/facebookLogin`, { token: response.accessToken , userID : response.userID })
             .then(response => {
                 // Handle the successful response here
                 console.log(response.data);

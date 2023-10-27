@@ -4,6 +4,7 @@ import FrameComponent from '../components/FrameComponent'
 import ScriptComponent from '../components/ScriptComponent'
 import VideoComponent from '../components/VideoComponent'
 import axios from 'axios'
+import { BACKEND_URL } from '../utils/constants'
 
 function ContentView() {
   const { id } = useParams()
@@ -13,7 +14,7 @@ function ContentView() {
 
   useEffect(()=>{
     axios.defaults.withCredentials = true
-    axios.get(`http://localhost:5000/api/material/topic/${id}`)
+    axios.get(`${BACKEND_URL}/api/material/topic/${id}`)
         .then(response => {
             // Handle the successful response here
            setHeading(response.data)

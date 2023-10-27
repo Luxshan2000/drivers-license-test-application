@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 import { getSessionCookie } from "../utils/cookie";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { BACKEND_URL } from "../utils/constants";
 
 export default function PasswordVerify() {
     const navigate = useNavigate()
@@ -25,7 +26,7 @@ export default function PasswordVerify() {
         //18.61.20.118
         axios.defaults.withCredentials = true
         const otp = digit1+""+ digit2 + "" + digit3 + "" + digit4
-        axios.post('http://localhost:5000/api/auth/verifyotp', {token: getSessionCookie('token'), otp: otp})
+        axios.post(`${BACKEND_URL}/api/auth/verifyotp`, {token: getSessionCookie('token'), otp: otp})
         .then(response => {
             // Handle the successful response here
             console.log('Verification successful!', response.data);
@@ -49,7 +50,7 @@ export default function PasswordVerify() {
 
     const resendRequest= ()=>{
         axios.defaults.withCredentials = true
-        axios.post('http://localhost:5000/api/auth/resend')
+        axios.post(`${BACKEND_URL}/api/auth/resend`)
         .then(res=>{
             console.log("Sent!")
         }).catch(err=>{

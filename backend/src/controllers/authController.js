@@ -14,7 +14,7 @@ const signup = async (req, res, isWeb) => {
 
 
 
-    const { email, password, name } = req.body;
+    let { email, password, name } = req.body;
     email = email.toLowerCase()
     const isAdmin = false
 

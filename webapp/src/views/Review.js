@@ -4,6 +4,7 @@ import QuestionComponent from '../components/QuestionComponent'
 import axios from 'axios'
 import Counter from '../components/Counter'
 import { useNavigate, useParams } from 'react-router-dom';
+import { BACKEND_URL } from '../utils/constants'
 
 function Review() {
   
@@ -34,7 +35,7 @@ function Review() {
     useEffect(()=>{
         axios.defaults.withCredentials = true
         // axios.get(`http://localhost:5000/api/material/topic/quiz/${id}`)
-        axios.get(`http://localhost:5000/api/material/topic/quiz/get/review/${rid}`)
+        axios.get(`${BACKEND_URL}/api/material/topic/quiz/get/review/${rid}`)
             .then(response => {
                 // Handle the successful response here
 

@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import FrameComponent from '../components/FrameComponent'
 import { useModal } from '../context/ModalContext'
 import axios from 'axios'
+import { BACKEND_URL } from '../utils/constants'
 
 function QuizView() {
   const {setModal}  = useModal()
@@ -25,7 +26,7 @@ function QuizView() {
 
   useEffect(()=>{
         axios.defaults.withCredentials = true
-        axios.get(`http://localhost:5000/api/material/topic/quiz/review/${id}`)
+        axios.get(`${BACKEND_URL}/api/material/topic/quiz/review/${id}`)
         .then(res=>{
             setReview(res.data.review)
             setConti(res.data.continue)
