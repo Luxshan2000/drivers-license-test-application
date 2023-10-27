@@ -2,7 +2,7 @@
   <div align="center">
     <h1>DriveSmart</h1>
     <hr/>
-    <hr />
+    <hr/>
   </div>
   <div  align="justify">
         <b>01)Overview of the Project</b> : <b>DriveSmart </b> is innovative software designed to assist individuals in effectively preparing for their driving license exams. Available in three languages (Sinhala, Tamil, and English), this comprehensive tool offers a simulated user experience, valuable practice resources, and various interactive features. The application encompasses practice tests, structured topic-wise study materials, timed exams within a realistic testing environment, and a robust progress tracking system to evaluate and analyze individual performance.
