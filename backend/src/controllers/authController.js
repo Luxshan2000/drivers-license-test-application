@@ -15,7 +15,8 @@ const signup = async (req, res, isWeb) => {
 
 
 
-    const { email, password, name } = req.body;
+    let { email, password, name } = req.body;
+    email = email.toLowerCase()
     const isAdmin = false
 
 
@@ -71,7 +72,9 @@ exports.signUpApp = async (req, res) => {
 
 const login = async (req, res, isWeb) => {
   try {
-    const { email, password } = req.body;
+    let { email, password } = req.body;
+
+    email = email.toLowerCase()
 
     // Check if the username exists in the database
     const user = await User.findOne({ email });
