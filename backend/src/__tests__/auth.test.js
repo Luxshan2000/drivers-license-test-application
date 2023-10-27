@@ -1,17 +1,4 @@
-// auth.test.js
-const {
-    signUpWeb,
-    signUpApp,
-    loginWeb,
-    loginApp,
-    googleLogin,
-    googleLoginApp,
-    facebooklogin,
-    verificationWeb,
-    verificationApp,
-    logout,
-    resendOTP,
-  } = require('../controllers/authController'); 
+const {signUpWeb,loginWeb} = require('../controllers/authController'); 
   
   // Mock required modules or dependencies if needed
   jest.mock('../models/user');
@@ -22,6 +9,7 @@ const {
   jest.mock('../utils/otpgenerator');
   
   describe('Authentication API Tests', () => {
+
     test('Signup (Web)', async () => {
       // Mock req and res objects, and test the signUpWeb function
       const req = {
@@ -39,6 +27,26 @@ const {
       await signUpWeb(req, res);
   
       expect(res.json).toHaveBeenCalledWith({ message: 'Signup successful' });
-    });
+    }),
+
+    test('Login (Web)', async () => {
+        // Mock req and res objects for the loginWeb function
+        const req = {
+          body: {
+            email: 'test@example.com',
+            password: 'password',
+          },
+        };
+        const res = {
+          cookie: jest.fn(),
+          json: jest.fn(),
+          status: jest.fn(),
+        };
+    
+        // Call the loginWeb function
+        await loginWeb(req, res);
+    
+        expect(res.json).toHaveBeenCalledWith({ message: 'Login successful' });
+      });
   });
   

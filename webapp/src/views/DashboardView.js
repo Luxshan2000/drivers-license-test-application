@@ -3,7 +3,8 @@ import BarChart from "../assets/images/bar-chart-outline.png";
 import Book from "../assets/images/Book.png";
 import Signs from "../assets/images/Signs.png";
 import FrameComponent from "../components/FrameComponent";
-import { Link } from "react-router-dom";
+import DashboardCard from "../components/DashboardCard";
+
 function DashboardView() {
   const cardDetails = [
     {
@@ -47,13 +48,7 @@ function DashboardView() {
             <div className="dashboard__cards">
               {cardDetails.map((card) => {
                 return (
-                  <Link to={card.to} className="dashboard__card">
-                    <h5>{card.heading}</h5>
-                    <div className="card__image-details">
-                      <img className="card__image" src={card.icon} alt="" />
-                      <h6>{card.content}</h6>
-                    </div>
-                  </Link>
+                  <DashboardCard card={card} />
                 );
               })}
             </div>

@@ -104,7 +104,7 @@ const login = async (req, res, isWeb) => {
       }
     }
   } catch (error) {
-    console.error(error);
+    console.error(error)
     res.status(500).json({ error: 'Login failed' });
   }
 };
