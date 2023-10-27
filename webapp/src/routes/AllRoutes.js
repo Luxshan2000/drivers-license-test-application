@@ -23,6 +23,7 @@ import AboutUs from '../views/AboutUsView';
 import PracticeQuizView from '../views/PracticeQuizView';
 import Review from '../views/Review';
 import PracticeQuizReview from '../views/PracticeQuizReview';
+import RoadSignsView from '../views/RoadSignsView';
 
 function AllRoutes() {
   return (
@@ -51,6 +52,7 @@ function AllRoutes() {
           <Route path='/dashboard/contactus' element={<ContactUs/>}/>
           <Route path='/dashboard/aboutus' element={<AboutUs/>}/>
           <Route path='/dashboard/quiz/review/:id/:rid' element={<Review/>}/>
+          <Route path='/dashboard/roadsigns' element={<RoadSignsView/>} />
         </Route>
      </Routes>
   )
