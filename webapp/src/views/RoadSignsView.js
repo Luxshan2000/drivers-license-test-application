@@ -88,7 +88,7 @@ function RoadSignsView() {
         <div>
             <h3 className=' text-center'>RoadSigns in Sri Lanka</h3>
             <div className=' m-3' style={{display:'flex', justifyContent:'center', gap:'5px', flexWrap:'wrap'}} >
-                {tags.map((item)=>(<span onClick={()=> setFilter(item) } className=' badge bg-success p-2 px-5' style={{flex:"0 0 auto", cursor:"pointer"}}>{item}</span>))}
+                {tags.map((item)=>(<span onClick={()=> setFilter(item) } className={`badge bg-success p-2 px-5 ${filter===item ? 'text-dark':""}`} style={{flex:"0 0 auto", cursor:"pointer"}}>{item}</span>))}
                 
             </div>
             <div style={{display:'flex', justifyContent:'space-between', gap:'5px', flexWrap:'wrap'}}>

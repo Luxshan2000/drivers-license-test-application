@@ -107,7 +107,7 @@ export default function Login() {
                         className="mb-3"
                         style={{ fontSize: 'small' }}
                     >
-                        <Form.Control onChange={(e)=>setEmail(e.target.value)} value={email} type="email" size="sm" placeholder="name@example.com" required />
+                        <Form.Control disabled={loading} onChange={(e)=>setEmail(e.target.value)} value={email} type="email" size="sm" placeholder="name@example.com" required />
                         <Form.Control.Feedback type="invalid">Please put a valid email!</Form.Control.Feedback>
                     </FloatingLabel>
 
@@ -117,7 +117,7 @@ export default function Login() {
                         // className="mb-3"
                         style={{ fontSize: 'small' }}
                     >
-                        <Form.Control required  onChange={(e)=>setPassword(e.target.value)} value={password}  type="password" placeholder="Password" />
+                        <Form.Control disabled={loading} required  onChange={(e)=>setPassword(e.target.value)} value={password}  type="password" placeholder="Password" />
                         <Form.Control.Feedback type="invalid">Password cann't be empty!</Form.Control.Feedback>
                     </FloatingLabel>
                                                                                                                            
