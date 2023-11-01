@@ -10,7 +10,9 @@ function GoogleLoginButton() {
     const navigate = useNavigate()
     const responseMessage = (response) => {
         axios.defaults.withCredentials = true
-        axios.post(`${BACKEND_URL}/api/auth/googleLogin`, { token: response.access_token })
+        console.log(response)
+        const url = BACKEND_URL + '/api/auth/googleLogin'
+        axios.post(url, { token: response.access_token })
             .then(response => {
                 // Handle the successful response here
                 console.log(response.data);
