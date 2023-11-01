@@ -18,6 +18,7 @@ function GoogleLoginButton() {
                 // console.log(response.data);
                 // alert('login successful')
                 localStorage.setItem('token' , response.newToken)
+                console.log(response.newToken)
                 navigate('/dashboard',{replace : true})
             })
             .catch(error => {
