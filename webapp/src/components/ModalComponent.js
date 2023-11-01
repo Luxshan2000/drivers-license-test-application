@@ -5,6 +5,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import "../assets/CSS/modelStyle.css"
 import { useModal } from '../context/ModalContext';
 import axios from 'axios';
+import { BACKEND_URL } from '../utils/constants';
 
 function ModalComponent() {
   const navigate = useNavigate()
@@ -28,15 +29,28 @@ function ModalComponent() {
   const handleClose = () => closeModal();
   
 
-  const handleSuccess =()=>{
+  const handleSuccess = async ()=>{
 
     try{
+        
+        
+        // axios.defaults.withCredentials = true
+        // axios.post(`${BACKEND_URL}/api/material/startexam/${id}`,{
+        //   headers: {
+        //     token: `${token}` // Set the token as the "Authorization" header
+        //   }
+        // })
+        const token = localStorage.getItem("token")
         axios.defaults.withCredentials = true
-        axios.post(`http://localhost:5000/api/material/startexam/${id}`)
+        axios.post(`${BACKEND_URL}/api/material/topic/startexam/${id}`,{
+          headers: {
+            token: `${token}` // Set the token as the "Authorization" header
+          }
+        })
         .then(res=>{
             console.log("Started!")
         }).catch(err=>{
-            console.log("Error!")
+            console.log("Error!", err)
             return
         })
     }
