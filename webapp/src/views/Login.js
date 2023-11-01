@@ -61,8 +61,11 @@ export default function Login() {
             setPassword("")
 
             
+            localStorage.setItem("token", response.data.token )
 
-            if(jwt_decode(getSessionCookie("token")).isVerified){
+            
+            
+            if(jwt_decode(localStorage.getItem("token")).isVerified){
                 navigate("/dashboard",{replace:true})
             }
             else{

@@ -11,7 +11,7 @@ function PrivateRoutes() {
   let allow = false
   let isVerified = false
 
-  allow  = getSessionCookie("token")
+  allow  = localStorage.getItem("token")
 
   if(allow){
     isVerified = jwt_decode(allow).isVerified

@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const { ObjectId } = require('mongodb');
 
 exports.getAllTopics = async (req, res) => {
-//   console.log(req.email)
+   console.log(req.email)
 
     try{
         const email = req.email
@@ -48,6 +48,9 @@ exports.getTopicQuiz = async (req,res) =>{
         const user = await User.findOne({ email })
 
 
+
+       
+
         if (!user) {
             return res.status(404).json({ message: "User not found" });
           }
@@ -64,6 +67,7 @@ exports.getTopicQuiz = async (req,res) =>{
           const startOn = user.completed[lastCompletedIndex].startOn
 
 
+          
 
 
         res.status(200).json({ array: topicData,startOn:startOn })
@@ -80,6 +84,8 @@ exports.startQuiz = async (req,res) =>{
     try{
         const no = req.params.id
         const email = req.email
+
+        console.log(no, email)
 
 
         const newObj = {
@@ -102,7 +108,8 @@ exports.startQuiz = async (req,res) =>{
         // const topicData = await Topic.findOne({no}).select("title questions no")
          res.status(200).json({msg:"ok"})
     }
-    catch{
+    catch(err){
+        
         res.status(500).json({error: err})
     }
 }

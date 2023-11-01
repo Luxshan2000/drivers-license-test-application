@@ -33,9 +33,14 @@ function Review() {
     // console.log(question)
 
     useEffect(()=>{
+        const token = localStorage.getItem("token")
         axios.defaults.withCredentials = true
         // axios.get(`http://localhost:5000/api/material/topic/quiz/${id}`)
-        axios.get(`${BACKEND_URL}/api/material/topic/quiz/get/review/${rid}`)
+        axios.get(`${BACKEND_URL}/api/material/topic/quiz/get/review/${rid}`,{
+            headers: {
+                token: `${token}` // Set the token as the "Authorization" header
+              }
+        })
             .then(response => {
                 // Handle the successful response here
 

@@ -9,8 +9,13 @@ const BarRechartComponent = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    const token = localStorage.getItem("token")
     axios.defaults.withCredentials = true;
-    axios.get(`${BACKEND_URL}/api/material/getMarks`)
+    axios.get(`${BACKEND_URL}/api/material/getMarks`,{
+      headers: {
+        token: `${token}` // Set the token as the "Authorization" header
+      }
+    })
       .then(res => {
         // Process the data to get maximum marks for each quiz
         const processedData = processQuizData(res.data);

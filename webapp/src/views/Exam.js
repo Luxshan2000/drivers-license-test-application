@@ -17,11 +17,11 @@ function Exam() {
 
     const initialMinutes = 15;
     const initialSeconds = 0;
-
+    let token = localStorage.getItem("token")
 
     const handleAnswerChange = (e) => {
          
-
+    
     const answersCopy = [...answers]
     const quesId = e.target.name
     
@@ -45,8 +45,13 @@ function Exam() {
         console.log("submitted!")
         console.log(answers);
 
+        
         axios.defaults.withCredentials = true
-        axios.post(`${BACKEND_URL}/api/material/topic/quiz/answer/${id}`,answers)
+        axios.post(`${BACKEND_URL}/api/material/topic/quiz/answer/${id}`,answers,{
+            headers: {
+                token: `${token}` // Set the token as the "Authorization" header
+              }
+        })
         .then(res=>{
             console.log(res.data)
             navigate(`/dashboard/quiz/view/${id}`, {replace:true})
@@ -79,7 +84,11 @@ function Exam() {
 
 
         axios.defaults.withCredentials = true
-        axios.post(`${BACKEND_URL}/api/material/topic/quiz/answer/${id}`,answersTemp)
+        axios.post(`${BACKEND_URL}/api/material/topic/quiz/answer/${id}`,answersTemp,{
+            headers: {
+                token: `${token}` // Set the token as the "Authorization" header
+              }
+        })
         .then(res=>{
             console.log(res.data)
             navigate(`/dashboard/quiz/view/${id}`, {replace:true})
@@ -92,12 +101,18 @@ function Exam() {
     // console.log(question)
 
     useEffect(()=>{
+        token = localStorage.getItem('token')
         axios.defaults.withCredentials = true
-        axios.get(`${BACKEND_URL}/api/material/topic/quiz/${id}`)
+        axios.get(`${BACKEND_URL}/api/material/topic/quiz/${id}`,{
+            headers:{
+                token:`${token}`
+            }
+        })
             .then(response => {
                 // Handle the successful response here
                 setQuestion(response.data.array.questions)
 
+                
                
 
                 const end = new Date(response.data.startOn)

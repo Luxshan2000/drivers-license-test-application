@@ -25,8 +25,13 @@ function QuizView() {
 
 
   useEffect(()=>{
+        const token = localStorage.getItem("token")
         axios.defaults.withCredentials = true
-        axios.get(`${BACKEND_URL}/api/material/topic/quiz/review/${id}`)
+        axios.get(`${BACKEND_URL}/api/material/topic/quiz/review/${id}`,{
+          headers: {
+            token: `${token}` // Set the token as the "Authorization" header
+          }
+        })
         .then(res=>{
             setReview(res.data.review)
             setConti(res.data.continue)

@@ -15,8 +15,14 @@ function CourseView() {
   const [heading, setHeading] = useState([])
   
   useEffect(()=>{
+    const token = localStorage.getItem("token")
     axios.defaults.withCredentials = true
-    axios.get(`${BACKEND_URL}/api/material/topics`)
+    
+    axios.get(`${BACKEND_URL}/api/material/topics`,{
+      headers: {
+        token: `${token}` // Set the token as the "Authorization" header
+      }
+    })
         .then(response => {
             // Handle the successful response here
     
@@ -58,7 +64,7 @@ function CourseView() {
       <span class="placeholder col-6"></span>
       <span class="placeholder col-8"></span>
     </p>) :""}
-            { heading.map((item) =><HeadingComponent key={item.name} heading={item} /> )}
+            { (heading.length !== 0) ? heading.map((item) =><HeadingComponent key={item.name} heading={item} /> )  : ""}
           </div>
         </div>
       </div>

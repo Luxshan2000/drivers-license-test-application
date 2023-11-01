@@ -13,8 +13,13 @@ function ContentView() {
 
 
   useEffect(()=>{
+    const token = localStorage.getItem("token")
     axios.defaults.withCredentials = true
-    axios.get(`${BACKEND_URL}/api/material/topic/${id}`)
+    axios.get(`${BACKEND_URL}/api/material/topic/${id}`,{
+      headers: {
+        token: `${token}` // Set the token as the "Authorization" header
+      }
+    })
         .then(response => {
             // Handle the successful response here
            setHeading(response.data)

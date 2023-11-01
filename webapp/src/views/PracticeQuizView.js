@@ -30,6 +30,7 @@ function PracticeQuizView() {
     const handleSubmit = () => {
         console.log("clicked")
         console.log({ answers })
+        const token = localStorage.getItem("token")
         axios.defaults.withCredentials = true
         axios.post(`${BACKEND_URL}/api/practiceQuizzes/submitPracticeQuiz`,
             {
@@ -37,6 +38,10 @@ function PracticeQuizView() {
                 quizNumber : quizNum,
                 submitOn : today.toLocaleTimeString(),
                 startedOn : today.toDateString()
+            },{
+                headers: {
+                    token: `${token}` // Set the token as the "Authorization" header
+                  }
             })
             .then(response => {
                 console.log({ response })

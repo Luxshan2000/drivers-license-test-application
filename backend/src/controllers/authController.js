@@ -42,10 +42,10 @@ const signup = async (req, res, isWeb) => {
       if (isWeb) {
         const oneWeekInSeconds = 7 * 24 * 60 * 60; // 7 days * 24 hours * 60 minutes * 60 seconds
         const expirationDate = new Date(Date.now() + oneWeekInSeconds * 1000); // Convert seconds to milliseconds
-        res.cookie("token", token, {
-          expires: expirationDate,
-        });
-        res.json({ message: "Signup successful" });
+        // res.cookie("token", token, {
+        //   expires: expirationDate,
+        // });
+        res.json({ token: token ,message: "Signup successful" });
       } else {
         return res
           .header("x-auth-token", token)
@@ -89,11 +89,11 @@ const login = async (req, res, isWeb) => {
         .json({ error: "Incorrect password", success: false });
     } else {
       // If the username and password are correct, generate a JWT token
-      // const token = jwt.sign(
-      //   { name: user.name, isVerified: user.isVerified, email: user.email },
-      //   process.env.SECURITY_KEY,
-      //   { expiresIn: "5hour" }
-      // );
+      const token = jwt.sign(
+        { name: user.name, isVerified: user.isVerified, email: user.email },
+        process.env.SECURITY_KEY,
+        { expiresIn: "5hour" }
+      );
       if (isWeb) {
         const oneWeekInSeconds = 7 * 24 * 60 * 60; // 7 days * 24 hours * 60 minutes * 60 seconds
         const expirationDate = new Date(Date.now() + oneWeekInSeconds * 1000); // Convert seconds to milliseconds
@@ -105,7 +105,7 @@ const login = async (req, res, isWeb) => {
         //   expires: expirationDate
         // });
         // Send the token in the response
-        res.json({ message: "Login successful" });
+        res.status(200).json({token:token ,message: "Login successful" });
       } else {
         const isVerified = jwt.verify(
           token,
