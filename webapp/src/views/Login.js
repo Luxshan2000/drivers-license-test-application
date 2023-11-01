@@ -27,7 +27,7 @@ export default function Login() {
     
     
     useEffect(()=>{
-        if(getSessionCookie("token")){
+        if(localStorage.getItem("token")){
             navigate("/dashboard", {replace:true})
         }    
     },[])

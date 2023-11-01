@@ -3,14 +3,23 @@ import axios from 'axios';
 import { BACKEND_URL } from './constants';
  
  export const logout = () => {
-    axios.defaults.withCredentials = true
-    console.log("clciked")
-    // Add logout functionality here
-    axios.post(`${BACKEND_URL}/api/auth/logout`)
-    .then((res)=>{
+    // axios.defaults.withCredentials = true
+    // console.log("clciked")
+    // // Add logout functionality here
+    // axios.post(`${BACKEND_URL}/api/auth/logout`)
+    // .then((res)=>{
+    //   window.location.reload(true);
+    //   window.location.href = "/";
+    // }).catch((err)=>console.log(err))
+    try{
+      localStorage.removeItem("token");
       window.location.reload(true);
       window.location.href = "/";
-    }).catch((err)=>console.log(err))
+
+    }
+    catch(err){
+      console.log("Error")
+    }
   };
 
 
