@@ -178,8 +178,9 @@ const googleLoginBase = async (req, res, isWeb) => {
         { expiresIn: "5hour" }
       );
       if (isWeb) {
-        res.cookie("token", newToken);
-        res.json({ message: "Login successful" });
+        // res.cookie("token", newToken);
+        // res.json({ message: "Login successful" });
+        res.json({ message: "Login Successful", newToken });
         return;
       } else {
         res.json({ message: "Login Successful", token });
