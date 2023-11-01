@@ -7,6 +7,7 @@ const { OTPGenerator } = require("../utils/otpgenerator");
 const { default: axios } = require("axios");
 
 
+
 require("dotenv").config();
 const signup = async (req, res, isWeb) => {
   try {
@@ -135,6 +136,7 @@ exports.googleLogin = async (req, res) => {
   return googleLoginBase(req, res, true);
 };
 const googleLoginBase = async (req, res, isWeb) => {
+  console.log("hi")
   try {
     const { token } = req.body;
     console.log({ token });
