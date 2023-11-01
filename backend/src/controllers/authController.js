@@ -148,7 +148,9 @@ const googleLoginBase = async (req, res, isWeb) => {
           Authorization: `Bearer ${token}`,
         },
       }
-    )
+    ).catch(err => {
+      console.log(err)
+    })
     console.log(googleResponse.data);
     const { email, name } = googleResponse.data;
     //see if there is an user with that email already
