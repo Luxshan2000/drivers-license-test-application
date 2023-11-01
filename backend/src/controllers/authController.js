@@ -89,11 +89,11 @@ const login = async (req, res, isWeb) => {
         .json({ error: "Incorrect password", success: false });
     } else {
       // If the username and password are correct, generate a JWT token
-      // const token = jwt.sign(
-      //   { name: user.name, isVerified: user.isVerified, email: user.email },
-      //   process.env.SECURITY_KEY,
-      //   { expiresIn: "5hour" }
-      // );
+      const token = jwt.sign(
+        { name: user.name, isVerified: user.isVerified, email: user.email },
+        process.env.SECURITY_KEY,
+        { expiresIn: "5hour" }
+      );
       if (isWeb) {
         const oneWeekInSeconds = 7 * 24 * 60 * 60; // 7 days * 24 hours * 60 minutes * 60 seconds
         const expirationDate = new Date(Date.now() + oneWeekInSeconds * 1000); // Convert seconds to milliseconds
