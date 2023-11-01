@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 const { GenerateRandomPassword } = require("../utils/string");
 const emailModule = require("../utils/email");
 const { OTPGenerator } = require("../utils/otpgenerator");
-const { default: axios } = require("axios");
 
 
 
@@ -148,7 +147,9 @@ const googleLoginBase = async (req, res, isWeb) => {
           Authorization: `Bearer ${token}`,
         },
       }
-    )
+    ).catch(err => {
+      console.log(err)
+    })
     console.log(googleResponse.data);
     const { email, name } = googleResponse.data;
     //see if there is an user with that email already
