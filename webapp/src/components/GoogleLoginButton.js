@@ -17,9 +17,10 @@ function GoogleLoginButton() {
                 // Handle the successful response here
                 // console.log(response.data);
                 // alert('login successful')
-                localStorage.setItem('token' , response.newToken)
-                console.log(response.newToken)
-                navigate('/dashboard',{replace : true})
+                localStorage.setItem('token' , response.data.newToken )
+                // console.log(response.data.newToken)
+
+                navigate('/dashboard',{ replace : true})
             })
             .catch(error => {
                 // Handle any errors that occur during the request
