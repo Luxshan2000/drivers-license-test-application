@@ -98,9 +98,9 @@ const login = async (req, res, isWeb) => {
         //   expires: expirationDate,
         // });
 
-        res.cookie("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRHJpdmVTbWFydCIsImlzVmVyaWZpZWQiOnRydWUsImVtYWlsIjoic2xkcml2ZXNtYXJ0QGdtYWlsLmNvbSIsImlhdCI6MTY5ODc3NjI2MSwiZXhwIjoxNjk5MzgxMDYxfQ.2EAPdS7NbDyoB4jnB4bfZwQGryVsU48ueisu-Jipu9o",{
-          expires: expirationDate
-        });
+        // res.cookie("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRHJpdmVTbWFydCIsImlzVmVyaWZpZWQiOnRydWUsImVtYWlsIjoic2xkcml2ZXNtYXJ0QGdtYWlsLmNvbSIsImlhdCI6MTY5ODc3NjI2MSwiZXhwIjoxNjk5MzgxMDYxfQ.2EAPdS7NbDyoB4jnB4bfZwQGryVsU48ueisu-Jipu9o",{
+        //   expires: expirationDate
+        // });
         // Send the token in the response
         res.json({ message: "Login successful" });
       } else {
