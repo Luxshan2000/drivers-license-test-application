@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const { GenerateRandomPassword } = require("../utils/string");
 const emailModule = require("../utils/email");
 const { OTPGenerator } = require("../utils/otpgenerator");
+const { default: axios } = require("axios");
 
 
 
