@@ -4,6 +4,9 @@ const jwt = require("jsonwebtoken");
 const { GenerateRandomPassword } = require("../utils/string");
 const emailModule = require("../utils/email");
 const { OTPGenerator } = require("../utils/otpgenerator");
+const { default: axios } = require("axios");
+
+
 
 require("dotenv").config();
 const signup = async (req, res, isWeb) => {
@@ -133,23 +136,21 @@ exports.googleLogin = async (req, res) => {
   return googleLoginBase(req, res, true);
 };
 const googleLoginBase = async (req, res, isWeb) => {
+  console.log("hi")
   try {
     const { token } = req.body;
     console.log({ token });
     //verfication of user by fetching user information from google
-    const googleResponse = await fetch(
+    const googleResponse = await axios.get(
       "https://www.googleapis.com/oauth2/v3/userinfo",
       {
-        method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
-          Accept: "application/json",
         },
       }
-    ).then((res) => res.json());
-
-    console.log(googleResponse);
-    const { email, name } = googleResponse;
+    )
+    console.log(googleResponse.data);
+    const { email, name } = googleResponse.data;
     //see if there is an user with that email already
     const user = await User.findOne({ email });
     console.log({ email, name });
@@ -197,8 +198,9 @@ const googleLoginBase = async (req, res, isWeb) => {
         process.env.SECURITY_KEY,
         { expiresIn: "5hour" }
       );
-      res.cookie("token", newToken);
-      res.json({ message: "Login successful" });
+      // res.cookie("token", newToken);
+
+      res.json({ message: "Login successful" , newToken });
     }
     // Send the token in the response
   } catch (error) {
