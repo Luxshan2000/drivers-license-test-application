@@ -82,6 +82,8 @@ exports.getTopicQuiz = async (req,res) =>{
 
 exports.startQuiz = async (req,res) =>{
     try{
+
+        
         const no = req.params.id
         const email = req.email
 

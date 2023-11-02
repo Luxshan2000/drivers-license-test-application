@@ -29,40 +29,31 @@ function ModalComponent() {
   const handleClose = () => closeModal();
   
 
-  const handleSuccess = async ()=>{
-
-    try{
+  const handleSuccess = async () => {
+    try {
+        const token = localStorage.getItem("token");
+        axios.defaults.withCredentials = true;
         
-        
-        // axios.defaults.withCredentials = true
-        // axios.post(`${BACKEND_URL}/api/material/startexam/${id}`,{
-        //   headers: {
-        //     token: `${token}` // Set the token as the "Authorization" header
-        //   }
-        // })
-        const token = localStorage.getItem("token")
-        axios.defaults.withCredentials = true
-        axios.post(`${BACKEND_URL}/api/material/topic/startexam/${id}`,{
-          headers: {
-            token: `${token}` // Set the token as the "Authorization" header
-          }
+        axios.post(`${BACKEND_URL}/api/material/startexam/${id}`, null, {
+            headers: {
+                token: `${token}`
+            }
         })
-        .then(res=>{
-            console.log("Started!")
-        }).catch(err=>{
-            console.log("Error!", err)
-            return
+        .then((res) => {
+            console.log("Started!");
         })
-    }
-    catch(err){
-      return
+        .catch((err) => {
+            console.log("Error!", err);
+            return;
+        });
+    } catch (err) {
+        return;
     }
 
-    closeModal()
-    
-    navigate(goto) 
-    
-  }
+    closeModal();
+    navigate(goto)
+}
+
 
   return (
     <>
